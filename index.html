@@ -705,7 +705,7 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     </div>
     <div class="guide" id="guide-bronze">
       <div class="ajin"><img src="assets/ajin.png" alt="阿金"></div>
-      <div class="bubble"><div class="who">阿金 · 千年灵境守护者</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button></div></div>
+      <div class="bubble"><div class="who">阿金 · 千年灵境守护者</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button><button class="btn small g-go3" type="button" style="display:none">前往第三章 · 玉润祥瑞</button></div></div>
       <button class="btn ghost small reopen" type="button">阿金</button>
     </div>
   </section>
@@ -910,7 +910,7 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     <div class="finale-goat" id="finaleGoat"></div>
     <div class="row" style="justify-content:center"><span class="seal">青铜印</span><span class="seal">玉石印</span><span class="seal">陶塑印</span><span class="seal">祥瑞印</span></div>
     <p id="resultLine" style="text-align:center;color:#c9c2b2;line-height:2"></p>
-    <div class="row" style="justify-content:center;margin-top:14px"><button class="btn ghost" id="btnBackWorkshop" type="button">‹ 返回工坊</button><button class="btn" id="btnSaveAgain" type="button">保存我的羊纹作品</button><button class="btn ghost" id="btnRestart" type="button">重新开始时光之旅</button></div>
+    <div class="row" style="justify-content:center;margin-top:14px"><button class="btn" id="btnToCh3Finale" type="button">进入第三章 · 玉润祥瑞</button><button class="btn ghost" id="btnBackWorkshop" type="button">‹ 返回工坊</button><button class="btn" id="btnSaveAgain" type="button">保存我的羊纹作品</button><button class="btn ghost" id="btnRestart" type="button">重新开始时光之旅</button></div>
   </section>
 
   <!-- 第一章通用弹窗 -->
@@ -1072,6 +1072,9 @@ const GUIDE_STEPS=[
  {id:"paint",scene:"bronze",chapter:"第二章 · 青铜礼韵",task:"点亮第二幅画卷",label:"点击「青铜画卷」",how:"点「青铜画卷」，把铸造之火、纹饰之魂、礼器之印三个纹样放进画卷，再答题、按住盖章 1.2 秒。",
   target:function(){return "#btnOpenPaint2"},done:function(){return state.ch2.done},
   intro:["「青铜记忆」通过啦！三枚印记就要飞向千年瑞图了。","点「青铜画卷」，把三个纹样放进画卷，点亮第二幅画。"]},
+ {id:"go3",scene:"bronze",chapter:"第三章 · 玉润祥瑞",task:"前往第三章 · 玉润祥瑞",label:"点击「前往第三章 · 玉润祥瑞」",how:"点阿金旁边的金色按钮「前往第三章 · 玉润祥瑞」，先看一段过渡动画，再进玉石宫殿。说明页的主按钮也能直接去第三章。",
+  target:function(){return "#guide-bronze .g-go3"},done:function(){return state.ch3.hubIntro||state.ch3.transitionSeen},
+  intro:["第二章完成啦！青铜的故事讲完了。","下一站是第三章「玉润祥瑞」——去玉石宫殿，看看温润的美玉吧！","点阿金旁边的金色按钮「前往第三章」，我带你过去。"]},
  /* —— 青铜工坊 —— */
  {id:"f0",scene:"foundry",chapter:"第二章 · 青铜工坊",task:"了解铸造知识",label:"点击熔炉 / 陶范 / 工具",how:"点熔炉、陶范、工具三个金色标记，了解铸造是怎么一回事，点「记下来」收进知识。",
   target:function(){return firstUnlearned()},done:function(){return state.ch2.foundry.known.length>=3},
@@ -1736,8 +1739,8 @@ function openQuiz(title,q,opts,correct,onRight){$("#quizTitle").textContent=titl
    else{b.classList.add("wrong");b.disabled=true;$("#quizFeed").textContent="阿金：再想想，远古先民身边可没有这些现代的东西哦，可以再试一次。";toast("答错了，可以再试一次")}});
   box.appendChild(b)});
  $("#modalQuiz").classList.add("open");refreshGuide()}
-function refreshCh1Entry(){const b=$("#btnToTimeline");if(!b)return;b.textContent=!state.ch1.done?"进入第一章 · 远古初生":(!state.ch2.done?"进入第二章 · 青铜礼韵":"进入青铜时代 · 时间轴");
- const rj=$("#btnRevisitJade");if(rj)rj.style.display=(state.ch2.done||state.ch3.hubIntro||state.ch3.transitionSeen)?"inline-block":"none"}
+function refreshCh1Entry(){const b=$("#btnToTimeline");if(!b)return;b.textContent=!state.ch1.done?"进入第一章 · 远古初生":(!state.ch2.done?"进入第二章 · 青铜礼韵":"进入第三章 · 玉润祥瑞");
+ const rj=$("#btnRevisitJade");if(rj){rj.style.display=(state.ch2.done||state.ch3.hubIntro||state.ch3.transitionSeen)?"inline-block":"none";rj.textContent=(state.ch3.hubIntro||state.ch3.transitionSeen)?"重返玉润祥瑞":"进入第三章 · 玉润祥瑞"}}
 /* ---------- 远古山谷主场景 ---------- */
 function renderValley(){const c=state.ch1;const done=[c.hill.done,c.river.done,c.settle.done].filter(Boolean).length;
  $("#valleyProg").textContent="探索 "+done+" / 3";
@@ -2054,6 +2057,7 @@ $("#btnPaintQuiz").addEventListener("click",()=>{openQuiz("最终知识挑战","
 $("#btnToCh2").addEventListener("click",()=>{$("#modalPaint").classList.remove("open");enterBronze()});
 $("#btnPaintClose").addEventListener("click",()=>{$("#modalPaint").classList.remove("open");refreshGuide()}); 
 document.querySelector("#guide-valley .g-go2").addEventListener("click",()=>{enterBronze()});
+document.querySelector("#guide-bronze .g-go3").addEventListener("click",()=>{startTransition()});
 
 /* ============ 第二章 · 青铜礼韵（2026-11-22，增量） ============ */
 /* 纹样 SVG（原创示意）：云雷纹 / 兽面纹 / 羊形纹 */
@@ -2091,6 +2095,7 @@ function renderBronze(){const c=state.ch2;const done=[c.foundry.done,c.pattern.d
  /* v2：画卷需先通过「青铜记忆」最终挑战才能点亮 */
  $("#btnOpenPaint2").disabled=!(done===3&&c.memory.done);
  const bm=$("#btnMemory");bm.disabled=done!==3;bm.classList.toggle("pulse",done===3&&!c.memory.done);bm.textContent=c.memory.done?"青铜记忆 · 已通过 ✓":"青铜记忆 · 最终挑战";
+ const g3=document.querySelector("#guide-bronze .g-go3");if(g3)g3.style.display=c.done?"inline-block":"none";
  [["zoneFoundry","foundry"],["zonePattern","pattern"],["zoneVessel","vessel"]].forEach(([id,k])=>{const el=document.getElementById(id);const st=ch2SceneStatus(k);const nm=k==="foundry"?"青铜工坊":k==="pattern"?"纹饰秘境":"礼器寻珍";
   el.classList.toggle("done",st==="done");el.classList.toggle("doing",st==="doing");
   el.dataset.label=nm+(st==="done"?" · 已完成 ✓":st==="doing"?" · 进行中":" · 未探索")})}
@@ -2390,15 +2395,15 @@ seal2.addEventListener("pointerdown",ev=>{if(seal2Done)return;seal2.classList.ad
   if(p>=1){clearInterval(tick);seal2Done=true;seal2.classList.remove("holding");seal2.classList.add("stamped");
    seal2.querySelector(".core").innerHTML="<span style='font-size:26px'>◈</span>已盖章";
    $("#seal2Msg").textContent="「青铜画卷 · 青铜礼韵」已盖上金印！";
-   const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,20);floatScore(st.width/2,st.height/2-40,"已盖章")}},50);
+   const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,20);floatScore(st.width/2,st.height/2-40,"已盖章");toast("阿金：金印盖好啦！下一站，第三章「玉润祥瑞」——去玉石宫殿看看温润的美玉吧。")}},50);
  const end=()=>{clearInterval(tick);if(!seal2Done){seal2.classList.remove("holding");seal2.style.setProperty("--p",0);$("#seal2Msg").textContent="按住 1.2 秒，把「青铜画卷」之印盖上。"}document.removeEventListener("pointerup",end);document.removeEventListener("pointercancel",end)};
  document.addEventListener("pointerup",end);document.addEventListener("pointercancel",end)});
 function openPaint2(){renderPaint2();bindPaint2();$("#modalPaint2").classList.add("open");refreshGuide()}
 $("#btnPaint2Quiz").addEventListener("click",()=>{openQuiz("最终知识挑战","青铜器上的纹饰，寄托了古人怎样的心愿？",["把信仰、礼仪与美好愿望铸进器物里。","记录现代城市的交通路线。","展示手机电脑的用法。"],0,()=>{state.ch2.painting.quiz=true;state.ch2.painting.lit=true;if(state.ch2.memory.done){state.ch2.done=true;refreshCh1Entry()}save();renderPaint2();bindPaint2();renderBronze();
  const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,24);
- openGuide(["第二幅画卷已经点亮啦！青铜时代的故事，讲完了。","下一站，我们沿着时间轴继续走，看看羊文化怎么一路走到今天！"])} )});
+ openGuide(["第二幅画卷已经点亮啦！青铜时代的故事，讲完了。","下一站，第三章「玉润祥瑞」！去玉石宫殿看看温润的美玉，千年瑞图的最后一块拼图就在那里。"])} )});
 $("#btnToTimeline2").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");show("timeline");toast("青铜时代 · 请按时间轴继续探索")});
-$("#btnPaint2Close").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");refreshGuide()});
+$("#btnPaint2Close").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");refreshGuide();if(state.ch2.done&&!(state.ch3.hubIntro||state.ch3.transitionSeen))guideSceneIntro("bronze")});
 
 /* ============ 第三章 · 玉润祥瑞（2026-11-22，第一部分：过渡 + 玉石宫殿 + 玉石工坊） ============
    玉石原石 / 玉羊挂饰 / 宫殿艺术全部为原创 SVG 示意，不指向任何真实文物；
@@ -2439,7 +2444,7 @@ function renderJade(){const c=state.ch3;const done=jadeZonesDone();
  [["zoneJadeWork","workshop","玉石工坊"],["zoneJadePat","patterns","玉纹秘境"],["zoneJadeGal","gallery","祥瑞玉阁"]].forEach(([id,k,nm])=>{const el=document.getElementById(id);const st=ch3SceneStatus(k);
   el.classList.toggle("done",st==="done");el.classList.toggle("doing",st==="doing");
   el.dataset.label=nm+(st==="done"?" · 已完成 ✓":st==="doing"?" · 进行中":" · 未探索")})}
-function enterJade(){renderJade();show("jade");if(!state.ch3.hubIntro){state.ch3.hubIntro=true;save()}guideSceneIntro("jade")}
+function enterJade(){renderJade();show("jade");if(!state.ch3.hubIntro){state.ch3.hubIntro=true;save()}refreshCh1Entry();guideSceneIntro("jade")}
 $("#btnJadeBack").addEventListener("click",()=>{renderBronze();show("bronze")});
 $("#zoneJadeWork").addEventListener("click",()=>enterJadeWork());
 $("#zoneJadePat").addEventListener("click",()=>enterJadePat());
@@ -2941,8 +2946,8 @@ $("#btnRevisitJade").addEventListener("click",()=>{if(!state.ch3.transitionSeen)
 
 /* ---------- 导航 ---------- */
 $("#btnStart").addEventListener("click",()=>{const g=$("#gate");g.classList.add("open");setTimeout(()=>{g.classList.remove("open");show("intro")},900)});
-$("#btnContinue").addEventListener("click",()=>{const target=resumeTarget||(state.screen&&state.screen!=="home"?state.screen:"intro");buildSort();buildExplore();buildWorkshop();renderValley();renderHill();renderRiver();renderSettle();renderBronze();renderFoundry();renderPattern();renderVessel();renderJade();renderJadeWork();renderJadePat();renderJadeGal();if(target==="finale")renderFinale();show(target)});
-$("#btnToTimeline").addEventListener("click",()=>{if(!state.ch1.done){enterValley()}else if(!state.ch2.done){enterBronze()}else{show("timeline")}});
+$("#btnContinue").addEventListener("click",()=>{const target=resumeTarget||(state.screen&&state.screen!=="home"?state.screen:"intro");buildSort();buildExplore();buildWorkshop();renderValley();renderHill();renderRiver();renderSettle();renderBronze();renderFoundry();renderPattern();renderVessel();renderJade();renderJadeWork();renderJadePat();renderJadeGal();if(target==="finale")renderFinale();show(target);if(target==="bronze"&&state.ch2.done&&!(state.ch3.hubIntro||state.ch3.transitionSeen))guideSceneIntro("bronze")});
+$("#btnToTimeline").addEventListener("click",()=>{if(!state.ch1.done){enterValley()}else if(!state.ch2.done){enterBronze()}else{startTransition()}});
 $("#btnRevisitValley").addEventListener("click",()=>enterValley());
 $("#btnRevisitBronze").addEventListener("click",()=>enterBronze());
 $("#btnBackHome1").addEventListener("click",()=>show("home"));
@@ -2950,6 +2955,7 @@ $("#btnBackIntro").addEventListener("click",()=>show("intro"));
 $("#btnBackTimeline").addEventListener("click",()=>show("timeline"));
 $("#btnBackSort").addEventListener("click",()=>{buildSort();show("sort")});
 $("#btnBackExplore").addEventListener("click",()=>{buildExplore();show("explore")});
+$("#btnToCh3Finale").addEventListener("click",()=>{startTransition()});
 $("#btnBackWorkshop").addEventListener("click",()=>{buildWorkshop();show("workshop")});
 $("#btnToSort").addEventListener("click",()=>{buildSort();show("sort")});
 $("#btnToWorkshop").addEventListener("click",()=>{buildWorkshop();show("workshop")});
