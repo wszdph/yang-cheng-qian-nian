@@ -409,31 +409,67 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
 .fly-seal{display:inline-block;border:1px solid #B68A45;border-radius:999px;padding:8px 16px;color:#B68A45;background:rgba(182,138,69,.12);animation:flyUp 1.5s ease-in forwards}
 .fly-seal:nth-child(2){animation-delay:.15s}.fly-seal:nth-child(3){animation-delay:.3s}
 @keyframes flyUp{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-70px) scale(.55);opacity:0}}
-/* 最终结局 · 千年瑞图 */
-.fin-paints{display:flex;gap:10px;justify-content:center;margin-top:12px}
-.fin-paint{flex:1;max-width:190px;border:1px solid #4E7A68;border-radius:12px;padding:10px 6px;background:rgba(13,43,33,.5);text-align:center;animation:finLit 1.2s ease-in-out}
-.fin-paint:nth-child(2){animation-delay:.4s}.fin-paint:nth-child(3){animation-delay:.8s}
-.fin-paint .fin-pat{width:74px;height:74px;margin:0 auto}
-.fin-paint .fin-pat img,.fin-paint .fin-pat svg{width:100%;height:100%;object-fit:contain}
-.fin-paint b{display:block;margin-top:6px;color:#F5D67A;font-size:14px}
-.fin-paint span{display:block;font-size:11px;color:#9CC2B2;margin-top:4px;line-height:1.6}
+/* 最终结局 · 千年瑞图（两章制） */
+.fin-full{margin-top:12px;border:2px solid #B68A45;border-radius:12px;overflow:hidden;box-shadow:0 0 26px rgba(245,214,122,.35);animation:finLit 1.2s ease-in-out;background:#101311}
+.fin-full img{display:block;width:100%;height:auto;object-fit:contain}
+.mem-paints{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.mem-paint{flex:1;max-width:300px;border:1px solid #4E7A68;border-radius:12px;padding:10px;background:rgba(13,43,33,.5);text-align:center;animation:finLit 1.2s ease-in-out}
+.mem-paint img{display:block;width:100%;height:auto;object-fit:contain;border-radius:8px}
+.mem-paint b{display:block;margin-top:6px;color:#F5D67A;font-size:14px}
+.mem-paint span{display:block;font-size:11px;color:#9CC2B2;margin-top:4px;line-height:1.6}
 @keyframes finLit{0%{opacity:0;transform:translateY(14px) scale(.94);box-shadow:0 0 0 rgba(245,214,122,0)}100%{opacity:1;transform:none;box-shadow:0 0 26px rgba(245,214,122,.45)}}
 /* 结尾动画 */
 .end-wrap{position:relative;min-height:340px;border-radius:14px;overflow:hidden;background:#0b241d;border:1px solid #4E7A68}
 .end-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:340px;padding:18px;text-align:center;animation:finLit 1s ease-in-out}
-.end-rise{animation:endRise 2.4s ease-in-out}
-@keyframes endRise{0%{transform:translateY(70px);opacity:0}100%{transform:none;opacity:1}}
-.end-beam{width:10px;height:170px;background:linear-gradient(#F5D67A,rgba(245,214,122,0));border-radius:99px;animation:endBeam 1.6s ease-in-out}
-@keyframes endBeam{0%{transform:scaleY(.2);opacity:0}100%{transform:none;opacity:1}}
+.end-stage.end-duo{flex-direction:row;gap:14px}
 .end-ajin{width:120px;height:120px;border-radius:50%;border:2px solid #B68A45;overflow:hidden;animation:ajinBob 3.2s ease-in-out infinite}
 .end-ajin img{width:100%;height:100%;object-fit:cover}
 .end-wide{position:absolute;inset:0;animation:endZoom 2.6s ease-out}
-.end-wide img{width:100%;height:100%;object-fit:cover}
+.end-wide img{width:100%;height:100%;object-fit:contain;background:#0b241d}
 .end-wide-cap{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:#E8E1D3;text-shadow:0 1px 6px #000}
 @keyframes endZoom{0%{transform:scale(1.25)}100%{transform:scale(1)}}
 .end-dark{position:absolute;inset:0;background:rgba(5,6,5,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;animation:finLit 1.4s ease-in-out}
 .end-dark h2{color:#F5D67A;font-size:30px;letter-spacing:.2em}
 .end-dark p{color:#E8E1D3;line-height:2.1}
+/* 结尾动画 · 画卷入场 */
+.end-paint{width:100%;border:2px solid #B68A45;border-radius:12px;overflow:hidden;box-shadow:0 0 26px rgba(245,214,122,.35);background:#101311}
+.end-paint img{display:block;width:100%;height:auto;object-fit:contain}
+.end-single{width:min(420px,86%)}
+.end-full{animation:endZoom 2.6s ease-out}
+.end-from-left{animation:endSlideL 1.8s ease-out both}
+.end-from-right{animation:endSlideR 1.8s ease-out both}
+@keyframes endSlideL{0%{transform:translateX(-60px);opacity:0}100%{transform:none;opacity:1}}
+@keyframes endSlideR{0%{transform:translateX(60px);opacity:0}100%{transform:none;opacity:1}}
+.end-duo .end-lit{flex:1;max-width:300px;animation:finLit 1.6s ease-in-out}
+.end-duo .end-lit .end-paint{box-shadow:0 0 34px rgba(245,214,122,.8)}
+.end-ajin-front{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);width:110px;height:110px;border-radius:50%;border:2px solid #B68A45;overflow:hidden;z-index:2;animation:ajinBob 3.2s ease-in-out infinite}
+.end-ajin-front img{width:100%;height:100%;object-fit:cover}
+/* 画卷展示弹窗 */
+.show-wrap{text-align:center}
+.show-ajin{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:12px}
+.show-ajin img{width:64px;height:64px;border-radius:50%;border:2px solid #B68A45;object-fit:cover;flex:0 0 auto}
+.show-ajin p{margin:0;line-height:1.8;text-align:left;color:#E8E1D3}
+.show-paint{border:2px solid #B68A45;border-radius:12px;overflow:hidden;box-shadow:0 0 26px rgba(245,214,122,.4);animation:finLit 1.2s ease-in-out;background:#101311}
+.show-paint img{display:block;width:100%;height:auto;object-fit:contain}
+.show-title{margin-top:12px;color:#F5D67A;font-size:18px;letter-spacing:.1em}
+.show-sub{color:#9CC2B2;font-size:13px;margin-top:4px}
+/* 画卷收藏页 */
+.coll-bg{background:radial-gradient(ellipse at 50% 0%,rgba(245,214,122,.14),transparent 60%),linear-gradient(180deg,#101311,#1a160c);border-radius:12px;padding:16px}
+.coll-grid{display:flex;gap:12px;justify-content:center;margin-top:10px}
+.coll-card{flex:1;max-width:320px;border:1px solid #4E7A68;border-radius:12px;padding:10px;background:rgba(13,43,33,.5);text-align:center;cursor:pointer}
+.coll-card.unlocked{border:2px solid #B68A45;box-shadow:0 0 22px rgba(245,214,122,.45)}
+.coll-card img{display:block;width:100%;height:auto;object-fit:contain;border-radius:8px}
+.coll-card.locked img{filter:grayscale(1) brightness(.45)}
+.coll-card b{display:block;margin-top:6px;color:#F5D67A;font-size:14px}
+.coll-card span{display:block;font-size:11px;color:#9CC2B2;margin-top:4px;line-height:1.6}
+.coll-full{margin-top:14px;border:1px solid #4E7A68;border-radius:12px;padding:10px;text-align:center;cursor:pointer}
+.coll-full.unlocked{border:2px solid #B68A45;box-shadow:0 0 22px rgba(245,214,122,.45)}
+.coll-full img{display:block;width:100%;height:auto;object-fit:contain;border-radius:8px}
+.coll-full.locked img{filter:grayscale(1) brightness(.45)}
+.coll-full b{display:block;margin-top:6px;color:#F5D67A;font-size:14px}
+.coll-full span{display:block;font-size:11px;color:#9CC2B2;margin-top:4px;line-height:1.6}
+.coll-zoom{position:fixed;inset:0;z-index:200;background:rgba(5,6,5,.92);display:flex;align-items:center;justify-content:center;padding:16px;cursor:pointer}
+.coll-zoom img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;border:2px solid #B68A45}
 /* 纪念页 */
 .mem-title{text-align:center;color:#F5D67A;font-size:26px;letter-spacing:.15em}
 .mem-sec{margin-top:14px;text-align:center;line-height:2}
@@ -483,106 +519,6 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
 #scr-foundry.fire-lv2 .furnace-glow{animation-duration:1.3s;filter:brightness(1.2)}
 #scr-foundry.fire-lv3 .furnace-glow{animation-duration:.9s;filter:brightness(1.4) saturate(1.3)}
 #fdBellows{border-color:#E8A83C}
-/* ============ 第三章 · 玉润祥瑞（2026-11-22，第一部分：过渡 + 玉石宫殿 + 玉石工坊） ============ */
-/* 玉石宫殿 / 工坊背景：用户提供的真实场景图（JADE_BG 配路径后由 JS 换成 <img>）；无图时 SVG 兜底 */
-.jade-palace{position:absolute;inset:0;background:linear-gradient(#0b241d,#123b2c 52%,#0a1f18);overflow:hidden}
-.jade-palace svg{position:absolute;inset:0;width:100%;height:100%}
-.jade-workbench{position:absolute;inset:0;background:linear-gradient(#0d2b21,#173f2f 60%,#0b1f18);overflow:hidden}
-.jade-workbench svg{position:absolute;inset:0;width:100%;height:100%}
-.jade-glow{position:absolute;left:50%;top:14%;width:60%;height:46%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse,rgba(120,220,170,.4),transparent 70%);pointer-events:none;z-index:7;animation:furnacePulse 3s ease-in-out infinite}
-.jade-beam{position:absolute;top:0;left:50%;width:220px;height:420px;transform:translateX(-50%);background:linear-gradient(rgba(156,194,178,.22),transparent 85%);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);pointer-events:none;z-index:5}
-/* 玉石宫殿主场景：面板展开时印记区下移让位（与青铜主场景同款规则） */
-#scr-jade .seals-wrap{transition:top .3s ease}
-@media (min-height:561px){#stage.gp-expanded #scr-jade .seals-wrap{top:296px}}
-/* 过渡动画：青铜礼器发光 / 碧绿光芒 / 玉石浮现 / 标题 */
-.trans-vessels{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.trans-vessels svg{width:120px;height:120px;animation:transGlow 1.6s ease-in-out infinite}
-@keyframes transGlow{0%,100%{filter:drop-shadow(0 0 10px rgba(245,214,122,.45))}50%{filter:drop-shadow(0 0 28px rgba(245,214,122,.95))}}
-.trans-green{width:280px;height:150px;margin:0 auto;border-radius:50%;background:radial-gradient(ellipse,rgba(120,220,170,.75),rgba(120,220,170,.12) 60%,transparent 75%);animation:transGlow 2s ease-in-out infinite}
-.trans-jade{animation:jadeRise 1.8s ease-out both}
-@keyframes jadeRise{from{transform:translateY(46px);opacity:0}to{transform:none;opacity:1}}
-.trans-jade svg{width:150px;height:150px;filter:drop-shadow(0 0 24px rgba(120,220,170,.8))}
-.trans-title{font-size:44px;letter-spacing:.3em;color:#9CC2B2;text-align:center}
-.trans-title small{display:block;font-size:15px;letter-spacing:.35em;color:#B68A45;margin-top:12px}
-/* 玉石雕琢：分步成形（雕刻→打磨→抛光），挂饰随进度变亮 */
-.carve-stage{text-align:center;padding:8px 0}
-.carve-stage .carve-svg{width:180px;height:180px;margin:0 auto;transition:opacity .4s,filter .4s;opacity:.35;filter:grayscale(.6)}
-.carve-stage.lv1 .carve-svg{opacity:.6;filter:grayscale(.35)}
-.carve-stage.lv2 .carve-svg{opacity:.85;filter:grayscale(.1)}
-.carve-stage.lv3 .carve-svg{opacity:1;filter:drop-shadow(0 0 22px rgba(120,220,170,.8))}
-.carve-bar{height:10px;border-radius:5px;background:#2a3324;margin:12px 0 6px;overflow:hidden}
-.carve-bar i{display:block;height:100%;background:linear-gradient(90deg,#789C8D,#9CC2B2);width:0%}
-/* 第三章道具通用：悬停高亮 + 点击弹跳（不阻塞操作） */
-.prop{transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
-.prop:hover{transform:scale(1.06);filter:drop-shadow(0 0 12px rgba(245,214,122,.85))}
-.prop-pop{animation:propPop .26s ease}
-@keyframes propPop{0%{transform:scale(1)}40%{transform:scale(.93)}100%{transform:scale(1)}}
-/* 玉石素材展示卡：浅色圆角展托，与白底素材图融合（不抠图、不改玉器外观） */
-.j-photo-card{background:#F2EEE3;border:2px solid #B68A45;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.j-photo-card img{display:block;width:100%;height:100%;object-fit:cover}
-.jade-item .j-svg img{width:90px;height:90px;object-fit:cover;border-radius:12px}
-.jade-item .j-svg img.round{border-radius:50%}
-#jadeItemView img{width:180px;height:180px;object-fit:cover;border-radius:12px}
-#jadeItemView img.round{border-radius:50%}
-#jadeItemView .j-photo-card{width:180px;height:180px}
-/* 打磨台：两张素材图交叉淡化 + 抛光光效 */
-.polish-stage{position:relative;width:min(320px,80vw);height:min(320px,80vw);margin:6px auto;border-radius:16px;overflow:hidden;border:2px solid #B68A45;background:#F2EEE3;touch-action:none;cursor:grab}
-.polish-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}
-.polish-stage .polish-top{opacity:0}
-.polish-stage .polish-shine{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.55),rgba(255,255,255,0) 60%);opacity:0;pointer-events:none}
-/* 三环机关：玉璧圆环照片圆形遮罩（只裁四角白底，不改玉器） */
-.jade-rings{display:flex;gap:18px;justify-content:center;margin:16px 0 6px}
-.jade-ring-cell{display:flex;flex-direction:column;align-items:center;gap:8px}
-.jade-ring{position:relative;width:132px;height:132px;border-radius:50%;overflow:hidden;border:3px solid #B68A45;cursor:grab;touch-action:none;transition:box-shadow .25s ease;flex:none}
-.jade-ring:hover{box-shadow:0 0 16px rgba(245,214,122,.7)}
-.jade-ring img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
-.jade-ring .ring-mark{position:absolute;left:50%;top:4px;transform:translateX(-50%);color:#F5D67A;font-size:20px;text-shadow:0 0 8px rgba(245,214,122,.9);pointer-events:none}
-.jade-ring.solved{box-shadow:0 0 26px rgba(245,214,122,.95);border-color:#F5D67A}
-.ring-nudge{display:flex;gap:8px}
-.ring-nudge .btn{padding:10px 18px;font-size:20px;min-width:54px}
-/* 工坊三块原石（场景热点与弹窗内共用）：同一张原石照片的不同裁切/色调 */
-.jw-stone .j-photo-card{width:110px;height:110px;border-radius:16px}
-.jade-stones{display:flex;gap:10px;justify-content:center;margin:14px 0 6px;flex-wrap:wrap}
-.jade-stone{border:2px solid #4E7A68;background:#101311;border-radius:12px;padding:8px;color:#E8E1D3;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px}
-.jade-stone .j-photo-card{width:120px;height:120px}
-.jade-stone.sel{border-color:#F5D67A}
-.jade-stone.lit{border-color:#F5D67A;box-shadow:0 0 14px rgba(245,214,122,.7)}
-.jade-stone.jade-glow{border-color:#9CC2B2;box-shadow:0 0 22px rgba(156,194,178,.95)}
-.jade-stone:disabled{opacity:.45;cursor:default}
-/* 按住打磨 · 力度表：绿色安全区 25%–70% */
-.force-meter{position:relative;height:18px;border-radius:9px;background:#2a3324;overflow:hidden;margin:10px 0 4px;border:1px solid #4E7A68}
-.force-zone{position:absolute;top:0;bottom:0;background:rgba(120,156,141,.55)}
-.force-needle{position:absolute;top:0;bottom:0;width:5px;margin-left:-2px;background:#F5D67A;box-shadow:0 0 8px rgba(245,214,122,.9)}
-/* 纹样记忆挑战：亮起的纹样 */
-.mem-pat.lit{border-color:#F5D67A;box-shadow:0 0 18px rgba(245,214,122,.95)}
-.carve-stage p{font-size:13px;color:#c9c2b2;line-height:1.8}
-/* 第三章第二部分：玉纹秘境 / 祥瑞玉阁 */
-.jade-patterns{position:absolute;inset:0;background:linear-gradient(#0d2b21,#16402f 55%,#0a1f18);overflow:hidden}
-.jade-patterns svg{position:absolute;inset:0;width:100%;height:100%}
-.jade-gallery{position:absolute;inset:0;background:linear-gradient(#0b241d,#13382a 52%,#0a1f18);overflow:hidden}
-.jade-gallery svg{position:absolute;inset:0;width:100%;height:100%}
-.jade-pat-wall{position:absolute;inset:0;pointer-events:none;z-index:19}
-.jade-pat-wall.gold-glow{animation:goldPulse 1.6s ease-in-out infinite}
-.big-jpat{position:absolute;width:150px;height:150px;border:2px solid #4E7A68;border-radius:14px;background:rgba(13,43,33,.72);cursor:pointer;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#E8E1D3;pointer-events:auto}
-.big-jpat svg{width:84px;height:84px}
-.big-jpat .j-label{font-size:13px}
-.big-jpat.found{border-color:#789C8D;box-shadow:0 0 18px rgba(120,220,170,.5)}
-/* 真实照片背景下：纹样热点缩小为半透明金框标记，落在中央玉璧对应雕刻区上，不盖住整面墙 */
-#scr-jadepatterns .big-jpat{width:104px;height:104px;background:rgba(13,43,33,.45);border-color:rgba(245,214,122,.85);padding:4px}
-#scr-jadepatterns .big-jpat svg{width:52px;height:52px}
-#scr-jadepatterns .big-jpat .j-label{font-size:12px}
-.jade-item{position:absolute;width:130px;height:170px;border:2px solid #4E7A68;border-radius:14px;background:rgba(13,43,33,.65);cursor:pointer;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#E8E1D3}
-.jade-item svg{width:90px;height:90px}
-.jade-item .j-label{font-size:13px}
-.jade-item.done{border-color:#789C8D;box-shadow:0 0 14px rgba(120,220,170,.4)}
-/* 真实照片背景下：展台卡片底色调淡，让照片中的玉器透出来 */
-#scr-jadegallery .jade-item{background:rgba(13,43,33,.35)}
-.pat-pick{border:1px solid #4E7A68;background:#101311;border-radius:12px;padding:10px 12px;color:#E8E1D3;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px}
-.pat-pick:disabled{cursor:default}
-.pat-pick.right{border-color:#789C8D;box-shadow:0 0 0 2px #789C8D}
-.pat-pick.wrong{border-color:#c0392b;opacity:.55}
-.pat-pick .pat-medallion{width:96px;height:96px}
-.pat-pick .pat-medallion svg{width:80px;height:80px}
 </style>
 </head>
 <body>
@@ -622,6 +558,7 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     <p class="lead" style="margin:0 auto">“从一件文物开始，穿越千年，寻找属于中国生肖羊的文化印记。”</p>
     <div class="row" style="justify-content:center;margin-top:20px">
       <button class="btn" id="btnStart" type="button">开启时光之旅</button>
+      <button class="btn ghost" id="btnCollectionHome" type="button">千年瑞图</button>
       <button class="btn ghost" id="btnContinue" type="button" style="display:none">继续游戏</button>
     </div>
     <p style="margin-top:14px;font-size:12px;color:#6D756C">横版 16:9 · 建议横屏游玩 · 进度自动保存在本机</p>
@@ -649,7 +586,8 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
       <p class="lead">千年的时光中，羊的形象出现在青铜器、玉器、陶器与传统吉祥纹样之中。如今，历史档案被打乱，文物的时间顺序需要重新排列。请你成为一名时光探索者，找回散落在历史中的羊文化印记。</p></div>
       <div class="panel"><h3>任务步骤</h3><p class="meta">① 走进第一章「远古初生」，在远古山谷完成山坡、河边、聚落三个探索，点亮第一幅「远古画卷·羊之初」<br>② 走进第二章「青铜礼韵」，在青铜工坊、纹饰秘境、礼器寻珍完成三个探索，点亮第二幅「青铜画卷」<br>③ 穿越历史，识别不同年代的羊文化文物<br>④ 拖动文物卡片，将它们放入正确的历史时间轴<br>⑤ 完成关卡，收集羊文化纹样，进入设计工坊创造专属羊纹作品</p>
       <h3>操作提示</h3><p class="meta">鼠标拖动 / 触屏拖动文物卡片；点一下卡片可选中，再点时间轴位置也可放置；点击文物查看详情；可使用提示功能；放满 5 张后点击提交答案。</p>
-      <div class="row" style="margin-top:16px"><button class="btn" id="btnToTimeline" type="button">进入第一章 · 远古初生</button><button class="btn ghost small" id="btnRevisitValley" type="button">重返远古山谷</button><button class="btn ghost small" id="btnRevisitBronze" type="button">重返青铜时代</button><button class="btn ghost small" id="btnRevisitJade" type="button" style="display:none">重返玉润祥瑞</button><button class="btn ghost small" id="btnBackHome1" type="button">返回首页</button><button class="btn ghost small" id="btnBackValley" type="button" style="display:none">返回远古山谷</button></div></div>
+      <p class="meta" id="introProgress" style="margin-top:14px;color:#B68A45">新的旅程 · 从第一章开始</p>
+      <div class="row" style="margin-top:16px"><button class="btn" id="btnToTimeline" type="button">进入第一章 · 远古初生</button><button class="btn ghost small" id="btnCollectionIntro" type="button">千年瑞图</button><button class="btn ghost small" id="btnBackHome1" type="button">返回首页</button></div></div>
     </div>
   </section>
 
@@ -734,7 +672,7 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     </div>
     <div class="guide" id="guide-bronze">
       <div class="ajin"><img src="assets/ajin.png" alt="阿金"></div>
-      <div class="bubble"><div class="who">阿金 · 千年灵境守护者</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button><button class="btn small g-go3" type="button" style="display:none">前往第三章 · 玉润祥瑞</button></div></div>
+      <div class="bubble"><div class="who">阿金 · 千年灵境守护者</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button></div></div>
       <button class="btn ghost small reopen" type="button">阿金</button>
     </div>
   </section>
@@ -795,92 +733,6 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     </div>
   </section>
 
-  <!-- ============ 第三章 · 玉润祥瑞（增量，第一部分：过渡 + 玉石宫殿 + 玉石工坊） ============ -->
-  <!-- 玉石宫殿主场景：背景为用户提供的真实场景图 assets/jade_palace.jpg（JADE_BG 配路径后由 JS 换成 <img>）；SVG 仅作无图回退 -->
-  <section class="screen scene" id="scr-jade">
-    <div class="scene-bg"><div class="jade-palace"><img data-jadebg="palace" style="display:none;width:100%;height:100%;object-fit:cover" alt="玉石宫殿：翡翠绿宫殿、云海与玉石长廊"><svg class="jade-svg-art" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" aria-label="原创玉石宫殿示意图"><g><ellipse cx="180" cy="90" rx="120" ry="26" fill="#E8E1D3" opacity=".14"/><ellipse cx="760" cy="60" rx="150" ry="30" fill="#E8E1D3" opacity=".12"/><ellipse cx="480" cy="420" rx="420" ry="70" fill="#9CC2B2" opacity=".08"/><rect x="330" y="392" width="300" height="58" fill="#1d3a2c" stroke="#B68A45" stroke-width="2"/><rect x="350" y="404" width="260" height="6" fill="#B68A45" opacity=".5"/><rect x="360" y="290" width="14" height="102" fill="#2c5a44" stroke="#9CC2B2" stroke-width="1"/><rect x="473" y="290" width="14" height="102" fill="#2c5a44" stroke="#9CC2B2" stroke-width="1"/><rect x="586" y="290" width="14" height="102" fill="#2c5a44" stroke="#9CC2B2" stroke-width="1"/><polygon points="300,292 660,292 622,248 338,248" fill="#2e6b4e" stroke="#F5D67A" stroke-width="2"/><polygon points="330,248 630,248 592,206 368,206" fill="#2e6b4e" stroke="#F5D67A" stroke-width="2"/><circle cx="480" cy="196" r="8" fill="#F5D67A"/><polygon points="180,392 320,392 300,330 200,330" fill="#24513c" stroke="#B68A45" stroke-width="1.5"/><polygon points="640,392 780,392 760,330 660,330" fill="#24513c" stroke="#B68A45" stroke-width="1.5"/><circle cx="480" cy="120" r="46" fill="none" stroke="#9CC2B2" stroke-width="10" opacity=".85"/><circle cx="480" cy="120" r="18" fill="none" stroke="#F5D67A" stroke-width="3"/><path d="M420 470 Q480 440 540 470" fill="none" stroke="#B68A45" stroke-width="2" opacity=".6"/></g></svg><div class="jade-beam"></div><div class="jade-glow"></div></div><div class="shade"></div><div class="rays"></div><div class="motes"></div><div class="vignette"></div></div>
-    <div class="scene-hud"><button class="chipbtn" id="btnJadeBack" type="button">‹ 返回青铜时代</button><div><p class="tag">第三章 · 玉润祥瑞</p><h2>玉石宫殿</h2></div><span class="sp"></span><span class="prog" id="jadeProg">探索 0 / 3</span><span class="prog" id="jadeHiddenProg">玉纹 0 / 3</span><button class="chipbtn" id="btnJournal3" type="button">阿金手记</button></div>
-    <button class="hotspot" id="zoneJadeWork" type="button" style="left:8%;top:72%" data-label="玉石工坊">◈</button>
-    <button class="hotspot" id="zoneJadePat" type="button" style="left:50%;top:72%" data-label="玉纹秘境">◈</button>
-    <button class="hotspot" id="zoneJadeGal" type="button" style="left:88%;top:72%" data-label="祥瑞玉阁">◈</button>
-    <div class="seals-wrap" style="position:absolute;left:20px;top:120px;z-index:25;max-width:340px">
-      <div class="seals" id="jadeSeals"><span class="seal-chip" data-seal="carve">温润玉心 · 未获得</span><span class="seal-chip" data-seal="pattern">祥瑞玉纹 · 未获得</span><span class="seal-chip" data-seal="gallery">祥瑞玉印 · 未获得</span></div>
-      <button class="chipbtn" id="btnJadeFinal" type="button" style="margin-top:10px" disabled title="完成三个探索点后解锁">玉润挑战 · 未解锁</button>
-      <button class="chipbtn" id="btnJadeHiddenCard" type="button">金色玉纹 0 / 3</button>
-
-      <button class="chipbtn" id="btnJadePendant" type="button" style="display:none;margin-top:10px">🐑 玉羊挂饰 · 已收藏</button>
-    </div>
-    <div class="guide" id="guide-jade">
-      <div class="ajin"><img src="assets/ajin.png" alt="阿金"></div>
-      <div class="bubble"><div class="who">阿金 · 千年灵境守护者</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button></div></div>
-      <button class="btn ghost small reopen" type="button">阿金</button>
-    </div>
-  </section>
-
-  <!-- 玉石工坊 · 巧琢美玉 -->
-  <section class="screen scene" id="scr-jadework">
-    <div class="scene-bg"><div class="jade-workbench"><img data-jadebg="workshop" style="display:none;width:100%;height:100%;object-fit:cover" alt="玉石工坊：玉石工作台与雕琢工具"><svg class="jade-svg-art" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" aria-label="原创玉石工坊示意图"><g><ellipse cx="200" cy="80" rx="110" ry="24" fill="#E8E1D3" opacity=".12"/><ellipse cx="780" cy="120" rx="130" ry="26" fill="#E8E1D3" opacity=".1"/><rect x="280" y="360" width="400" height="28" fill="#2c4a38" stroke="#B68A45" stroke-width="2"/><rect x="300" y="388" width="16" height="90" fill="#1d3a2c"/><rect x="644" y="388" width="16" height="90" fill="#1d3a2c"/><polygon points="440,360 420,330 436,322 462,344 470,360" fill="#8FA89A" stroke="#5E7A6C" stroke-width="2"/><circle cx="330" cy="346" r="14" fill="none" stroke="#9CC2B2" stroke-width="3"/><rect x="600" y="330" width="70" height="30" rx="6" fill="#24513c" stroke="#B68A45" stroke-width="1.5"/><circle cx="700" cy="140" r="40" fill="none" stroke="#9CC2B2" stroke-width="8" opacity=".8"/><circle cx="700" cy="140" r="15" fill="none" stroke="#F5D67A" stroke-width="2.5"/><rect x="90" y="180" width="120" height="10" fill="#2c5a44" stroke="#B68A45" stroke-width="1"/><rect x="104" y="150" width="26" height="30" rx="5" fill="#9CC2B2" opacity=".5"/><rect x="140" y="150" width="26" height="30" rx="5" fill="#789C8D" opacity=".5"/><rect x="176" y="150" width="26" height="30" rx="5" fill="#9CC2B2" opacity=".5"/><path d="M480 300 Q480 340 480 356" fill="none" stroke="#F5D67A" stroke-width="2" stroke-dasharray="4 6" opacity=".7"/></g></svg><div class="jade-glow"></div></div><div class="shade"></div><div class="motes"></div><div class="vignette"></div></div>
-    <div class="scene-hud"><button class="chipbtn" id="btnJadeWorkBack" type="button">‹ 返回玉石宫殿</button><div><p class="tag">第三章 · 玉石工坊</p><h2>巧琢美玉</h2></div><span class="sp"></span><span class="prog" id="jadeWorkProg">工序 0 / 4</span><button class="chipbtn" id="btnJadeMake" type="button">观察原石</button></div>
-    <button class="vessel-btn prop jw-stone" id="jwStone0" type="button" style="left:30%;top:57%"><span class="v-svg" id="jwStoneSvg0"></span><span class="v-label" id="jwStoneLabel0">青灰原石</span></button>
-    <button class="vessel-btn prop jw-stone" id="jwStone1" type="button" style="left:42%;top:51%"><span class="v-svg" id="jwStoneSvg1"></span><span class="v-label" id="jwStoneLabel1">褐纹原石</span></button>
-    <button class="vessel-btn prop jw-stone" id="jwStone2" type="button" style="left:54%;top:55%"><span class="v-svg" id="jwStoneSvg2"></span><span class="v-label" id="jwStoneLabel2">白皮原石</span></button>
-    <button class="hidden-frag" id="hfJadeWork" type="button" style="left:9%;top:46%" title="金色玉纹碎片">🐑</button>
-    <div class="guide" id="guide-jadework">
-      <div class="ajin"><img src="assets/ajin.png" alt="阿金"></div>
-      <div class="bubble"><div class="who">阿金</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button></div></div>
-      <button class="btn ghost small reopen" type="button">阿金</button>
-    </div>
-  </section>
-
-  <!-- 玉纹秘境 · 纹中寻意 -->
-  <section class="screen scene" id="scr-jadepatterns">
-    <div class="scene-bg"><div class="jade-patterns"><img data-jadebg="patterns" style="display:none;width:100%;height:100%;object-fit:cover" alt="玉纹秘境：玉器纹样展示墙"><svg class="jade-svg-art" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" aria-label="原创玉纹秘境示意图"><g>
-      <ellipse cx="200" cy="80" rx="110" ry="24" fill="#E8E1D3" opacity=".1"/>
-      <ellipse cx="780" cy="70" rx="130" ry="26" fill="#E8E1D3" opacity=".08"/>
-      <rect x="120" y="150" width="720" height="240" rx="16" fill="#123b2c" stroke="#B68A45" stroke-width="2"/>
-      <rect x="140" y="170" width="680" height="200" rx="10" fill="none" stroke="#4E7A68" stroke-width="1"/>
-      <circle cx="480" cy="120" r="40" fill="none" stroke="#9CC2B2" stroke-width="8" opacity=".8"/>
-      <circle cx="480" cy="120" r="15" fill="none" stroke="#F5D67A" stroke-width="2.5"/>
-      <path d="M180 420 Q480 440 780 420" fill="none" stroke="#B68A45" stroke-width="2" opacity=".5"/>
-    </g></svg><div class="jade-glow"></div></div><div class="shade"></div><div class="motes"></div><div class="vignette"></div></div>
-    <div class="scene-hud"><button class="chipbtn" id="btnJadePatBack" type="button">‹ 返回玉石宫殿</button><div><p class="tag">第三章 · 玉纹秘境</p><h2>纹中寻意</h2></div><span class="sp"></span><span class="prog" id="jadePatProg">纹样 0 / 3</span><button class="chipbtn" id="btnJadePatGo" type="button">开始纹样挑战</button></div>
-    <div class="jade-pat-wall" id="jadePatWall">
-      <button class="big-jpat prop" id="jpYun" type="button" style="left:47%;top:34%" data-pat="yun"></button>
-      <button class="big-jpat prop" id="jpHui" type="button" style="left:47%;top:19%" data-pat="hui"></button>
-      <button class="big-jpat prop" id="jpGoat" type="button" style="left:47%;top:55%" data-pat="goat"></button>
-    </div>
-    <button class="hidden-frag" id="hfJadePat" type="button" style="left:93%;top:12%" title="金色玉纹碎片">🐑</button>
-    <div class="guide" id="guide-jadepatterns">
-      <div class="ajin"><img src="assets/ajin.png" alt="阿金"></div>
-      <div class="bubble"><div class="who">阿金</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button></div></div>
-      <button class="btn ghost small reopen" type="button">阿金</button>
-    </div>
-  </section>
-
-  <!-- 祥瑞玉阁 · 玉器鉴赏 -->
-  <section class="screen scene" id="scr-jadegallery">
-    <div class="scene-bg"><div class="jade-gallery"><img data-jadebg="gallery" style="display:none;width:100%;height:100%;object-fit:cover" alt="祥瑞玉阁：玉器陈列空间"><svg class="jade-svg-art" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" aria-label="原创祥瑞玉阁示意图"><g>
-      <ellipse cx="200" cy="80" rx="110" ry="24" fill="#E8E1D3" opacity=".1"/>
-      <ellipse cx="780" cy="70" rx="130" ry="26" fill="#E8E1D3" opacity=".08"/>
-      <rect x="140" y="400" width="160" height="60" fill="#1d3a2c" stroke="#B68A45" stroke-width="2"/>
-      <rect x="400" y="390" width="160" height="70" fill="#1d3a2c" stroke="#B68A45" stroke-width="2"/>
-      <rect x="660" y="400" width="160" height="60" fill="#1d3a2c" stroke="#B68A45" stroke-width="2"/>
-      <rect x="330" y="120" width="300" height="14" fill="#2c5a44" stroke="#B68A45" stroke-width="1.5"/>
-      <rect x="350" y="134" width="12" height="120" fill="#2c5a44"/>
-      <rect x="598" y="134" width="12" height="120" fill="#2c5a44"/>
-      <circle cx="480" cy="90" r="34" fill="none" stroke="#9CC2B2" stroke-width="8" opacity=".8"/>
-    </g></svg><div class="jade-glow"></div></div><div class="shade"></div><div class="motes"></div><div class="vignette"></div></div>
-    <div class="scene-hud"><button class="chipbtn" id="btnJadeGalBack" type="button">‹ 返回玉石宫殿</button><div><p class="tag">第三章 · 祥瑞玉阁</p><h2>玉器鉴赏</h2></div><span class="sp"></span><span class="prog" id="jadeGalProg">线索 0 / 3</span><button class="chipbtn" id="btnJadeMatch" type="button" style="display:none">器物配对</button></div>
-    <button class="jade-item prop" id="jgBi" type="button" style="left:23%;top:44%" data-item="bi"></button>
-    <button class="jade-item prop" id="jgCong" type="button" style="left:49%;top:47%" data-item="cong"></button>
-    <button class="jade-item prop" id="jgPei" type="button" style="left:75%;top:47%" data-item="pei"></button>
-    <button class="hidden-frag" id="hfJadeGal" type="button" style="left:90%;top:72%" title="金色玉纹碎片">🐑</button>
-    <div class="guide" id="guide-jadegallery">
-      <div class="ajin"><img src="assets/ajin.png" alt="阿金"></div>
-      <div class="bubble"><div class="who">阿金</div><p class="g-text"></p><div class="row"><button class="btn ghost small g-next" type="button">继续</button></div></div>
-      <button class="btn ghost small reopen" type="button">阿金</button>
-    </div>
-  </section>
 
   <!-- 03 第一关：时间轴 -->
   <section class="screen" id="scr-timeline">
@@ -939,7 +791,7 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     <div class="finale-goat" id="finaleGoat"></div>
     <div class="row" style="justify-content:center"><span class="seal">青铜印</span><span class="seal">玉石印</span><span class="seal">陶塑印</span><span class="seal">祥瑞印</span></div>
     <p id="resultLine" style="text-align:center;color:#c9c2b2;line-height:2"></p>
-    <div class="row" style="justify-content:center;margin-top:14px"><button class="btn" id="btnToCh3Finale" type="button">进入第三章 · 玉润祥瑞</button><button class="btn ghost" id="btnBackWorkshop" type="button">‹ 返回工坊</button><button class="btn" id="btnSaveAgain" type="button">保存我的羊纹作品</button><button class="btn ghost" id="btnRestart" type="button">重新开始时光之旅</button></div>
+    <div class="row" style="justify-content:center;margin-top:14px"><button class="btn" id="btnShowPaint2" type="button">查看青铜画卷</button><button class="btn ghost" id="btnBackWorkshop" type="button">‹ 返回工坊</button><button class="btn" id="btnSaveAgain" type="button">保存我的羊纹作品</button><button class="btn ghost" id="btnRestart" type="button">重新开始时光之旅</button></div>
   </section>
 
   <!-- 第一章通用弹窗 -->
@@ -948,6 +800,10 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
   <div class="modal" id="modalQuiz"><div class="sheet" style="width:min(620px,92%)"><h3 id="quizTitle">知识挑战</h3><p id="quizQ" style="line-height:1.9"></p><div id="quizOpts"></div><p id="quizFeed" style="min-height:22px;color:#789C8D;font-size:13px;margin-top:10px"></p><div class="row" style="margin-top:12px"><button class="btn small" id="btnQuizClose" type="button" style="display:none">继续</button></div></div></div>
   <!-- 阿金对话弹窗 -->
   <div class="modal" id="modalGuide"><div class="sheet" style="width:min(620px,92%)"><div style="display:flex;gap:14px;align-items:center"><div class="ajin" style="flex:0 0 auto;width:84px;height:84px;border-radius:50%;border:2px solid #B68A45;overflow:hidden;animation:ajinBob 3.2s ease-in-out infinite"><img src="assets/ajin.png" alt="阿金" style="width:100%;height:100%;object-fit:cover"></div><div><h3 style="margin:0">阿金</h3><p style="font-size:12px;color:#789C8D;letter-spacing:.15em">千年灵境守护者</p></div></div><p id="guideText" style="margin-top:14px;min-height:72px"></p><div class="row" style="margin-top:14px"><button class="btn small" id="btnGuideNext" type="button">继续</button><button class="btn ghost small" id="btnGuideSheet" type="button">阿金图鉴</button></div><div id="guideSheetWrap" style="display:none;margin-top:12px"><img src="assets/ajin-sheet.png" alt="阿金角色设定图：额头金印、盘羊卷角、璇玑金纹、青玉灵纹" style="width:100%;border-radius:10px;border:1px solid #6D756C"><p class="img-note">阿金角色设定：额头金印 · 盘羊卷角 · 璇玑金纹 · 青玉灵纹 · 青玉灵坠。形象由玩家提供。</p></div></div></div>
+  <!-- 画卷展示 -->
+  <div class="modal" id="modalShowcase"><div class="sheet" style="width:min(720px,92%)"><div id="showcaseBody"></div><div class="row" id="showcaseFoot" style="margin-top:16px;justify-content:center"></div></div></div>
+  <!-- 画卷收藏 -->
+  <div class="modal" id="modalCollection"><div class="sheet" style="width:min(760px,94%)"><h3>千年瑞图 · 画卷收藏</h3><div id="collectionBody"></div><div class="row" style="margin-top:16px;justify-content:center"><button class="btn small" id="btnCollectionClose" type="button">返回游戏</button></div></div></div>
   <!-- 千年瑞图 -->
   <div class="modal" id="modalPaint"><div class="sheet" style="width:min(760px,94%)">
     <h3>千年瑞图 · 远古画卷</h3>
@@ -995,12 +851,6 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     <div class="row" style="margin-top:16px;justify-content:center"><button class="btn small" id="btnPaint2Quiz" type="button" style="display:none">接受最终挑战</button><button class="btn small" id="btnToTimeline2" type="button" style="display:none">进入青铜时代 · 时间轴</button><button class="btn ghost small" id="btnPaint2Close" type="button">稍后继续</button></div>
   </div></div>
 
-<!-- 第三章过渡 · 青铜 → 玉石 -->
-  <div class="modal" id="modalTrans"><div class="sheet" style="width:min(720px,92%)">
-    <div id="transStage" style="text-align:center;min-height:220px;display:flex;align-items:center;justify-content:center"></div>
-    <div style="display:flex;gap:12px;align-items:flex-start;margin-top:8px"><div class="ajin" id="transAjin" style="flex:0 0 auto;width:64px;height:64px;border-radius:50%;border:2px solid #B68A45;overflow:hidden;display:none"><img src="assets/ajin.png" alt="阿金" style="width:100%;height:100%;object-fit:cover"></div><p id="transText" style="flex:1;line-height:1.9;min-height:56px"></p></div>
-    <div class="row" style="margin-top:14px;justify-content:center"><button class="btn small" id="btnTransNext" type="button">继续 ›</button><button class="btn ghost small" id="btnTransSkip" type="button">跳过过渡</button></div>
-  </div></div>
   <!-- 阿金手记 -->
   <div class="modal" id="modalJournal"><div class="sheet" style="width:min(640px,92%)"><h3>阿金手记 · 远古观察记录</h3><p style="font-size:13px;color:#9a958a;line-height:1.8">走一路，记一路。集齐 9 条记录，就是一份完整的远古生活手记。</p><div id="journalList"></div><div class="row" style="margin-top:16px"><button class="btn small" id="btnJournalClose" type="button">合上手记</button></div></div></div>
   <!-- 详情弹窗 -->
@@ -1101,9 +951,6 @@ const GUIDE_STEPS=[
  {id:"paint",scene:"bronze",chapter:"第二章 · 青铜礼韵",task:"点亮第二幅画卷",label:"点击「青铜画卷」",how:"点「青铜画卷」，把铸造之火、纹饰之魂、礼器之印三个纹样放进画卷，再答题、按住盖章 1.2 秒。",
   target:function(){return "#btnOpenPaint2"},done:function(){return state.ch2.done},
   intro:["「青铜记忆」通过啦！三枚印记就要飞向千年瑞图了。","点「青铜画卷」，把三个纹样放进画卷，点亮第二幅画。"]},
- {id:"go3",scene:"bronze",chapter:"第三章 · 玉润祥瑞",task:"前往第三章 · 玉润祥瑞",label:"点击「前往第三章 · 玉润祥瑞」",how:"点阿金旁边的金色按钮「前往第三章 · 玉润祥瑞」，先看一段过渡动画，再进玉石宫殿。说明页的主按钮也能直接去第三章。",
-  target:function(){return "#guide-bronze .g-go3"},done:function(){return state.ch3.hubIntro||state.ch3.transitionSeen},
-  intro:["第二章完成啦！青铜的故事讲完了。","下一站是第三章「玉润祥瑞」——去玉石宫殿，看看温润的美玉吧！","点阿金旁边的金色按钮「前往第三章」，我带你过去。"]},
  /* —— 青铜工坊 —— */
  {id:"f0",scene:"foundry",chapter:"第二章 · 青铜工坊",task:"了解铸造知识",label:"点击熔炉 / 陶范 / 工具",how:"点熔炉、陶范、工具三个金色标记，了解铸造是怎么一回事，点「记下来」收进知识。",
   target:function(){return firstUnlearned()},done:function(){return state.ch2.foundry.known.length>=3},
@@ -1250,99 +1097,6 @@ const GUIDE_STEPS=[
  {id:"fi1",scene:"finale",chapter:"终章 · 千年羊韵",task:"保存羊纹作品",label:"点击「保存我的羊纹作品」",how:"点「保存我的羊纹作品」，把 1920×1080 的海报 PNG 下载到手机；点「重新开始时光之旅」可以再玩一次。",
   target:function(){return "#btnSaveAgain"},done:function(){return state.finished},
   intro:["千年流转，羊韵不息。你的专属羊纹作品完成啦！","点「保存我的羊纹作品」把海报存下来。"]},
- /* —— 第三章 · 玉润祥瑞（第一部分：过渡 + 玉石宫殿 + 玉石工坊） —— */
- {id:"j1",scene:"jade",chapter:"第三章 · 玉润祥瑞",task:"探索玉石宫殿",label:"点击未探索的场景",how:"点一个金色标记进入场景：玉石工坊在左，玉纹秘境在中，祥瑞玉阁在右。完成一个场景，标记会变绿打 ✓。",
-  target:function(){return firstUnfinishedJadeZone()},done:function(){return state.ch3.workshop.done&&state.ch3.patterns.done&&state.ch3.gallery.done},
-  intro:["这里是玉石宫殿！翡翠绿的宫殿、云海和展示台，玉石的温润之美就藏在这里。","这里也有三个地方可以探索：玉石工坊、玉纹秘境和祥瑞玉阁。","先从左侧的玉石工坊开始吧——点击金色光印进入。"],
-  prog:function(){const n=jadeZonesDone();return {done:n,total:3,text:"探索 "+n+" / 3"}}},
- /* —— 玉润挑战 —— */
- {id:"j2",scene:"jade",chapter:"第三章 · 玉润祥瑞",task:"玉润挑战 · 最终挑战",label:"点击「玉润挑战」",how:"回玉石宫殿中央，点金色的「玉润挑战」按钮。三个小挑战：玉器造型、玉纹识别、玉文化寓意，答错可以重选。",
-  target:function(){return "#btnJadeFinal"},done:function(){return state.ch3.final.done},
-  intro:["你已经找到了玉石的工艺、纹饰和美好寓意。现在，让我们一起完成最后的挑战吧！","点金色的「玉润挑战」按钮，三个小挑战等着你。"],
-  prog:function(){const n=[state.ch3.final.q1,state.ch3.final.q2,state.ch3.final.q3].filter(Boolean).length;return {done:n,total:3,text:"挑战 "+n+" / 3"}}},
- /* —— 最终结局 · 千年瑞图 —— */
- {id:"jf1",scene:"jade",chapter:"第三章 · 玉润祥瑞",task:"进入最终结局",label:"点击「玉润挑战」",how:"三题已经全对啦！点玉石宫殿的「玉润挑战」按钮，直接进入本章成果页，再点主按钮「进入最终结局 · 千年瑞图」，看看千年瑞图最后的秘密。",
-  target:function(){return "#btnJadeFinal"},done:function(){return state.ch3.finaleSeen},
-  intro:["三枚印记已经飞向千年瑞图，第三章完成啦！","点「玉润挑战」进入本章成果页，再点「进入最终结局 · 千年瑞图」。"]},
- {id:"jf2",scene:"jade",chapter:"第三章 · 玉润祥瑞",task:"观看结尾动画",label:"点击「观看结尾动画」",how:"听完阿金的对白，点「观看结尾动画」，看看玉羊挂饰化作光芒、阿金飞向云海的结尾。",
-  target:function(){return null},done:function(){return state.ch3.endingSeen},
-  intro:["最终剧情听完啦！","点「观看结尾动画」，看看结尾的仪式。"]},
- {id:"jf3",scene:"jade",chapter:"第三章 · 玉润祥瑞",task:"进入纪念页面",label:"点击「进入纪念页面」",how:"结尾动画播完啦，点「进入纪念页面」，看看你的千年寻纹使纪念页。",
-  target:function(){return null},done:function(){return state.ch3.memorialSeen},
-  intro:["结尾动画播完啦！","点「进入纪念页面」。"]},
- {id:"jf4",scene:"jade",chapter:"第三章 · 玉润祥瑞",task:"保存千年寻纹使纪念卡",label:"点击「保存我的作品」",how:"点「保存我的作品」，把《千年寻纹使》纪念卡片 PNG 下载下来；点「重新探索」可以回到章节选择。",
-  target:function(){return null},done:function(){return state.ch3.memorialSaved},
-  intro:["这是你的纪念页面！","点「保存我的作品」，把纪念卡片存下来。"]},
- {id:"jw1",scene:"jadework",chapter:"第三章 · 玉石工坊",task:"观察玉石原石",label:"点击一块玉石原石",how:"点工作台上的一块玉石原石，打开观察窗，看看三块原石的表面纹理。",
-  target:function(){return "#jwStone1"},done:function(){return state.ch3.workshop.observed},
-  intro:["工作台上有三块原石，表面各不相同。","先点一块原石，看看它的表面纹理。"],
-  prog:function(){const n=jadeWorkProg();return {done:n,total:4,text:"工序 "+n+" / 4"}}},
- {id:"jw2",scene:"jadework",chapter:"第三章 · 玉石工坊",task:"探玉灯 · 选原石",label:"点击「探玉灯」",how:"点右上角「探玉灯」：先点亮探玉灯，再点一块原石照一照——只有一块石头里藏着玉，照出绿色玉光的就是它；照错了可以再试。",
-  target:function(){return "#btnJadeMake"},done:function(){return state.ch3.workshop.picked},
-  intro:["三块原石里，只有一块藏着玉。","点右上角「探玉灯」，点亮灯，再点原石照一照，找出藏玉的那块。"],
-  prog:function(){const n=jadeWorkProg();return {done:n,total:4,text:"工序 "+n+" / 4"}}},
- {id:"jw3",scene:"jadework",chapter:"第三章 · 玉石工坊",task:"按住打磨玉石",label:"点击「按住打磨」",how:"点右上角「按住打磨」：按住玉石打磨，力度表保持在绿色安全区进度才会涨；力度太大出现警告，松开手让它降下来，再按住继续。",
-  target:function(){return "#btnJadeMake"},done:function(){return state.ch3.workshop.carved},
-  intro:["找到藏玉的原石啦！接下来亲手打磨这块玉石。","点右上角「按住打磨」，按住玉石、控制好力度，磨出玉羊挂饰。"],
-  prog:function(){const n=jadeWorkProg();return {done:n,total:4,text:"工序 "+n+" / 4"}}},
- {id:"jw4",scene:"jadework",chapter:"第三章 · 玉石工坊",task:"收下「温润玉心」",label:"点击「收下温润玉心」",how:"点右上角「收下温润玉心」，获得本章第一枚印记「温润玉心」。",
-  target:function(){return "#btnJadeMake"},done:function(){return state.ch3.workshop.done},
-  intro:["玉羊挂饰完成啦！","点右上角「收下温润玉心」。"],
-  prog:function(){const n=jadeWorkProg();return {done:n,total:4,text:"工序 "+n+" / 4"}}},
- /* —— 玉石工坊 · 隐藏碎片 —— */
- {id:"jw5",scene:"jadework",chapter:"第三章 · 玉石工坊",task:"收集金色玉纹碎片",label:"点击原石旁的金色碎片",how:"玉石原石旁边藏着一枚金色玉纹碎片，点它收集（玉纹 n / 3）。集齐三枚解锁隐藏知识卡「玉中的文化寓意」。",
-  target:function(){return "#hfJadeWork"},done:function(){return state.ch3.hidden.includes("workshop")},
-  intro:["原石旁边好像有什么在发光……","点那枚金色玉纹碎片收起来，集齐三枚有惊喜。"]},
- /* —— 玉纹秘境 —— */
- {id:"jp1",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"放大观察玉器纹样",label:"点击墙上的纹样",how:"点墙上的三组纹样（云纹、回纹、羊形纹），放大观察它的样子和寓意，点「记下来」收集。",
-  target:function(){return firstUnfoundJadePat()},done:function(){return state.ch3.patterns.found.length>=1},
-  intro:["玉器上的纹样也很有意思，仔细观察，看看你能发现什么。","墙上有三组纹样，点一枚放大看看它长什么样。"],
-  prog:function(){const n=state.ch3.patterns.found.length;return {done:n,total:3,text:"纹样 "+n+" / 3"}}},
- {id:"jp2",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"找齐三组玉器纹样",label:"点击下一组纹样",how:"三组纹样挨个点开放大，点「记下来」收进纹样（3 组）。",
-  target:function(){return firstUnfoundJadePat()},done:function(){return state.ch3.patterns.found.length>=3},
-  intro:["找到一组纹样啦！墙上还有别的纹样，挨个点开，找齐三组。"],
-  prog:function(){const n=state.ch3.patterns.found.length;return {done:n,total:3,text:"纹样 "+n+" / 3"}}},
- {id:"jp-ring",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"转动三环机关",label:"点击「三环机关」",how:"点右上角「三环机关」：点每个圆环下面的 ‹ › 按钮旋转（长按可以连续转），也可以直接拖动圆环、点一下转 90°，把三枚金印都转到正上方，机关就解开了。",
-  target:function(){return "#btnJadePatGo"},done:function(){return state.ch3.patterns.ring},
-  intro:["三组纹样都找齐啦！不过，纹样墙前还有一道三环机关。","点右上角「三环机关」，用下面的 ‹ › 按钮转圆环，把三枚金印都转到正上方。"],
-  prog:function(){return {done:state.ch3.patterns.ring?1:0,total:1,text:state.ch3.patterns.ring?"机关已解开":"机关未解开"}}},
- {id:"jp-mem",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"纹样记忆挑战",label:"点击「纹样记忆挑战」",how:"点右上角「纹样记忆挑战」：先看清纹样依次亮起的顺序，再按这个顺序点出来；点错了可以再看一遍。成功后开启隐藏玉室。",
-  target:function(){return "#btnJadePatGo"},done:function(){return state.ch3.patterns.memory},
-  intro:["机关解开啦！不过，纹样墙还有一道记忆挑战。","先看纹样亮起的顺序，再按顺序点出来。"]},
- {id:"jp3",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"纹样识别挑战",label:"点击「开始纹样挑战」",how:"点右上角「开始纹样挑战」：看清提示要找的纹样名字，从三枚纹样里点出正确的一枚，答错可以再试，一共三道。",
-  target:function(){return "#btnJadePatGo"},done:function(){return state.ch3.patterns.chal},
-  intro:["记忆挑战通过啦！隐藏玉室也打开了。","点右上角「开始纹样挑战」，考考你认不认得这三种纹样。"]},
- {id:"jp4",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"玉文化知识题",label:"点击「玉文化知识题」",how:"点右上角「玉文化知识题」：古人常用玉来寄托怎样的文化追求？答错会显示知识解释，可以再选。",
-  target:function(){return "#btnJadePatGo"},done:function(){return state.ch3.patterns.quiz},
-  intro:["三道纹样挑战都通过啦！最后一道是玉文化知识题。","点右上角「玉文化知识题」，想想古人为什么爱玉。"]},
- {id:"jp5",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"收下「祥瑞玉纹」",label:"点击「收下祥瑞玉纹」",how:"点右上角「收下祥瑞玉纹」，获得本章第二枚印记「祥瑞玉纹」。",
-  target:function(){return "#btnJadePatGo"},done:function(){return state.ch3.patterns.done},
-  intro:["纹样挑战和知识题都完成啦！","点右上角「收下祥瑞玉纹」。"]},
- {id:"jp6",scene:"jadepatterns",chapter:"第三章 · 玉纹秘境",task:"收集金色玉纹碎片",label:"点击墙角的金色碎片",how:"纹样墙角落藏着一枚金色玉纹碎片，点它收集（玉纹 n / 3）。集齐三枚解锁隐藏知识卡「玉中的文化寓意」。",
-  target:function(){return "#hfJadePat"},done:function(){return state.ch3.hidden.includes("patterns")},
-  intro:["纹样墙角落好像有什么在发光……","点那枚金色玉纹碎片收起来，集齐三枚有惊喜。"]},
- /* —— 祥瑞玉阁 —— */
- {id:"jg1",scene:"jadegallery",chapter:"第三章 · 祥瑞玉阁",task:"点击玉器进入鉴赏",label:"点击一件玉器",how:"点一件玉器（玉璧、云纹玉佩、玉羊佩）进入鉴赏界面，点「收集线索」收下它的线索。",
-  target:function(){return firstUnviewedJadeItem()},done:function(){return state.ch3.gallery.viewed.length>=1},
-  intro:["最后，我们来做一次玉器鉴赏。仔细观察器物的形状和细节，找到它们的不同之处。","三件玉器摆在展台上，点一件进鉴赏界面看看。"],
-  prog:function(){const n=state.ch3.gallery.viewed.length;return {done:n,total:3,text:"线索 "+n+" / 3"}}},
- {id:"jg2",scene:"jadegallery",chapter:"第三章 · 祥瑞玉阁",task:"切换角度观察玉器",label:"左右滑动换角度",how:"先点一件玉器进入鉴赏，再左右滑动（或点「正面 / 侧面 / 背面」按钮）换角度看玉器。",
-  target:function(){return null},done:function(){return state.ch3.gallery.angled},
-  intro:["想换个角度看看？先点一件玉器进鉴赏界面。","进去后左右滑动，就能换正面、侧面、背面三个角度了。"]},
- {id:"jg3",scene:"jadegallery",chapter:"第三章 · 祥瑞玉阁",task:"点击器物局部找细节",label:"点击金色小点",how:"先点一件玉器进入鉴赏，再点玉器上的金色小点，看局部细节说明（比如璧孔、云纹、羊角）。",
-  target:function(){return null},done:function(){return state.ch3.gallery.details.length>=3},
-  intro:["进鉴赏界面后，点玉器上的金色小点。","璧孔、云纹、羊角这些小地方，都藏着细节说明。"],
-  prog:function(){const n=Math.min(3,state.ch3.gallery.details.length);return {done:n,total:3,text:"细节 "+n+" / 3"}}},
- {id:"jg4",scene:"jadegallery",chapter:"第三章 · 祥瑞玉阁",task:"集齐三件玉器线索",label:"点击下一件玉器",how:"三件玉器各有一条线索，挨个点开收集，集齐 3 条才能参加器物配对。",
-  target:function(){return firstUnviewedJadeItem()},done:function(){return state.ch3.gallery.viewed.length>=3},
-  intro:["这条线索收下啦！还有别的玉器没看，继续找齐三条线索。"],
-  prog:function(){const n=state.ch3.gallery.viewed.length;return {done:n,total:3,text:"线索 "+n+" / 3"}}},
- {id:"jg5",scene:"jadegallery",chapter:"第三章 · 祥瑞玉阁",task:"器物配对 · 收下「祥瑞玉印」",label:"点击「器物配对」",how:"点右上角「器物配对」：把三件玉器拖到它们介绍的旁边，答错可以重选；配对成功后看「祥瑞玉羊」，再收下「祥瑞玉印」。",
-  target:function(){return "#btnJadeMatch"},done:function(){return state.ch3.gallery.done},
-  intro:["三条线索都齐啦！点右上角「器物配对」，考考你认不认得它们。","把三件玉器拖到它们介绍的旁边，答错可以重选。"]},
- {id:"jg6",scene:"jadegallery",chapter:"第三章 · 祥瑞玉阁",task:"收集金色玉纹碎片",label:"点击展台旁的金色碎片",how:"展台旁边藏着一枚金色玉纹碎片，点它收集（玉纹 n / 3）。集齐三枚解锁隐藏知识卡「玉中的文化寓意」。",
-  target:function(){return "#hfJadeGal"},done:function(){return state.ch3.hidden.includes("gallery")},
-  intro:["展台旁边好像有什么在发光……","点那枚金色玉纹碎片收起来，集齐三枚有惊喜。"]}
 ];
 
 function guideCurrentStep(){
@@ -1399,7 +1153,7 @@ function guideArm(){
   updateGuideRing(guideCurrentStep());
   guideDisarm();
   if(guidePaused)return;
-  if(["bronze","foundry","pattern","vessel","jade","jadework","jadepatterns","jadegallery","valley","hillside","riverside","settlement","timeline","sort","explore","workshop","finale"].indexOf(state.screen)<0)return;
+  if(["bronze","foundry","pattern","vessel","valley","hillside","riverside","settlement","timeline","sort","explore","workshop","finale"].indexOf(state.screen)<0)return;
   if(document.querySelector(".modal.open"))return;
   if(!guideCurrentStep())return;
   guideIdleTimer=setTimeout(guideL2,GUIDE_IDLE.l2);
@@ -1431,7 +1185,7 @@ function updateGuidePanel(cur){
     const steps=GUIDE_STEPS.filter(function(s){return s.scene===sc});
     if(steps.length){
       ch.textContent=steps[0].chapter;tk.textContent="本场景已完成 ✓";
-      const doneNext={bronze:"去时间轴继续，或重玩场景",jade:"去玉石工坊继续，或重玩场景",jadework:"返回玉石宫殿继续探索",jadepatterns:"返回玉石宫殿继续探索",jadegallery:"返回玉石宫殿继续探索",valley:"点「前往第二章」进入青铜时代，或重玩场景",hillside:"返回远古山谷继续探索",riverside:"返回远古山谷继续探索",settlement:"返回远古山谷继续探索",timeline:"去排序关继续",sort:"去探索关继续",explore:"去设计工坊继续",workshop:"去终章看看成果",finale:"点「保存我的羊纹作品」下载海报，或重新开始再玩一次"};
+      const doneNext={bronze:"去时间轴继续，或重玩场景",valley:"点「前往第二章」进入青铜时代，或重玩场景",hillside:"返回远古山谷继续探索",riverside:"返回远古山谷继续探索",settlement:"返回远古山谷继续探索",timeline:"去排序关继续",sort:"去探索关继续",explore:"去设计工坊继续",workshop:"去终章看看成果",finale:"点「保存我的羊纹作品」下载海报，或重新开始再玩一次"};
       tg.textContent=doneNext[sc]||"返回主场景继续探索";
       hw.textContent="任务都完成啦！可以返回主场景，或点右上角重玩。";
       const p=guideProgress(sc);pr.textContent="任务 "+p.text;bf.style.width="100%";
@@ -1485,7 +1239,6 @@ function guideSceneIntro(scene){
   if(!cur){
     const doneMsg=scene==="valley"?"第一章的任务都完成啦！点「前往第二章」去青铜时代继续。"
       :(scene==="bronze"||scene==="foundry"||scene==="pattern"||scene==="vessel")?"这个场景的任务都完成啦！点一点可以再看看，也可以回青铜时代继续。"
-      :(scene==="jade"||scene==="jadework"||scene==="jadepatterns"||scene==="jadegallery")?"这个场景的任务都完成啦！点一点可以再看看，也可以回玉石宫殿继续。"
       :"这个场景的任务都完成啦！点一点可以再看看，也可以回远古山谷继续。";
     guideLines(gid,[doneMsg]);return}
   guideLines(gid,cur.intro);
@@ -1558,26 +1311,23 @@ function defaultCh1(){return {hill:{t1:false,t2:false,t3:false,matched:{},done:f
 function mergeCh1(s){const d=defaultCh1();if(!s)return d;const o=Object.assign({},d,s);o.hill=Object.assign({},d.hill,s.hill||{});o.river=Object.assign({},d.river,s.river||{});o.river.found=(s.river&&s.river.found)||[];o.settle=Object.assign({},d.settle,s.settle||{});o.settle.explored=(s.settle&&s.settle.explored)||[];o.painting=Object.assign({},d.painting,s.painting||{});return o}
 /* 第二章存档：工坊/纹饰/礼器各一子对象 + 第二幅画卷；v2 新增陶范拼合（mold）、
    纹样修复（repair）、隐藏羊纹（hidden/hiddenCard）、最终挑战（memory）；旧存档自动补默认 */
-function defaultCh2(){return {foundry:{known:[],sorted:false,formed:false,done:false,mold:false,bellows:0},pattern:{found:[],puzzle:false,done:false,repair:false},vessel:{clues:[],matched:{},cards:false,done:false,viewed:false,detail:false},painting:{placed:{},lit:false,quiz:false},hidden:[],hiddenCard:false,memory:{q1:false,q2:false,q3:false,done:false},done:false,hubIntro:false}}
+function defaultCh2(){return {foundry:{known:[],sorted:false,formed:false,done:false,mold:false,bellows:0},pattern:{found:[],puzzle:false,done:false,repair:false},vessel:{clues:[],matched:{},cards:false,done:false,viewed:false,detail:false},painting:{placed:{},lit:false,quiz:false},hidden:[],hiddenCard:false,memory:{q1:false,q2:false,q3:false,done:false},done:false,hubIntro:false,finaleShowSeen:false}}
 function mergeCh2(s){const d=defaultCh2();if(!s)return d;const o=Object.assign({},d,s);o.foundry=Object.assign({},d.foundry,s.foundry||{});o.foundry.known=(s.foundry&&s.foundry.known)||[];o.pattern=Object.assign({},d.pattern,s.pattern||{});o.pattern.found=(s.pattern&&s.pattern.found)||[];o.vessel=Object.assign({},d.vessel,s.vessel||{});o.vessel.clues=(s.vessel&&s.vessel.clues)||[];o.vessel.matched=Object.assign({},(s.vessel&&s.vessel.matched)||{});o.painting=Object.assign({},d.painting,s.painting||{});o.hidden=Array.isArray(s.hidden)?s.hidden.slice():[];o.memory=Object.assign({},d.memory,s.memory||{});return o}
-/* 第三章存档：本部分先实现过渡/主场景/工坊；patterns/gallery/隐藏/最终挑战/画卷三字段已预留（第二部分接） */
-function defaultCh3(){return {hubIntro:false,transitionSeen:false,workshop:{observed:false,sorted:false,picked:false,pickedIdx:-1,carved:false,pendant:false,done:false},patterns:{found:[],ring:false,memory:false,chal:false,quiz:false,done:false},gallery:{viewed:[],details:[],matched:{},cards:false,collection:false,angled:false,done:false},hidden:[],hiddenCard:false,final:{q1:false,q2:false,q3:false,done:false},painting:{placed:{},lit:false,quiz:false},done:false,finaleSeen:false,endingSeen:false,memorialSeen:false,memorialSaved:false}}
-function mergeCh3(s){const d=defaultCh3();if(!s)return d;const o=Object.assign({},d,s);o.workshop=Object.assign({},d.workshop,s.workshop||{});o.patterns=Object.assign({},d.patterns,s.patterns||{});o.patterns.found=Array.isArray(s.patterns&&s.patterns.found)?s.patterns.found.slice():[];o.gallery=Object.assign({},d.gallery,s.gallery||{});o.gallery.viewed=Array.isArray(s.gallery&&s.gallery.viewed)?s.gallery.viewed.slice():[];o.gallery.details=Array.isArray(s.gallery&&s.gallery.details)?s.gallery.details.slice():[];o.gallery.matched=Object.assign({},(s.gallery&&s.gallery.matched)||{});o.hidden=Array.isArray(s.hidden)?s.hidden.slice():[];o.final=Object.assign({},d.final,s.final||{});o.painting=Object.assign({},d.painting,s.painting||{});return o}
-let state={screen:"home",introSeen:false,score:0,hints:0,placed:{},selected:null,explored:[],design:{horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},workName:"我的千年瑞羊",workNo:"",sortDone:false,finished:false,posterData:"",ch1:defaultCh1(),ch2:defaultCh2(),ch3:defaultCh3(),guide:defaultGuide()};
+let state={screen:"home",introSeen:false,score:0,hints:0,placed:{},selected:null,explored:[],design:{horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},workName:"我的千年瑞羊",workNo:"",sortDone:false,finished:false,posterData:"",endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};
 function newWorkNo(){return "YC-"+new Date().getFullYear()+"-"+String(Math.floor(1000+Math.random()*9000))}
 /* 修复：posterData 是 1920×1080 的 data URL（几百 KB），不能进 localStorage，
    否则每次保存都可能超 5MB 配额而静默失败，导致进度丢了。只存进度，图只留内存。 */
 function save(){try{const copy=Object.assign({},state);delete copy.posterData;localStorage.setItem(LS_KEY,JSON.stringify(copy));document.getElementById("saveState").textContent="已保存"}catch(e){document.getElementById("saveState").textContent="保存失败"}
  /* 引导引擎：每次进度变化后统一推导当前步骤，同步面板/高亮/提示计时 */
  if(typeof refreshGuide==="function"){try{refreshGuide()}catch(e){}}}
-function load(){try{const s=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(s&&s.screen){state=Object.assign(state,s);state.design=Object.assign({horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},s.design||{});state.placed=s.placed||{};state.explored=s.explored||[];state.ch1=mergeCh1(s.ch1);state.ch2=mergeCh2(s.ch2);state.ch3=mergeCh3(s.ch3);state.guide=mergeGuide(s.guide)}}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(s&&s.screen){state=Object.assign(state,s);if(state.ch3)delete state.ch3;if(s.ch3&&s.ch3.endingSeen)state.endingSeen=true;if(["jade","jadework","jadepatterns","jadegallery"].indexOf(state.screen)>=0)state.screen="intro";state.design=Object.assign({horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},s.design||{});state.placed=s.placed||{};state.explored=s.explored||[];state.ch1=mergeCh1(s.ch1);state.ch2=mergeCh2(s.ch2);state.guide=mergeGuide(s.guide)}}catch(e){}}
 function toast(t){const el=document.getElementById("toast");el.textContent=t;el.style.display="block";setTimeout(()=>el.style.display="none",2200)}
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 /* ---------- 画面切换 ---------- */
-const ORDER=["home","intro","valley","bronze","foundry","pattern","vessel","jade","jadework","jadepatterns","jadegallery","timeline","sort","explore","workshop","finale"];
+const ORDER=["home","intro","valley","bronze","foundry","pattern","vessel","timeline","sort","explore","workshop","finale"];
 /* 第一章子场景共用“远古山谷”那一步；第二章子场景共用“青铜时代”那一步；章节名随画面变 */
 const CH_STEP={hillside:2,riverside:2,settlement:2,foundry:3,pattern:3,vessel:3};
-const CH_LABEL={opening:"序章",home:"序章",intro:"序章",valley:"第一章 · 远古初生",hillside:"第一章 · 远古初生",riverside:"第一章 · 远古初生",settlement:"第一章 · 远古初生",bronze:"第二章 · 青铜礼韵",foundry:"第二章 · 青铜礼韵",pattern:"第二章 · 青铜礼韵",vessel:"第二章 · 青铜礼韵",jade:"第三章 · 玉润祥瑞",jadework:"第三章 · 玉润祥瑞",jadepatterns:"第三章 · 玉润祥瑞",jadegallery:"第三章 · 玉润祥瑞",timeline:"第二章 · 青铜礼韵",sort:"第二章 · 青铜礼韵",explore:"第二章 · 青铜礼韵",workshop:"第二章 · 青铜礼韵",finale:"终章 · 千年羊韵"};
+const CH_LABEL={opening:"序章",home:"序章",intro:"序章",valley:"第一章 · 远古初生",hillside:"第一章 · 远古初生",riverside:"第一章 · 远古初生",settlement:"第一章 · 远古初生",bronze:"第二章 · 青铜礼韵",foundry:"第二章 · 青铜礼韵",pattern:"第二章 · 青铜礼韵",vessel:"第二章 · 青铜礼韵",timeline:"第二章 · 青铜礼韵",sort:"第二章 · 青铜礼韵",explore:"第二章 · 青铜礼韵",workshop:"第二章 · 青铜礼韵",finale:"终章 · 千年羊韵"};
 /* 修复：启动时显示首页不能覆盖已存的 screen，否则刷新后“继续游戏”永远只能回说明页。
    resumeTarget 在启动时从存档里记下，首页用 persist:false 显示，不写盘。 */
 let resumeTarget=null;
@@ -1586,9 +1336,7 @@ function show(name,opts){state.screen=name;$$(".screen").forEach(el=>el.classLis
  const i=name==="opening"?0:(CH_STEP[name]!==undefined)?CH_STEP[name]:ORDER.indexOf(name);$$("#steps span").forEach((el,idx)=>{el.classList.toggle("on",idx===i);el.classList.toggle("done",idx<i)});
  const cl=document.getElementById("chLabel");if(cl)cl.textContent=CH_LABEL[name]||"";
  document.getElementById("score").textContent=state.score;if(!opts||opts.persist!==false)save();window.scrollTo(0,0);addAmbience();
- const bv=document.getElementById("btnBackValley"),bh=document.getElementById("btnBackHome1");
- if(bv)bv.style.display=(name==="intro"&&introReturn==="valley")?"inline-block":"none";
- if(bh)bh.style.display=(name==="intro"&&introReturn==="valley")?"none":"inline-block";
+ if(name==="intro")refreshCh1Entry();
  refreshGuide()}
 /* ---------- 粒子 ---------- */
 (function(){const st=document.getElementById("stage");for(let i=0;i<22;i++){const p=document.createElement("span");p.className="particle";p.style.left=(Math.random()*100)+"%";p.style.bottom=(Math.random()*30)+"%";p.style.animationDuration=(4+Math.random()*6)+"s";p.style.animationDelay=(Math.random()*5)+"s";st.appendChild(p)}})();
@@ -1705,7 +1453,7 @@ $("#btnDownloadPoster").addEventListener("click",()=>{if(!state.posterData)retur
 $("#btnRedesign").addEventListener("click",()=>$("#modalPoster").classList.remove("open"));
 $("#btnToFinale").addEventListener("click",()=>{$("#modalPoster").classList.remove("open");show("finale");renderFinale()});
 $("#btnSaveAgain").addEventListener("click",async()=>{if(!state.posterData)state.posterData=await exportPoster();const a=document.createElement("a");a.href=state.posterData;a.download="羊承千年_"+(state.workName||"我的专属羊纹")+".png";a.click();toast("PNG 已开始下载")});
-function renderFinale(){$("#resultLine").innerHTML="历史排序完成 · 文化展品探索完成 · 收集纹样 "+state.explored.length+" / 4<br>专属羊纹作品：「"+state.workName+"」 · 编号 "+state.workNo+" · 得分 "+state.score+" · "+(state.finished?"已完成":"未完成");renderGoat()}
+function renderFinale(){$("#resultLine").innerHTML="历史排序完成 · 文化展品探索完成 · 收集纹样 "+state.explored.length+" / 4<br>专属羊纹作品：「"+state.workName+"」 · 编号 "+state.workNo+" · 得分 "+state.score+" · "+(state.finished?"已完成":"未完成");renderGoat();if(state.ch2.done&&state.finished&&!state.ch2.finaleShowSeen){state.ch2.finaleShowSeen=true;save();openShowcase(2)}}
 /* ============ 第一章 · 远古初生逻辑（增量） ============ */
 let typeTimer=null;
 function typeText(el,text,done){if(typeTimer)clearInterval(typeTimer);el.dataset.full=text;el.textContent="";let i=0;typeTimer=setInterval(()=>{i++;el.textContent=text.slice(0,i);if(i>=text.length){clearInterval(typeTimer);typeTimer=null;if(done)done()}},28)}
@@ -1773,8 +1521,26 @@ function openQuiz(title,q,opts,correct,onRight){$("#quizTitle").textContent=titl
    else{b.classList.add("wrong");b.disabled=true;$("#quizFeed").textContent="阿金：再想想，远古先民身边可没有这些现代的东西哦，可以再试一次。";toast("答错了，可以再试一次")}});
   box.appendChild(b)});
  $("#modalQuiz").classList.add("open");refreshGuide()}
-function refreshCh1Entry(){const b=$("#btnToTimeline");if(!b)return;b.textContent=!state.ch1.done?"进入第一章 · 远古初生":(!state.ch2.done?"进入第二章 · 青铜礼韵":"进入第三章 · 玉润祥瑞");
- const rj=$("#btnRevisitJade");if(rj){rj.style.display=(state.ch2.done||state.ch3.hubIntro||state.ch3.transitionSeen)?"inline-block":"none";rj.textContent=(state.ch3.hubIntro||state.ch3.transitionSeen)?"重返玉润祥瑞":"进入第三章 · 玉润祥瑞"}}
+/* 说明页主按钮与进度行：每次显示说明页时按存档重算（中途退出重进也能看到进度）。 */
+/* 第二章真正完成 = 画卷二点亮 + 走完旧流程终章（海报已生成）；两章制 */
+function ch2Full(){return state.ch2.done&&state.finished}
+function refreshCh1Entry(){
+ const b=$("#btnToTimeline");
+ if(b){
+  if(!state.ch1.done)b.textContent="进入第一章 · 远古初生";
+  else if(!ch2Full())b.textContent="进入第二章 · 青铜礼韵";
+  else b.textContent=state.endingSeen?"查看千年纪念":"进入最终结局";
+ }
+ const p=$("#introProgress");
+ if(p){
+  const names=["第一章 · 远古初生","第二章 · 青铜礼韵"];
+  const dones=[state.ch1.done,ch2Full()];
+  const started=state.ch1.valleyIntro||state.ch1.hill.done||state.ch1.river.done||state.ch1.river.found.length>0||state.ch1.settle.done||state.ch1.settle.explored.length>0||state.ch1.done||state.ch2.foundry.done||state.ch2.pattern.done||state.ch2.vessel.done||state.ch2.memory.done||state.ch2.done||state.finished||state.sortDone||state.explored.length>0;
+  if(!started)p.textContent="新的旅程 · 从第一章开始";
+  else if(dones.every(Boolean))p.textContent="已完成："+names.join("、");
+  else{const dl=names.filter(function(n,i){return dones[i]});const cur=names[dones.findIndex(function(d){return !d})];p.textContent=(dl.length?"已完成："+dl.join("、")+" / ":"")+"进行中："+cur}
+ }
+}
 /* ---------- 远古山谷主场景 ---------- */
 function renderValley(){const c=state.ch1;const done=[c.hill.done,c.river.done,c.settle.done].filter(Boolean).length;
  $("#valleyProg").textContent="探索 "+done+" / 3";
@@ -1793,8 +1559,7 @@ function enterValley(){renderValley();show("valley");
 $("#zoneRiver").addEventListener("click",()=>enterRiver());
 $("#zoneSettle").addEventListener("click",()=>enterSettle());
 $("#btnValleyHome").addEventListener("click",()=>show("home"));
-$("#btnValleyHelp").addEventListener("click",()=>{introReturn="valley";show("intro")});
-$("#btnBackValley").addEventListener("click",()=>{introReturn=null;enterValley()});
+$("#btnValleyHelp").addEventListener("click",()=>{show("intro")});
 $("#btnOpenPaint").addEventListener("click",()=>openPaint());
 /* 通用：点选 / 拖拽双通道（鼠标 + 触屏） */
 function enableDragTap(el,getZones,place){
@@ -1809,8 +1574,6 @@ function enableDragTap(el,getZones,place){
    if(el._dragMoved){el.classList.remove("dragging");el.style.cssText="";let ok=false;getZones().forEach(z=>{const b=z.getBoundingClientRect();if(ev.clientX>b.left&&ev.clientX<b.right&&ev.clientY>b.top&&ev.clientY<b.bottom){if(place(el,z))ok=true}});if(!ok)toast("没有放到有效区域");setTimeout(()=>{el._dragMoved=false},150)}};
   document.addEventListener("pointermove",move);document.addEventListener("pointerup",up);document.addEventListener("pointercancel",up)})}
 function zoneTapPlace(getSel,place){return z=>{const sel=getSel();if(sel)place(sel,z)}}
-/* 第三章道具：点击轻微缩放 + 发光脉冲（通用，不阻塞操作） */
-document.addEventListener("click",function(ev){const t=ev.target&&ev.target.closest?ev.target.closest(".prop"):null;if(!t)return;t.classList.remove("prop-pop");void t.offsetWidth;t.classList.add("prop-pop");setTimeout(function(){t.classList.remove("prop-pop")},280)},true);
 /* 三个探索点全部完成后的最终触发 */
 function checkAllDone(){const c=state.ch1;if(c.done)return;if(c.hill.done&&c.river.done&&c.settle.done){c.done=true;save();refreshCh1Entry();renderValley();
  openGuide(["太棒啦！我们已经收集到了三条重要线索！","生命之迹、自然之源、文明之印——三条线索都齐了，看，千年瑞图正在展开……"],()=>{show("valley");renderValley();openPaint()})}}
@@ -2089,11 +1852,10 @@ seal.addEventListener("pointerdown",ev=>{if(sealDone)return;seal.classList.add("
 function openPaint(){renderPaint();bindPaint();$("#modalPaint").classList.add("open");refreshGuide()}
 $("#btnPaintQuiz").addEventListener("click",()=>{openQuiz("最终知识挑战","以下哪一组内容，最能帮助我们认识远古先民的生活？",["自然环境、生活材料、器物遗存。","手机、电脑、汽车。","高楼、地铁、飞机。"],0,()=>{state.ch1.painting.quiz=true;state.ch1.painting.lit=true;save();renderPaint();bindPaint();renderValley();
  const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,24);
- openGuide(["第一幅画卷已经点亮啦！我们对远古生活又多了一份了解。","走吧，下一站，我们去看看青铜时代的羊文化！"])} )});
+ $("#modalPaint").classList.remove("open");openShowcase(1)} )});
 $("#btnToCh2").addEventListener("click",()=>{$("#modalPaint").classList.remove("open");enterBronze()});
 $("#btnPaintClose").addEventListener("click",()=>{$("#modalPaint").classList.remove("open");refreshGuide()}); 
 document.querySelector("#guide-valley .g-go2").addEventListener("click",()=>{enterBronze()});
-document.querySelector("#guide-bronze .g-go3").addEventListener("click",()=>{startTransition()});
 
 /* ============ 第二章 · 青铜礼韵（2026-11-22，增量） ============ */
 /* 纹样 SVG（原创示意）：云雷纹 / 兽面纹 / 羊形纹 */
@@ -2131,7 +1893,6 @@ function renderBronze(){const c=state.ch2;const done=[c.foundry.done,c.pattern.d
  /* v2：画卷需先通过「青铜记忆」最终挑战才能点亮 */
  $("#btnOpenPaint2").disabled=!(done===3&&c.memory.done);
  const bm=$("#btnMemory");bm.disabled=done!==3;bm.classList.toggle("pulse",done===3&&!c.memory.done);bm.textContent=c.memory.done?"青铜记忆 · 已通过 ✓":"青铜记忆 · 最终挑战";
- const g3=document.querySelector("#guide-bronze .g-go3");if(g3)g3.style.display=c.done?"inline-block":"none";
  [["zoneFoundry","foundry"],["zonePattern","pattern"],["zoneVessel","vessel"]].forEach(([id,k])=>{const el=document.getElementById(id);const st=ch2SceneStatus(k);const nm=k==="foundry"?"青铜工坊":k==="pattern"?"纹饰秘境":"礼器寻珍";
   el.classList.toggle("done",st==="done");el.classList.toggle("doing",st==="doing");
   el.dataset.label=nm+(st==="done"?" · 已完成 ✓":st==="doing"?" · 进行中":" · 未探索")})}
@@ -2394,8 +2155,7 @@ function memoryFly(){
 function openCh2Results(){const c=state.ch2;const h=c.hidden.length;
  const seals=[["铸造之火",c.foundry.done],["纹饰之魂",c.pattern.done],["礼器之印",c.vessel.done]].map(([t,g])=>t+(g?" ✓":" · 未获得")).join(" · ");
  openCh1("第二章 · 探索成果","<p style='line-height:2'>三枚印记："+seals+"<br>隐藏收集：金色羊纹碎片 "+h+" / 3"+(c.hiddenCard?" · 已解锁隐藏知识卡「青铜中的羊文化」":" · 还有羊纹碎片藏在三个场景里，去找找吧")+"<br>本章得分："+state.score+" 分</p><h3 style='margin-top:12px'>知识回顾</h3><div class='know-card'><b>铸造五步</b><br>准备陶土与铜料 → 制作陶范 → 熔炼铜液 → 浇铸成型 → 打磨修整（陶范法，古代铸造的一般工艺）。</div><div class='know-card'><b>三种纹样</b><br>云雷纹（回旋线条）、兽面纹（威严辟邪，传统说法）、羊形纹（弯弯羊角，寄托吉祥）。</div><div class='know-card'><b>三件礼器</b><br>鼎（炊煮与礼仪）、爵（温酒饮酒）、尊（盛酒贮酒）。</div><div class='know-card'><b>青铜中的羊文化</b><br>羊纹是青铜器纹饰中的一种动物纹样，「羊」与「祥」相通，寄托吉祥美好的愿望。（通用文化知识，游戏示意）</div>",
- [{label:"进入第三章 · 玉润祥瑞",cls:"small",fn:()=>{closeCh1();startTransition()}},
-  {label:"进入青铜时代 · 时间轴",cls:"small",fn:()=>{closeCh1();$("#modalPaint2").classList.remove("open");show("timeline");toast("青铜时代 · 请按时间轴继续探索")}},
+ [{label:"进入青铜时代 · 时间轴",cls:"small",fn:()=>{closeCh1();$("#modalPaint2").classList.remove("open");show("timeline");toast("青铜时代 · 请按时间轴继续探索")}},
   {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
 $("#btnCh2Results").addEventListener("click",()=>openCh2Results());
 /* ---------- 阿金闲置提醒（已并入引导系统）：L2 10 秒目标闪烁加强，L3 20 秒阿金提示 ----------
@@ -2431,430 +2191,74 @@ seal2.addEventListener("pointerdown",ev=>{if(seal2Done)return;seal2.classList.ad
   if(p>=1){clearInterval(tick);seal2Done=true;seal2.classList.remove("holding");seal2.classList.add("stamped");
    seal2.querySelector(".core").innerHTML="<span style='font-size:26px'>◈</span>已盖章";
    $("#seal2Msg").textContent="「青铜画卷 · 青铜礼韵」已盖上金印！";
-   const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,20);floatScore(st.width/2,st.height/2-40,"已盖章");toast("阿金：金印盖好啦！下一站，第三章「玉润祥瑞」——去玉石宫殿看看温润的美玉吧。")}},50);
+   const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,20);floatScore(st.width/2,st.height/2-40,"已盖章");toast("阿金：金印盖好啦！点「进入青铜时代 · 时间轴」，继续青铜时代的探索。")}},50);
  const end=()=>{clearInterval(tick);if(!seal2Done){seal2.classList.remove("holding");seal2.style.setProperty("--p",0);$("#seal2Msg").textContent="按住 1.2 秒，把「青铜画卷」之印盖上。"}document.removeEventListener("pointerup",end);document.removeEventListener("pointercancel",end)};
  document.addEventListener("pointerup",end);document.addEventListener("pointercancel",end)});
 function openPaint2(){renderPaint2();bindPaint2();$("#modalPaint2").classList.add("open");refreshGuide()}
 $("#btnPaint2Quiz").addEventListener("click",()=>{openQuiz("最终知识挑战","青铜器上的纹饰，寄托了古人怎样的心愿？",["把信仰、礼仪与美好愿望铸进器物里。","记录现代城市的交通路线。","展示手机电脑的用法。"],0,()=>{state.ch2.painting.quiz=true;state.ch2.painting.lit=true;if(state.ch2.memory.done){state.ch2.done=true;refreshCh1Entry()}save();renderPaint2();bindPaint2();renderBronze();
  const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,24);
- openGuide(["第二幅画卷已经点亮啦！青铜时代的故事，讲完了。","下一站，第三章「玉润祥瑞」！去玉石宫殿看看温润的美玉，千年瑞图的最后一块拼图就在那里。"])} )});
+ openGuide(["第二幅画卷已经点亮啦！","点「进入青铜时代 · 时间轴」，去时间轴上继续青铜时代的探索吧。"])} )});
 $("#btnToTimeline2").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");show("timeline");toast("青铜时代 · 请按时间轴继续探索")});
-$("#btnPaint2Close").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");refreshGuide();if(state.ch2.done&&!(state.ch3.hubIntro||state.ch3.transitionSeen))guideSceneIntro("bronze")});
+$("#btnPaint2Close").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");refreshGuide();if(state.ch2.done)guideSceneIntro("bronze")});
 
-/* ============ 第三章 · 玉润祥瑞（2026-11-22，第一部分：过渡 + 玉石宫殿 + 玉石工坊） ============
-   玉石原石 / 玉羊挂饰 / 宫殿艺术全部为原创 SVG 示意，不指向任何真实文物；
-   玉石工序为艺术化游戏演示，不还原真实古代文物制作过程。
-   第二部分预留：玉纹秘境（patterns）、祥瑞玉阁（gallery）、隐藏碎片（hidden）、最终挑战（final）、画卷三（painting）。 */
-/* 背景图配置：用户后续发图后，把对应字段填成 "assets/jade_workshop.jpg" 等真实路径即可替换；
-   img 留空时用原创 SVG 玉石宫殿艺术兜底；绝不引用不存在的图片路径。 */
-const JADE_BG={palace:{img:"assets/jade_palace.jpg"},workshop:{img:"assets/jade_workshop.jpg"},patterns:{img:"assets/jade_patterns.jpg"},gallery:{img:"assets/jade_gallery.jpg"}};
-function applyJadeBg(){Object.keys(JADE_BG).forEach(k=>{const p=JADE_BG[k].img;if(!p)return;document.querySelectorAll('img[data-jadebg="'+k+'"]').forEach(im=>{im.src=p;im.style.display="block";const art=im.parentElement.querySelector(".jade-svg-art");if(art)art.style.display="none"})})}
-/* 玉石原石 / 玉羊挂饰：原创示意 SVG（非真实文物） */
-const JADE_STONE_SVG="<svg viewBox='0 0 120 120'><g><polygon points='30,88 22,52 48,26 82,22 100,48 92,86 60,100' fill='#8FA89A' stroke='#5E7A6C' stroke-width='2'/><path d='M40 60 L58 44 L74 58' fill='none' stroke='#E8E1D3' stroke-width='2' opacity='.6'/><path d='M52 78 L66 66' fill='none' stroke='#E8E1D3' stroke-width='2' opacity='.5'/></g></svg>";
-const JADE_PENDANT_SVG="<svg viewBox='0 0 120 120'><g><circle cx='60' cy='24' r='7' fill='none' stroke='#B68A45' stroke-width='2.5'/><path d='M60 31 L60 42' stroke='#B68A45' stroke-width='2.5'/><path d='M60 50 Q40 56 38 74 Q36 94 52 100 L68 100 Q84 94 82 74 Q80 56 60 50 Z' fill='#9CC2B2' stroke='#4E7A68' stroke-width='2'/><path d='M44 64 Q38 54 48 52 Q56 50 54 60 Q52 66 44 64 Z' fill='#F5D67A'/><path d='M76 64 Q82 54 72 52 Q64 50 66 60 Q68 66 76 64 Z' fill='#F5D67A'/><circle cx='52' cy='76' r='2.5' fill='#4E7A68'/><circle cx='68' cy='76' r='2.5' fill='#4E7A68'/><path d='M54 86 Q60 90 66 86' fill='none' stroke='#4E7A68' stroke-width='2' stroke-linecap='round'/></g></svg>";
-const JADE_STEPS=["选料","设计","琢磨","抛光"];
-/* 工坊三块原石：同一张原石真照片的不同裁切/色调（不新画石头，不编新照片）；只有下标 1 的褐纹原石藏玉 */
-const JADE_STONES=[
- {name:"青灰原石",desc:"表面青灰，布满细小的麻点，像一块普通的河滩石。",pos:"18% 28%",filter:""},
- {name:"褐纹原石",desc:"表面有一道道褐色的纹路，摸上去粗糙坚硬。",pos:"62% 58%",filter:"sepia(.22) brightness(.96)"},
- {name:"白皮原石",desc:"表面裹着一层白皮，边角微微透出一点绿意。",pos:"82% 22%",filter:"brightness(1.06) contrast(1.04)"}];
-const JADE_HIDDEN=1;
-/* 第三章进度推导（与 ch2SceneStatus 同款，只读 state.ch3） */
-function jadeZonesDone(){const c=state.ch3;return [c.workshop.done,c.patterns.done,c.gallery.done].filter(Boolean).length}
-function jadeWorkProg(){const w=state.ch3.workshop;return [w.observed,w.picked,w.carved,w.done].filter(Boolean).length}
-function jadeStoneImg(i){const s=JADE_STONES[i];return "<span class='j-photo-card'><img src='assets/jade_raw_stone.jpg' alt='"+s.name+"' style='object-position:"+s.pos+";filter:"+s.filter+"'></span>"}
-function ch3SceneStatus(k){const c=state.ch3;
- if(k==="workshop"){if(c.workshop.done)return "done";if(c.workshop.observed||c.workshop.picked||c.workshop.carved)return "doing";return "todo"}
- if(k==="patterns"){if(c.patterns.done)return "done";if(c.patterns.found.length)return "doing";return "todo"}
- if(c.gallery.done)return "done";if(c.gallery.viewed.length||c.gallery.details.length||c.gallery.angled)return "doing";return "todo"}
-function firstUnfinishedJadeZone(){const c=state.ch3;if(!c.workshop.done)return "#zoneJadeWork";if(!c.patterns.done)return "#zoneJadePat";if(!c.gallery.done)return "#zoneJadeGal";return null}
-/* ---------- 玉石宫殿主场景 ---------- */
-function renderJade(){const c=state.ch3;const done=jadeZonesDone();
- $("#jadeProg").textContent="探索 "+done+" / 3";
- $("#jadeHiddenProg").textContent="玉纹 "+c.hidden.length+" / 3";
- $$("#jadeSeals .seal-chip").forEach(ch=>{const k=ch.dataset.seal;const got=(k==="carve"&&c.workshop.done)||(k==="pattern"&&c.patterns.done)||(k==="gallery"&&c.gallery.done);ch.classList.toggle("got",!!got);ch.textContent=(k==="carve"?"温润玉心":k==="pattern"?"祥瑞玉纹":"祥瑞玉印")+(got?" · 已获得":" · 未获得")});
- const bf=$("#btnJadeFinal");bf.disabled=done!==3;bf.classList.toggle("pulse",done===3&&!c.final.done);bf.textContent=c.final.done?"玉润挑战 · 已通过 ✓":done===3?"玉润挑战 · 最终挑战":"玉润挑战 · 未解锁";
- const hb=$("#btnJadeHiddenCard");hb.textContent=c.hiddenCard?"玉中文化寓意 · 已解锁":"金色玉纹 "+c.hidden.length+" / 3";
 
- const pc=$("#btnJadePendant");if(pc)pc.style.display=(c.workshop.pendant||c.workshop.carved)?"inline-block":"none";
- [["zoneJadeWork","workshop","玉石工坊"],["zoneJadePat","patterns","玉纹秘境"],["zoneJadeGal","gallery","祥瑞玉阁"]].forEach(([id,k,nm])=>{const el=document.getElementById(id);const st=ch3SceneStatus(k);
-  el.classList.toggle("done",st==="done");el.classList.toggle("doing",st==="doing");
-  el.dataset.label=nm+(st==="done"?" · 已完成 ✓":st==="doing"?" · 进行中":" · 未探索")})}
-function enterJade(){renderJade();show("jade");if(!state.ch3.hubIntro){state.ch3.hubIntro=true;save()}refreshCh1Entry();guideSceneIntro("jade")}
-$("#btnJadeBack").addEventListener("click",()=>{renderBronze();show("bronze")});
-$("#zoneJadeWork").addEventListener("click",()=>enterJadeWork());
-$("#zoneJadePat").addEventListener("click",()=>enterJadePat());
-$("#zoneJadeGal").addEventListener("click",()=>enterJadeGal());
-$("#btnJadeFinal").addEventListener("click",()=>openJadeFinal());
-$("#btnJadeHiddenCard").addEventListener("click",()=>{if(state.ch3.hiddenCard)openJadeHiddenCard();else toast("金色玉纹碎片 "+state.ch3.hidden.length+" / 3，集齐三枚解锁隐藏知识卡「玉中的文化寓意」")});
-
-$("#btnJadePendant").addEventListener("click",()=>openJadePendantView());
-function openJadePendantView(){openCh1("收藏品 · 玉羊挂饰","<div class='j-photo-card' style='width:200px;height:200px;margin:0 auto'><img src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></div><p style='line-height:1.9;margin-top:12px'>这是你在玉石工坊亲手打磨出来的玉羊挂饰：盘角卧羊，金绳系挂。「羊」与「祥」相通，寄托着吉祥美好的愿望。</p><p class='img-note'>玉羊挂饰照片为用户提供的玉石素材图。</p>",[{label:"知道了",cls:"small",fn:closeCh1}])}
-$("#btnJournal3").addEventListener("click",()=>openJournal());
-/* ---------- 玉石工坊 · 巧琢美玉 ---------- */
-function renderJadeWork(){const w=state.ch3.workshop;
- $("#jadeWorkProg").textContent="工序 "+jadeWorkProg()+" / 4";
- const b=$("#btnJadeMake");
- if(w.done){b.style.display="none"}
- else{b.style.display="inline-block";b.textContent=!w.observed?"观察原石":!w.picked?"探玉灯 · 选原石":!w.carved?"按住打磨":"收下温润玉心"}
- JADE_STONES.forEach((s,i)=>{const svg=$("#jwStoneSvg"+i),lab=$("#jwStoneLabel"+i),btn=$("#jwStone"+i);if(!svg)return;
-  const done=(w.carved||w.pendant)&&w.pickedIdx===i;
-  svg.innerHTML=done?"<span class='j-photo-card'><img src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></span>":jadeStoneImg(i);
-  if(lab)lab.textContent=done?"玉羊挂饰":s.name;
-  if(btn)btn.classList.toggle("done",w.done)});
- const hf=$("#hfJadeWork");if(hf)hf.classList.toggle("got",state.ch3.hidden.includes("workshop"))}
-function enterJadeWork(){renderJadeWork();show("jadework");guideSceneIntro("jadework")}
-$("#btnJadeWorkBack").addEventListener("click",()=>{renderJade();show("jade")});
-function jadeStoneClick(){const w=state.ch3.workshop;if(!w.observed)openJadeObserve();else if(!w.picked)openJadeLamp();else if(!w.carved)openJadePolish();else openJadeReward()}
-[0,1,2].forEach(i=>{const el=document.getElementById("jwStone"+i);if(el)el.addEventListener("click",jadeStoneClick)});
-$("#btnJadeMake").addEventListener("click",()=>{const w=state.ch3.workshop;if(!w.observed)openJadeObserve();else if(!w.picked)openJadeLamp();else if(!w.carved)openJadePolish();else openJadeReward()});
-function openJadeObserve(){const w=state.ch3.workshop;
- openCh1("玉石原石 · 观察","<p style='line-height:1.9'>工作台上放着三块原石，表面各不相同。点一块看看它的纹理——玉石往往藏在最不起眼的石头里。</p><div class='jade-stones'>"+JADE_STONES.map((s,i)=>"<button type='button' class='jade-stone' data-stone='"+i+"'>"+jadeStoneImg(i)+"<span>"+s.name+"</span></button>").join("")+"</div><p id='jadeStoneDesc' style='min-height:22px;font-size:13px;color:#789C8D;text-align:center'>点一块原石，看看它的表面纹理。</p><p class='img-note'>三块原石为同一张原石照片的不同裁切；工序为艺术化游戏演示，不还原真实古代文物制作过程。</p>",
- [{label:w.observed?"知道了":"记下来 · 观察原石",cls:"small",fn:()=>{closeCh1();if(!w.observed){w.observed=true;state.score+=50;$("#score").textContent=state.score;save();renderJadeWork();floatScore(innerWidth/2,innerHeight/2-40,"+50 观察原石");toast("原石观察完成！接下来点右上角「探玉灯」")}}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}]);
- $$("#ch1Body .jade-stone").forEach(b=>b.addEventListener("click",()=>{$$("#ch1Body .jade-stone").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");const d=$("#jadeStoneDesc");if(d)d.textContent=JADE_STONES[+b.dataset.stone].name+"："+JADE_STONES[+b.dataset.stone].desc}))}
-/* 探玉灯 · 选原石：先点亮探玉灯，再点原石照一照；只有下标 JADE_HIDDEN 的原石透出绿色玉光，照错可重选（+50 替代旧排序的 +50） */
-let jadeLampOn=false;
-function openJadeLamp(){const w=state.ch3.workshop;if(w.picked){if(!w.carved)openJadePolish();return}
- jadeLampOn=false;let revealed=false;
- openCh1("探玉灯 · 选原石","<p style='line-height:1.9'>点亮探玉灯，再点一块原石照一照：灯光下，藏玉的石头会透出绿色玉光；普通的石头只显出石质。</p><div style='text-align:center'><button type='button' class='btn small' id='jadeLampBtn'>🔦 点亮探玉灯</button></div><div class='jade-stones'>"+JADE_STONES.map((s,i)=>"<button type='button' class='jade-stone' data-stone='"+i+"'>"+jadeStoneImg(i)+"<span>"+s.name+"</span></button>").join("")+"</div><p id='jadeLampMsg' style='min-height:22px;font-size:13px;color:#789C8D;text-align:center'>先点亮探玉灯。</p><p class='img-note'>探玉灯为游戏道具；玉光为艺术化示意。</p>",
- [{label:"返回工坊",cls:"ghost small",fn:closeCh1}]);
- $("#jadeLampBtn").addEventListener("click",ev=>{jadeLampOn=true;ev.target.disabled=true;ev.target.textContent="🔦 探玉灯已点亮";const m=$("#jadeLampMsg");if(m)m.textContent="灯亮啦！点一块原石照一照。"});
- $$("#ch1Body .jade-stone").forEach(b=>b.addEventListener("click",()=>{
-  if(!jadeLampOn){toast("先点亮探玉灯，再照原石");return}
-  if(revealed)return;
-  const i=+b.dataset.stone;const m=$("#jadeLampMsg");
-  $$("#ch1Body .jade-stone").forEach(x=>x.classList.remove("lit"));
-  b.classList.add("lit");
-  if(i===JADE_HIDDEN){revealed=true;b.classList.add("jade-glow");
-   $$("#ch1Body .jade-stone").forEach(x=>{if(+x.dataset.stone!==i)x.disabled=true});
-   if(m)m.innerHTML="灯光下透出绿色玉光——就是这块！<b>"+JADE_STONES[i].name+"</b>里藏着玉。";
-   const f=$("#ch1Foot");if(f&&!f.querySelector(".jade-pick")){const pb=document.createElement("button");pb.type="button";pb.className="btn small jade-pick";pb.textContent="就选这块原石";pb.addEventListener("click",()=>{w.picked=true;w.pickedIdx=i;state.score+=50;$("#score").textContent=state.score;save();renderJadeWork();floatScore(innerWidth/2,innerHeight/2-40,"+50 探玉灯");closeCh1();openGuide(["找到了！"+JADE_STONES[i].name+"里藏着玉。","接下来按住打磨，把它一点点磨成玉羊挂饰。"],()=>{openJadePolish()})});f.appendChild(pb)}}
-  else{if(m)m.textContent="灯光下只有普通的石质，没有玉光。再照照别的石头吧。";toast("这块石头里没有玉光，再试试别的")}}))}
-/* 按住打磨：按住玉石打磨，力度表实时变化；力度须保持在绿色安全区（25%–70%）进度才涨，过大警告且进度不涨（轻微回退，不扣分），松开即停；中间阶段为原石与挂饰两张素材图的交叉淡化 + 抛光光效（未提供分阶段照片） */
-let jadePolish={p:0,force:0,holding:false,timer:null};
-function jadePolishStage(p){return p>=75?"完成成品":p>=50?"精细打磨":p>=25?"初步雕琢":"原石"}
-function jadePolishStop(){jadePolish.holding=false;if(jadePolish.timer){clearInterval(jadePolish.timer);jadePolish.timer=null}}
-function openJadePolish(){const w=state.ch3.workshop;if(w.carved){openJadeReward();return}
- jadePolishStop();jadePolish.p=0;jadePolish.force=0;
- openCh1("按住打磨","<p style='line-height:1.9'>按住玉石开始打磨：力度表会慢慢上升，保持在<span style='color:#9CC2B2'>绿色安全区</span>里，进度才会涨；力度太大出现警告，松开手让它降下来，再按住继续。</p><div class='polish-stage' id='jadePolishStage' style='cursor:pointer'><img class='polish-base' src='assets/jade_raw_stone.jpg' alt='玉石原石'><img class='polish-top' id='jadePolishTop' src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'><div class='polish-shine' id='jadePolishShine'></div></div><div class='force-meter'><span class='force-zone' style='left:25%;width:45%'></span><i class='force-needle' id='jadeForceNeedle' style='left:0%'></i></div><p id='jadeForceMsg' style='text-align:center;font-size:13px;color:#789C8D'>力度 0% · 按住玉石开始打磨</p><div class='carve-bar'><i id='jadePolishFill' style='width:0%'></i></div><p id='jadePolishMsg' style='text-align:center;font-size:14px;color:#E8E1D3'>打磨进度 0% · 原石</p><p class='img-note' style='text-align:center'>中间阶段为原石与挂饰两张素材图的交叉淡化 + 抛光光效（未提供分阶段照片）；工序为艺术化游戏演示。</p>",
- [{label:"返回工坊",cls:"ghost small",fn:closeCh1}]);
- const stage=$("#jadePolishStage"),top=$("#jadePolishTop"),fill=$("#jadePolishFill"),msg=$("#jadePolishMsg"),shine=$("#jadePolishShine"),needle=$("#jadeForceNeedle"),fmsg=$("#jadeForceMsg");
- const paint=()=>{const p=jadePolish.p,f=jadePolish.force;if(fill)fill.style.width=p+"%";if(msg)msg.textContent="打磨进度 "+Math.round(p)+"% · "+jadePolishStage(p);if(top)top.style.opacity=Math.max(0,Math.min(1,(p-33)/67));if(shine)shine.style.opacity=p>=100?0:Math.min(.5,p/100*.6);if(needle)needle.style.left=f+"%";if(fmsg){fmsg.textContent=f>70?"⚠ 力度太大啦！松开手，让玉石歇一歇":f>=25?"力度 "+Math.round(f)+"% · 在安全区，进度上涨中":"力度 "+Math.round(f)+"% · 力度太轻，进度不涨";fmsg.style.color=f>70?"#E8A0A0":"#789C8D"}};
- const finish=()=>{jadePolishStop();const w2=state.ch3.workshop;if(!w2.carved){w2.carved=true;w2.pendant=true;save();renderJadeWork()}
-  paint();if(msg)msg.textContent="打磨完成！玉羊挂饰做好啦！";
-  const foot=$("#ch1Foot .btn");if(foot){foot.textContent="收下「温润玉心」";foot.onclick=()=>{closeCh1();claimJadeSeal()}}
-  guideChime()};
- const tick=()=>{if(!document.getElementById("jadePolishStage")||!document.getElementById("modalCh1").classList.contains("open")){jadePolishStop();return}
-  if(jadePolish.holding){jadePolish.force=Math.min(100,jadePolish.force+2.2);
-   if(jadePolish.force>=25&&jadePolish.force<=70)jadePolish.p=Math.min(100,jadePolish.p+0.6);
-   else if(jadePolish.force>70)jadePolish.p=Math.max(0,jadePolish.p-0.15)}
-  else jadePolish.force=Math.max(0,jadePolish.force-4);
-  paint();if(jadePolish.p>=100)finish()};
- jadePolish.timer=setInterval(tick,50);
- stage.addEventListener("pointerdown",ev=>{jadePolish.holding=true;if(stage.setPointerCapture){try{stage.setPointerCapture(ev.pointerId)}catch(_){}}ev.preventDefault()});
- const release=()=>{jadePolish.holding=false};
- stage.addEventListener("pointerup",release);stage.addEventListener("pointercancel",release);stage.addEventListener("pointerleave",release)}
-/* 收下「温润玉心」：雕琢完成后的按钮与稍后重进的奖励弹窗共用（只计一次分） */
-function claimJadeSeal(){const w=state.ch3.workshop;if(w.done)return;w.done=true;w.pendant=true;state.score+=200;$("#score").textContent=state.score;save();renderJadeWork();renderJade();guideChime();floatScore(innerWidth/2,innerHeight/2-40,"+200 温润玉心");openGuide(["原来美玉藏在石头里面！经过耐心的琢磨，它才显露出最美的模样。","你获得第一枚玉石印记「温润玉心」。"],()=>{checkJadeAll()})}
-function openJadeReward(){const w=state.ch3.workshop;
- openCh1("温润玉心","<div class='j-photo-card' style='width:180px;height:180px;margin:0 auto'><img src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></div><p style='line-height:1.9;text-align:center'>原来美玉藏在石头里面！经过耐心的琢磨，它才显露出最美的模样。</p><p style='text-align:center'>获得本章第一枚印记：<b>「温润玉心」</b>（+200 分）</p><p class='img-note' style='text-align:center'>玉羊挂饰照片为用户提供的玉石素材图。</p>",
- [{label:"收下「温润玉心」",cls:"small",fn:()=>{closeCh1();claimJadeSeal()}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-function checkJadeAll(){const c=state.ch3;const left=[];
- if(!c.workshop.done)left.push("玉石工坊");if(!c.patterns.done)left.push("玉纹秘境");if(!c.gallery.done)left.push("祥瑞玉阁");
- if(left.length===0){renderJade();toast("三个探索点都完成啦！回玉石宫殿，点金色的「玉润挑战」按钮")}
- else{toast("还差 "+left.join("、")+"，继续探索吧")}}
-/* ============================================================
-   第三章第二部分：玉纹秘境 · 祥瑞玉阁 · 隐藏收集 · 最终挑战 · 画卷三
-   ============================================================ */
-/* 玉器纹样：原创示意 SVG（非真实文物纹样） */
-const JADE_PATTERNS={
- yun:{t:"云纹",short:"云纹——回旋盘绕，像天边的云气。",b:"云纹：线条回旋盘绕，像天边的云气一样舒展。玉器上的云纹，寓意吉祥、通达，是很常见的装饰纹样。",svg:"<svg viewBox='0 0 100 100'><g fill='none' stroke='#9CC2B2' stroke-width='3' stroke-linecap='round'><path d='M18 58 Q34 28 50 44 Q66 60 82 38'/><path d='M24 74 Q40 52 56 64 Q70 76 80 60'/><circle cx='50' cy='28' r='6'/></g></svg>"},
- hui:{t:"回纹",short:"回纹——方折回旋，首尾相连。",b:"回纹：一笔回旋、首尾相连的方折纹样，像水波一层层荡开。寓意绵长不断、生生不息。",svg:"<svg viewBox='0 0 100 100'><g fill='none' stroke='#9CC2B2' stroke-width='3'><path d='M20 20 H80 V80 H20 Z'/><path d='M32 32 H68 V68 H32 Z'/><path d='M44 44 H56 V56'/></g></svg>"},
- goat:{t:"羊形纹",short:"羊形纹——弯弯羊角，寄托吉祥。",b:"羊形纹：弯弯的羊角、温顺的羊首，是玉器上常见的动物纹样。「羊」与「祥」相通，寄托吉祥美好的愿望。",svg:"<svg viewBox='0 0 100 100'><g fill='none' stroke='#F5D67A' stroke-width='3' stroke-linecap='round'><path d='M35 55 Q25 30 45 28 Q55 26 52 40'/><path d='M65 55 Q75 30 55 28 Q45 26 48 40'/><ellipse cx='50' cy='68' rx='16' ry='12'/></g></svg>"}};
-const JADE_PAT_CHAL=[{key:"hui",q:"第 1 道：请找出「回纹」"},{key:"yun",q:"第 2 道：请找出「云纹」"},{key:"goat",q:"第 3 道：请找出「羊形纹」"}];
-const JADE_PAT_CHAL_ORDER=[["yun","hui","goat"],["goat","yun","hui"],["hui","goat","yun"]];
-/* 玉器模型：原创艺术化 SVG（非真实文物），三角度均为示意图 */
-const JADE_ITEMS={
- bi:{t:"玉璧",use:"礼仪与装饰",b:"玉璧是圆盘形的玉器，中间有一个圆孔。圆形象征着天，古人常在礼仪场合使用玉璧，也把它作为贵重的装饰。",clue:"圆盘形，中间有一个圆孔",
-  angles:{
-   front:"<img class='j-photo round' src='assets/jade_bi.jpg' alt='玉璧'>",
-   side:"<svg viewBox='0 0 120 120'><rect x='14' y='52' width='92' height='16' rx='8' fill='#9CC2B2' stroke='#4E7A68' stroke-width='3'/><circle cx='60' cy='60' r='8' fill='#0b241d' stroke='#4E7A68' stroke-width='2'/></svg>",
-   top:"<svg viewBox='0 0 120 120'><ellipse cx='60' cy='60' rx='52' ry='20' fill='#9CC2B2' stroke='#4E7A68' stroke-width='3'/><ellipse cx='60' cy='60' rx='20' ry='8' fill='#0b241d' stroke='#4E7A68' stroke-width='2'/></svg>"},
-  details:[
-   {t:"璧孔",x:50,y:50,d:"中间的圆孔是玉璧最显眼的地方，穿绳佩戴或陈设时都要用到它。"},
-   {t:"璧面纹饰",x:78,y:30,d:"璧面上的纹饰线条圆转流畅，是原创示意纹样。"}]},
- cong:{t:"云纹玉佩",use:"祈福纳祥",b:"云纹玉佩是圆形的玉佩，上面刻满回旋的云纹，顶部还有一个小环，可以穿绳悬挂。圆圆的玉佩寄托着吉祥美好的愿望。",clue:"圆形玉佩，满刻回旋云纹",
-  angles:{
-   front:"<svg viewBox='0 0 120 120'><circle cx='60' cy='12' r='7' fill='none' stroke='#B68A45' stroke-width='2.5'/><circle cx='60' cy='64' r='42' fill='#9CC2B2' stroke='#4E7A68' stroke-width='3'/><circle cx='60' cy='64' r='30' fill='none' stroke='#4E7A68' stroke-width='1.5' opacity='.5'/><g fill='none' stroke='#B68A45' stroke-width='2.5' stroke-linecap='round'><path d='M40 50 a7 7 0 1 1 7 7 a3.5 3.5 0 1 0 -3.5 -3.5'/><path d='M73 50 a7 7 0 1 1 7 7 a3.5 3.5 0 1 0 -3.5 -3.5'/><path d='M40 78 a7 7 0 1 1 7 7 a3.5 3.5 0 1 0 -3.5 -3.5'/><path d='M73 78 a7 7 0 1 1 7 7 a3.5 3.5 0 1 0 -3.5 -3.5'/></g><circle cx='60' cy='64' r='5' fill='#F5D67A' stroke='#4E7A68' stroke-width='1.5'/></svg>",
-   side:"<svg viewBox='0 0 120 120'><circle cx='60' cy='13' r='6' fill='none' stroke='#B68A45' stroke-width='2.5'/><rect x='52' y='22' width='16' height='84' rx='8' fill='#9CC2B2' stroke='#4E7A68' stroke-width='3'/></svg>",
-   top:"<svg viewBox='0 0 120 120'><circle cx='60' cy='46' r='5' fill='none' stroke='#B68A45' stroke-width='2'/><ellipse cx='60' cy='62' rx='40' ry='12' fill='#9CC2B2' stroke='#4E7A68' stroke-width='3'/><ellipse cx='60' cy='62' rx='16' ry='5' fill='none' stroke='#4E7A68' stroke-width='1.5' opacity='.6'/></svg>"},
-  details:[
-   {t:"云纹",x:33,y:42,d:"玉佩上刻满回旋的云纹，线条像天边的云气一样回旋舒展，寄托着吉祥美好的愿望。"},
-   {t:"挂环",x:50,y:10,d:"顶部的挂环可以穿绳，把玉佩挂在身上随身佩戴。"}]},
- pei:{t:"玉羊佩",use:"随身佩戴",b:"玉羊佩雕成小羊的样子，弯弯的羊角、温顺的羊首。「羊」与「祥」相通，佩戴它寄托着吉祥美好的愿望。",clue:"弯弯的羊角，小羊模样",
-  angles:{
-   front:"<img class='j-photo' src='assets/jade_sheep_pendant.jpg' alt='玉羊佩'>",
-   side:"<svg viewBox='0 0 120 120'><path d='M52 20 L68 20 L64 100 L56 100 Z' fill='#9CC2B2' stroke='#4E7A68' stroke-width='2'/><circle cx='60' cy='14' r='6' fill='none' stroke='#B68A45' stroke-width='2'/></svg>",
-   top:"<svg viewBox='0 0 120 120'><ellipse cx='60' cy='60' rx='34' ry='14' fill='#9CC2B2' stroke='#4E7A68' stroke-width='3'/><circle cx='60' cy='60' r='6' fill='#0b241d' stroke='#4E7A68' stroke-width='2'/></svg>"},
-  details:[
-   {t:"羊角",x:32,y:32,d:"玉羊佩的羊角弯弯的，是整件玉佩最有神的地方。"},
-   {t:"挂孔",x:50,y:12,d:"顶部的挂孔可以穿绳，挂在身上随身佩戴。"}]}};
-const JADE_USES=["礼仪与装饰","祈福纳祥","随身佩戴"];
-
-function firstUnfoundJadePat(){const f=state.ch3.patterns.found;const k=["yun","hui","goat"].find(x=>!f.includes(x));return k?"#jp"+(k==="yun"?"Yun":k==="hui"?"Hui":"Goat"):null}
-function firstUnviewedJadeItem(){const v=state.ch3.gallery.viewed;const k=["bi","cong","pei"].find(x=>!v.includes(x));return k?"#jg"+(k==="bi"?"Bi":k==="cong"?"Cong":"Pei"):null}
-/* ---------- 隐藏收集 · 金色玉纹碎片 ---------- */
-function collectJadeHidden(key){const c=state.ch3;
- if(c.hidden.includes(key)){toast("这枚玉纹碎片已经收集过了");return}
- c.hidden.push(key);state.score+=50;$("#score").textContent=state.score;save();
- const p=stageXY({clientX:innerWidth/2,clientY:innerHeight/2});burst(p.x,p.y,12);floatScore(p.x,p.y-40,"+50 金色玉纹");
- toast("找到一枚金色玉纹碎片！（"+c.hidden.length+" / 3）");
- renderJade();renderJadeWork();renderJadePat();renderJadeGal();
- if(c.hidden.length===3){c.hiddenCard=true;save();setTimeout(()=>openJadeHiddenCard(),700)}}
-function openJadeHiddenCard(){
- openCh1("隐藏知识卡 · 玉中的文化寓意","<p style='line-height:1.9'>你集齐了三枚金色玉纹碎片，解锁了这张隐藏知识卡！</p><div class='know-card'><b>玉之德</b><br>玉石温润、坚韧、纯洁，古人常把玉比作君子的品德——仁、义、智、勇、洁，都寄托在一块小小的玉里。</div><div class='know-card'><b>玉之美</b><br>玉的颜色、光泽和纹样，寄托着人们对美好生活的向往。玉器上的纹样，不仅好看，更有寓意。</div><div class='know-card'><b>玉之用</b><br>玉可以做礼器、佩饰和装饰，出现在祭祀、佩戴和日常生活的许多地方，是中国传统文化里很特别的存在。</div><p class='img-note'>本卡内容为通用文化知识介绍（游戏示意），不指向某一件具体文物，不编造文物名称、年代与出土地点。</p>",
- [{label:"收藏知识卡",cls:"small",fn:closeCh1}])}
-[["hfJadeWork","workshop"],["hfJadePat","patterns"],["hfJadeGal","gallery"]].forEach(([id,k])=>{
- document.getElementById(id).addEventListener("click",()=>collectJadeHidden(k))});
-/* ---------- 玉纹秘境 ---------- */
-function renderJadePat(){const p=state.ch3.patterns;
- $$("#scr-jadepatterns .big-jpat").forEach(s=>{const k=s.dataset.pat;s.innerHTML=JADE_PATTERNS[k].svg+"<span class='j-label'>"+JADE_PATTERNS[k].t+"</span>";s.classList.toggle("found",p.found.includes(k))});
- const n=p.found.length;$("#jadePatProg").textContent=p.done?"已完成":n<3?("纹样 "+n+" / 3"):!p.ring?"纹样齐了 · 三环机关":!p.memory?"机关解开 · 记忆挑战":!p.chal?"记忆通过 · 开始挑战":!p.quiz?"挑战通过 · 知识题":"知识题通过";
- const b=$("#btnJadePatGo");
- if(p.done){b.style.display="none"}
- else{b.style.display="inline-block";b.textContent=n<3?"继续找纹样":!p.ring?"三环机关":!p.memory?"纹样记忆挑战":!p.chal?"开始纹样挑战":!p.quiz?"玉文化知识题":"收下祥瑞玉纹"}
- const wall=$("#jadePatWall");if(wall)wall.classList.toggle("gold-glow",!!(p.ring||p.chal));
- const hf=$("#hfJadePat");if(hf)hf.classList.toggle("got",state.ch3.hidden.includes("patterns"))}
-function enterJadePat(){renderJadePat();show("jadepatterns");guideSceneIntro("jadepatterns")}
-$("#btnJadePatBack").addEventListener("click",()=>{renderJade();show("jade")});
-[["jpYun","yun"],["jpHui","hui"],["jpGoat","goat"]].forEach(([id,k])=>{
- document.getElementById(id).addEventListener("click",()=>openJadePatZoom(k))});
-$("#btnJadePatGo").addEventListener("click",()=>{const p=state.ch3.patterns;
- if(p.done)return;
- if(p.found.length<3){toast("先点墙上的三组纹样，放大观察并记下来");return}
- if(!p.ring){openJadeRings();return}
- if(!p.memory){openJadeMemory();return}
- if(!p.chal)openJadePatChallenge(0);
- else if(!p.quiz)openJadePatQuiz();
- else openJadePatCard()});
-function openJadePatZoom(k){const p=state.ch3.patterns;const m=JADE_PATTERNS[k];
- openCh1("纹样观察 · "+m.t,"<div style='text-align:center'><span class='pat-medallion'>"+m.svg+"</span></div><p style='line-height:1.9;margin-top:12px'>"+m.b+"</p><p class='img-note'>纹样为原创示意，非具体馆藏文物的纹样。</p>",
- [{label:p.found.includes(k)?"知道了":"记下来",cls:"small",fn:()=>{if(!p.found.includes(k)){p.found.push(k);state.score+=50;$("#score").textContent=state.score;save();renderJadePat();floatScore(innerWidth/2,innerHeight/2-40,"+50")}closeCh1()}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-/* 三环机关：三枚玉璧圆环独立旋转（拖动 / 点按转 90° / ‹ › 微调 15°），金印全部转到正上方即解开；不另加分，是纹样挑战的前置步骤 */
-let jadeRingAngles=[140,260,80];
-const JADE_RING_TOL=12;
-function jadeRingNorm(a){a%=360;return a<0?a+360:a}
-function jadeRingSolved(){return jadeRingAngles.every(a=>{const d=Math.abs(jadeRingNorm(a));return Math.min(d,360-d)<=JADE_RING_TOL})}
-function openJadeRings(){const p=state.ch3.patterns;if(p.ring){if(!p.memory)openJadeMemory();else openJadePatChallenge(0);return}
- jadeRingAngles=[140,260,80];
- openCh1("三环机关","<p style='line-height:1.9'>纹样墙前有三枚玉璧圆环，各有一枚金印。点每个圆环下面的 ‹ › 按钮旋转圆环（长按可以连续转），也可以直接拖动圆环、点一下转 90°。把三枚金印都转到正上方，机关就解开了。</p><div class='jade-rings'>"+[0,1,2].map(i=>"<div class='jade-ring-cell'><div class='jade-ring' data-ring='"+i+"' style='transform:rotate("+jadeRingAngles[i]+"deg)'><img src='assets/jade_bi.jpg' alt='玉璧圆环'><span class='ring-mark'>◆</span></div><div class='ring-nudge'><button type='button' class='btn ghost small ring-btn' data-nudge='"+i+"|-15'>‹</button><button type='button' class='btn ghost small ring-btn' data-nudge='"+i+"|15'>›</button></div></div>").join("")+"</div><p id='jadeRingMsg' style='min-height:22px;font-size:13px;color:#789C8D;text-align:center'>三枚金印都要转到正上方。</p><p class='img-note' style='text-align:center'>玉璧圆环照片为用户提供的玉石素材图。</p>",
- [{label:"返回玉纹秘境",cls:"ghost small",fn:closeCh1}]);
- const apply=i=>{const el=document.querySelector(".jade-ring[data-ring='"+i+"']");if(el)el.style.transform="rotate("+jadeRingAngles[i]+"deg)"};
- const check=()=>{const m=$("#jadeRingMsg");
-  if(jadeRingSolved()){$$(".jade-ring").forEach(r=>r.classList.add("solved"));if(m)m.textContent="机关解开啦！纹样墙亮了起来……";guideChime();
-   if(!state.ch3.patterns.ring){state.ch3.patterns.ring=true;save();renderJadePat()}
-   setTimeout(()=>{closeCh1();openJadeMemory()},900)}
-  else if(m){const n=jadeRingAngles.filter(a=>{const d=Math.abs(jadeRingNorm(a));return Math.min(d,360-d)<=JADE_RING_TOL}).length;m.textContent="已对准 "+n+" / 3 枚金印，继续转。"}};
- $$(".jade-ring").forEach(r=>{
-  let sx=null,sy=null,moved=0,startRot=0,startAng=0;
-  const center=el=>{const b=el.getBoundingClientRect();return {x:b.left+b.width/2,y:b.top+b.height/2}};
-  r.addEventListener("pointerdown",ev=>{const i=+r.dataset.ring;const c=center(r);startAng=Math.atan2(ev.clientY-c.y,ev.clientX-c.x)*180/Math.PI;startRot=jadeRingAngles[i];sx=ev.clientX;sy=ev.clientY;moved=0;if(r.setPointerCapture){try{r.setPointerCapture(ev.pointerId)}catch(_){}}ev.preventDefault()});
-  r.addEventListener("pointermove",ev=>{if(sx===null)return;const i=+r.dataset.ring;const c=center(r);const ang=Math.atan2(ev.clientY-c.y,ev.clientX-c.x)*180/Math.PI;let d=ang-startAng;if(d>180)d-=360;if(d<-180)d+=360;jadeRingAngles[i]=jadeRingNorm(startRot+d);moved=Math.max(moved,Math.abs(ev.clientX-sx)+Math.abs(ev.clientY-sy));apply(i)});
-  const end=()=>{if(sx===null)return;const i=+r.dataset.ring;sx=null;
-   if(moved<6){jadeRingAngles[i]=jadeRingNorm(jadeRingAngles[i]+90)}else{jadeRingAngles[i]=Math.round(jadeRingAngles[i]/15)*15}
-   apply(i);check()};
-  r.addEventListener("pointerup",end);r.addEventListener("pointercancel",()=>{sx=null})});
- /* 旋转按钮为主操作：点按转 15°，长按连续转；键盘触发的点击（detail===0）也转一次 */
- $$("[data-nudge]").forEach(b=>{const parts=b.dataset.nudge.split("|");const i=+parts[0],d=+parts[1];
-  let holdTimer=null;
-  const stopHold=()=>{if(holdTimer){clearInterval(holdTimer);holdTimer=null}};
-  const turn=()=>{if(!document.querySelector(".jade-ring[data-ring='"+i+"']")){stopHold();return}jadeRingAngles[i]=jadeRingNorm(jadeRingAngles[i]+d);apply(i);check()};
-  b.addEventListener("pointerdown",()=>{turn();holdTimer=setInterval(turn,130)});
-  b.addEventListener("pointerup",stopHold);b.addEventListener("pointercancel",stopHold);b.addEventListener("pointerleave",stopHold);
-  b.addEventListener("click",ev=>{if(ev.detail===0)turn()})});}
-/* 纹样记忆挑战：机关开启后触发；系统依次亮起 3–4 个纹样（云纹/回纹/羊形纹随机，可重复），玩家按亮起顺序点；点错重亮一遍；成功 +100，开启隐藏玉室 */
-let jadeMemorySeq=[],jadeMemoryIdx=0,jadeMemoryPlaying=false,jadeMemoryRun=0;
-function openJadeMemory(){const p=state.ch3.patterns;if(p.memory){openJadePatChallenge(0);return}
- const keys=["yun","hui","goat"];
- const n=3+Math.floor(Math.random()*2);
- jadeMemorySeq=Array.from({length:n},()=>keys[Math.floor(Math.random()*3)]);
- jadeMemoryIdx=0;const run=++jadeMemoryRun;
- openCh1("纹样记忆挑战","<p style='line-height:1.9'>机关解开啦！纹样墙亮了起来。看清纹样依次亮起的顺序，再按这个顺序点出来（共 "+n+" 个）。</p><div style='display:flex;gap:12px;justify-content:center;margin-top:14px'>"+keys.map(k=>"<button type='button' class='pat-pick mem-pat' data-k='"+k+"'><span class='pat-medallion'>"+JADE_PATTERNS[k].svg+"</span><span>"+JADE_PATTERNS[k].t+"</span></button>").join("")+"</div><p id='jadeMemFeed' style='min-height:22px;color:#789C8D;font-size:13px;margin-top:10px'>先看仔细——纹样马上开始亮起。</p>",
- [{label:"返回玉纹秘境",cls:"ghost small",fn:closeCh1}]);
- const feed=$("#jadeMemFeed");
- const play=()=>{jadeMemoryPlaying=true;jadeMemoryIdx=0;if(feed)feed.textContent="看好了，记住亮起的顺序……";
-  jadeMemorySeq.forEach((k,i)=>{setTimeout(()=>{if(run!==jadeMemoryRun)return;const b=document.querySelector(".mem-pat[data-k='"+k+"']");if(!b)return;b.classList.add("lit");guideChime();setTimeout(()=>b.classList.remove("lit"),550)},500+i*750)});
-  setTimeout(()=>{if(run!==jadeMemoryRun)return;jadeMemoryPlaying=false;if(feed)feed.textContent="轮到你了：按刚才的顺序依次点出 "+jadeMemorySeq.length+" 个纹样。"},500+jadeMemorySeq.length*750)};
- play();
- $$("#ch1Body .mem-pat").forEach(b=>b.addEventListener("click",()=>{
-  if(jadeMemoryPlaying)return;
-  const k=b.dataset.k;
-  if(k===jadeMemorySeq[jadeMemoryIdx]){b.classList.add("right");jadeMemoryIdx++;
-   if(jadeMemoryIdx>=jadeMemorySeq.length){$$("#ch1Body .mem-pat").forEach(x=>x.disabled=true);
-    state.score+=100;$("#score").textContent=state.score;state.ch3.patterns.memory=true;save();renderJadePat();floatScore(innerWidth/2,innerHeight/2-40,"+100 纹样记忆");
-    if(feed)feed.textContent="全对啦！隐藏玉室打开了……";guideChime();
-    setTimeout(()=>{if(run!==jadeMemoryRun)return;closeCh1();openJadeChamber()},800)}}
-  else{b.classList.add("wrong");setTimeout(()=>b.classList.remove("wrong"),500);
-   if(feed)feed.textContent="阿金：顺序不对，再看一遍亮起的顺序。";toast("顺序不对，再看一遍");jadeMemoryIdx=0;
-   $$("#ch1Body .mem-pat").forEach(x=>x.classList.remove("right"));
-   setTimeout(play,900)}}))}
-function openJadeChamber(){
- openCh1("隐藏玉室","<div style='text-align:center'><div style='width:150px;height:150px;margin:0 auto;border-radius:50%;overflow:hidden;border:3px solid #B68A45'><img src='assets/jade_bi.jpg' alt='神秘玉璧' style='width:100%;height:100%;object-fit:cover'></div></div><p style='line-height:1.9;margin-top:12px'>记忆挑战通过啦！纹样墙后出现了一间隐藏玉室，里面藏着一件神秘的玉璧：圆盘形、中间有孔，上面刻满云纹与回纹。古人把美好的品德寄托在玉里，圆圆的玉璧，象征着圆满与美好。</p><p class='img-note'>玉璧圆环照片为用户提供的玉石素材图；玉室与玉器说明为游戏示意，不指向某一件具体文物。</p>",
- [{label:"继续纹样挑战",cls:"small",fn:()=>{closeCh1();openJadePatChallenge(0)}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-function openJadePatChallenge(step){const ch=JADE_PAT_CHAL[step];const order=JADE_PAT_CHAL_ORDER[step];
- openCh1("纹样识别挑战 · "+(step+1)+" / 3","<p style='line-height:1.9'>"+ch.q+"：看清三枚纹样的样子，点出正确的一枚。答错可以再试。</p><div style='display:flex;gap:12px;justify-content:center;margin-top:14px'>"+order.map(k=>"<button type='button' class='pat-pick' data-k='"+k+"'><span class='pat-medallion'>"+JADE_PATTERNS[k].svg+"</span><span>"+JADE_PATTERNS[k].t+"</span></button>").join("")+"</div><p id='jadePatChalFeed' style='min-height:22px;color:#789C8D;font-size:13px;margin-top:10px'></p>",
- [{label:"返回玉纹秘境",cls:"ghost small",fn:closeCh1}]);
- $$("#ch1Body .pat-pick").forEach(b=>b.addEventListener("click",()=>{
-  if(b.classList.contains("right")||b.disabled)return;
-  if(b.dataset.k===ch.key){b.classList.add("right");$$("#ch1Body .pat-pick").forEach(x=>x.disabled=true);$$("#ch1Foot .btn").forEach(x=>x.disabled=true);
-   state.score+=50;$("#score").textContent=state.score;save();
-   const f=$("#jadePatChalFeed");if(f)f.textContent="找对啦！"+JADE_PATTERNS[ch.key].short;
-   setTimeout(()=>{closeCh1();if(step+1<3)openJadePatChallenge(step+1);else{state.ch3.patterns.chal=true;save();renderJadePat();openJadePatQuiz()}},700)}
-  else{b.classList.add("wrong");b.disabled=true;const f=$("#jadePatChalFeed");if(f)f.textContent="阿金：不是这枚，再仔细看看纹样的样子。";toast("找错啦，可以再试一次")}}))}
-function openJadePatQuiz(){
- openJadeQuiz("玉文化知识题","古人常用玉来寄托怎样的文化追求？",["美好的品德与愿望","单纯的装饰效果","现代工业用途"],0,"阿金：古人把玉比作君子的品德——温润、坚韧、纯洁，寄托的是美好的品德与愿望，不是单纯为了好看，更不是为了现代工业。",
- ()=>{state.ch3.patterns.quiz=true;save();renderJadePat();openJadePatCard()})}
-function openJadePatCard(){const p=state.ch3.patterns;
- openCh1("纹样知识卡","<div style='text-align:center'><span class='pat-medallion'>"+JADE_PATTERNS.goat.svg+"</span></div><p style='line-height:1.9;margin-top:12px'>三道纹样挑战和知识题都通过啦！你认得玉器上的三种纹样了。</p>"+["yun","hui","goat"].map(k=>"<div class='know-card'><b>"+JADE_PATTERNS[k].t+"</b><br>"+JADE_PATTERNS[k].b+"</div>").join("")+"<p class='img-note'>纹样为原创示意，非具体馆藏文物的纹样。</p>",
- [{label:p.done?"知道了":"收下「祥瑞玉纹」",cls:"small",fn:()=>{closeCh1();claimJadePatternSeal()}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-function claimJadePatternSeal(){const p=state.ch3.patterns;
- if(p.done)return;p.done=true;state.score+=200;$("#score").textContent=state.score;save();renderJadePat();renderJade();floatScore(innerWidth/2,innerHeight/2-40,"+200 祥瑞玉纹");
- openGuide(["你看！这些纹样终于连在一起了！原来每一道纹路，都藏着古人对美好生活的想象。","你看懂了玉器上的纹样，获得第二枚印记「祥瑞玉纹」。"],()=>checkJadeAll())}
-/* ---------- 祥瑞玉阁 ---------- */
-function renderJadeGal(){const g=state.ch3.gallery;
- $$("#scr-jadegallery .jade-item").forEach(s=>{const k=s.dataset.item;s.innerHTML="<span class='j-svg'>"+JADE_ITEMS[k].angles.front+"</span><span class='j-label'>"+JADE_ITEMS[k].t+"</span>";s.classList.toggle("done",g.viewed.includes(k))});
- const n=g.viewed.length;$("#jadeGalProg").textContent=n<3?("线索 "+n+" / 3"):"线索齐了 · 参加配对";
- const b=$("#btnJadeMatch");b.style.display=(n===3&&!g.done)?"inline-block":"none";
- b.textContent=g.cards?"查看「祥瑞玉羊」":"器物配对";
- const hf=$("#hfJadeGal");if(hf)hf.classList.toggle("got",state.ch3.hidden.includes("gallery"))}
-function enterJadeGal(){renderJadeGal();show("jadegallery");guideSceneIntro("jadegallery")}
-$("#btnJadeGalBack").addEventListener("click",()=>{renderJade();show("jade")});
-[["jgBi","bi"],["jgCong","cong"],["jgPei","pei"]].forEach(([id,k])=>{
- document.getElementById(id).addEventListener("click",()=>openJadeItem(k))});
-$("#btnJadeMatch").addEventListener("click",()=>{if(state.ch3.gallery.cards&&!state.ch3.gallery.done)openJadeCollection();else openJadeMatch()});
-function openJadeItem(k){const g=state.ch3.gallery;const info=JADE_ITEMS[k];const det=info.details;
- const note=(k==="bi"||k==="pei")?"正面为用户提供的玉石素材图；侧面/背面为多角度示意图，非真实 3D 模型；器物与说明为游戏原创示意，非具体馆藏文物。":"三角度均为「多角度示意图」，非真实 3D 模型；器物与说明为游戏原创示意，非具体馆藏文物。";
- openCh1("玉器鉴赏 · "+info.t,"<div style='text-align:center'><div id='jadeItemViewWrap' style='position:relative;width:180px;height:180px;margin:0 auto'><div id='jadeItemView' style='width:180px;height:180px'>"+info.angles.front+"</div>"+det.map((d,i)=>"<button type='button' class='v-detail' data-i='"+i+"' style='left:"+d.x+"%;top:"+d.y+"%' title='"+d.t+"'>✦</button>").join("")+"</div><div class='angle-btns'><button type='button' class='btn ghost small angle on' data-a='front'>正面</button><button type='button' class='btn ghost small angle' data-a='side'>侧面</button><button type='button' class='btn ghost small angle' data-a='top'>俯视</button></div></div><p id='jadeItemDetail' style='min-height:22px;font-size:13px;color:#789C8D;margin-top:10px'>点金色小点，看局部细节；左右滑动可换角度。</p><p style='line-height:1.9;margin-top:6px'>"+info.b+"</p><p style='font-size:13px;color:#789C8D'>观察线索："+info.clue+"。</p><p class='img-note'>"+note+"</p>",
- [{label:g.viewed.includes(k)?"知道了":"收集线索",cls:"small",fn:()=>{if(!g.viewed.includes(k)){g.viewed.push(k);state.score+=50;$("#score").textContent=state.score;save();renderJadeGal();floatScore(innerWidth/2,innerHeight/2-40,"+50")}closeCh1()}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}]);
- const angs=["front","side","top"];let ai=0;
- const setAngle=a=>{if(a!==angs[ai]){g.angled=true;save()}ai=angs.indexOf(a);$$("#ch1Body .angle").forEach(x=>x.classList.toggle("on",x.dataset.a===a));const vw=$("#jadeItemView");if(vw)vw.innerHTML=info.angles[a]};
- $$("#ch1Body .angle").forEach(b=>b.addEventListener("click",()=>setAngle(b.dataset.a)));
- $$("#ch1Body .v-detail").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const d=det[+b.dataset.i];const el=$("#jadeItemDetail");if(el)el.textContent=d.t+"："+d.d;b.classList.add("hit");const key=k+":"+b.dataset.i;if(!g.details.includes(key)){g.details.push(key);save()}}));
- const wrap=$("#jadeItemViewWrap");let sx=null;
- wrap.addEventListener("pointerdown",ev=>{sx=ev.clientX;if(wrap.setPointerCapture){try{wrap.setPointerCapture(ev.pointerId)}catch(_){}}});
- wrap.addEventListener("pointerup",ev=>{if(sx===null)return;const dx=ev.clientX-sx;sx=null;
-  if(dx>40)setAngle(angs[(ai+1)%3]);else if(dx<-40)setAngle(angs[(ai+2)%3])});
- wrap.addEventListener("pointercancel",()=>{sx=null})}
-function openJadeMatch(){const g=state.ch3.gallery;
- openCh1("器物配对","<p style='line-height:1.9'>把三件玉器拖到它们介绍的旁边，或者先点玉器选中，再点用途框放入。</p><div class='step-slots' id='jadeMatchSlots'>"+JADE_USES.map((u,i)=>"<div class='step-slot' data-slot='"+i+"'><span class='no'>"+(i+1)+"</span><span class='slot-txt'>"+u+"</span></div>").join("")+"</div><div class='step-cards' id='jadeMatchCards'>"+["pei","bi","cong"].map(k=>"<button type='button' class='step-card' data-item='"+k+"'>"+JADE_ITEMS[k].t+"</button>").join("")+"</div><p id='jadeMatchMsg' style='margin-top:10px;font-size:13px;color:#789C8D'>已配对 0 / 3</p>",
- [{label:"返回玉阁",cls:"ghost small",fn:closeCh1}]);
- $$("#jadeMatchCards .step-card").forEach(c=>{c.addEventListener("click",()=>{$$("#jadeMatchCards .step-card.sel").forEach(x=>x.classList.remove("sel"))});enableDragTap(c,()=>Array.from(document.querySelectorAll("#jadeMatchSlots .step-slot")),jadeMatchPlace)});
- $$("#jadeMatchSlots .step-slot").forEach(slot=>slot.addEventListener("click",()=>{const sel=document.querySelector("#jadeMatchCards .step-card.sel");if(sel)jadeMatchPlace(sel,slot)}))}
-function jadeMatchPlace(el,slot){const k=el.dataset.item;const want=JADE_USES.indexOf(JADE_ITEMS[k].use);
- if(want!==+slot.dataset.slot){slot.classList.add("err");setTimeout(()=>slot.classList.remove("err"),400);toast("这件玉器不是这个用途，再想想");return false}
- slot.classList.add("ok");el.classList.add("placed");el.classList.remove("sel");
- const n=$$("#jadeMatchSlots .step-slot.ok").length;const m=$("#jadeMatchMsg");if(m)m.innerHTML="已配对 "+n+" / 3<br>✓ "+JADE_ITEMS[k].t+" → "+JADE_ITEMS[k].use+"："+JADE_ITEMS[k].b;
- if(n===3){const g=state.ch3.gallery;g.matched={bi:true,cong:true,pei:true};save();setTimeout(openJadeCollection,600)}return true}
-function openJadeCollection(){const g=state.ch3.gallery;
- if(!g.collection){g.collection=true;g.cards=true;save()}
- openCh1("祥瑞玉羊","<div class='j-photo-card' style='width:180px;height:180px;margin:0 auto'><img src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></div><p style='line-height:1.9;margin-top:12px'>三件玉器都认识啦！展台深处还藏着一件特别的玉羊——它把玉石工坊的玉羊挂饰、玉纹秘境的羊形纹和这里的玉羊佩合在了一起，是「祥瑞玉印」的化身。</p><p style='font-size:13px;color:#789C8D'>祥瑞玉羊 · 玉羊挂饰照片为用户提供的玉石素材图</p>",
- [{label:g.done?"知道了":"收下「祥瑞玉印」",cls:"small",fn:()=>{closeCh1();claimJadeGallerySeal()}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-function claimJadeGallerySeal(){const g=state.ch3.gallery;
- if(g.done)return;g.done=true;state.score+=200;$("#score").textContent=state.score;save();renderJadeGal();renderJade();floatScore(innerWidth/2,innerHeight/2-40,"+200 祥瑞玉印");
- openGuide(["三件玉器都认识啦！","你看懂了玉器的形状和寓意，获得第三枚印记「祥瑞玉印」。"],()=>checkJadeAll())}
-/* ---------- 最终挑战 · 玉润挑战 ---------- */
-function openJadeFinal(){const c=state.ch3;
- if(!(c.workshop.done&&c.patterns.done&&c.gallery.done)){toast("玉润挑战尚未解锁：先完成玉石工坊、玉纹秘境、祥瑞玉阁三个探索点");return}
- if(!c.final.q1){openGuide(["你已经找到了玉石的工艺、纹样和美好寓意。现在，让我们一起完成最后的挑战吧！","三个小挑战：玉器造型、玉纹识别、玉文化寓意，答对就通关。"],()=>openJadeFinalQ1())}
- else if(!c.final.q2)openJadeFinalQ2();
- else if(!c.final.q3)openJadeFinalQ3();
- else {if(!c.done){c.done=true;save();refreshCh1Entry()}openCh3Results()}}
-function openJadeFinalQ1(){jadeChoiceQ({title:"玉润挑战 · 第一题",flag:"q1",q:"哪件玉器是薄薄的圆盘、中间有孔？",img:"<div style='width:150px;height:150px;margin:0 auto'>"+JADE_ITEMS.bi.angles.front+"</div>",
- opts:[{t:"玉璧",right:true,feed:"答对啦！玉璧是薄薄的圆盘，中间有一个圆孔，是礼仪场合的重要玉器。"},
-       {t:"云纹玉佩",right:false,explain:"云纹玉佩是圆形的玉佩，上面刻满回旋的云纹，顶上还有挂环。"},
-       {t:"玉羊佩",right:false,explain:"玉羊佩雕成小羊的模样，弯弯的羊角，是随身佩戴的挂饰。"}],
- nextLabel:"下一题",onRight:openJadeFinalQ2})}
-function jadeFinalQ1Place(el,slot){
- if(+el.dataset.step!==+slot.dataset.slot){slot.classList.add("err");setTimeout(()=>slot.classList.remove("err"),400);toast("阿金：这一步不在这里，再想想");return false}
- slot.classList.add("ok");el.classList.add("placed");el.classList.remove("sel");
- const n=$$("#jadeFinalSlots .step-slot.ok").length;const m=$("#jadeFinalMsg");if(m)m.textContent="已排对 "+n+" / 4";
- if(n===4&&!state.ch3.final.q1){state.ch3.final.q1=true;state.score+=100;$("#score").textContent=state.score;save();toast("第一题通过！");setTimeout(openJadeFinalQ2,600)}return true}
-function jadeChoiceQ(cfg){
- openCh1(cfg.title,"<div style='text-align:center'>"+cfg.img+"</div><p style='line-height:1.9;margin-top:12px'>"+cfg.q+"</p><div id='jadeChoiceOpts'></div><p id='jadeChoiceFeed' style='min-height:22px;color:#789C8D;font-size:13px;margin-top:10px'></p>",
- [{label:"返回玉石宫殿",cls:"ghost small",fn:closeCh1}]);
- const box=$("#jadeChoiceOpts");
- cfg.opts.forEach((o,i)=>{const b=document.createElement("button");b.type="button";b.className="quiz-opt";b.textContent="ABC"[i]+"．"+o.t;
-  b.addEventListener("click",()=>{if(b.classList.contains("right")||b.disabled)return;
-   if(o.right){b.classList.add("right");$$("#jadeChoiceOpts .quiz-opt").forEach(x=>x.disabled=true);$$("#ch1Foot .btn").forEach(x=>x.disabled=true);
-    $("#jadeChoiceFeed").textContent=o.feed||"答对啦！";
-    if(!state.ch3.final[cfg.flag]){state.ch3.final[cfg.flag]=true;state.score+=100;$("#score").textContent=state.score;save()}
-    const nb=document.createElement("button");nb.type="button";nb.className="btn small";nb.textContent=cfg.nextLabel;
-    nb.addEventListener("click",()=>{closeCh1();if(cfg.onRight)cfg.onRight()});$("#ch1Foot").appendChild(nb)}
-   else{b.classList.add("wrong");b.disabled=true;$("#jadeChoiceFeed").textContent="阿金："+(o.explain||"再想想，可以再试一次。");toast("答错了，可以再试一次")}});
-  box.appendChild(b)})}
-function openJadeFinalQ2(){jadeChoiceQ({title:"玉润挑战 · 第二题",flag:"q2",q:"这枚纹样叫什么名字？",img:"<span class='pat-medallion'>"+JADE_PATTERNS.goat.svg+"</span>",
- opts:[{t:"云纹",right:false,explain:"这不是云纹——云纹的线条像天边的云气一样回旋舒展。"},
-       {t:"羊形纹",right:true,feed:"答对啦！这是羊形纹——弯弯的羊角、温顺的羊首，寄托着吉祥美好的愿望。"},
-       {t:"回纹",right:false,explain:"这不是回纹——回纹是一笔回旋、首尾相连的方折纹样。"}],
- nextLabel:"下一题",onRight:openJadeFinalQ3})}
-function openJadeFinalQ3(){jadeChoiceQ({title:"玉润挑战 · 第三题",flag:"q3",q:"玉器寄托了古人怎样的心愿？",img:"<div class='j-photo-card' style='width:150px;height:150px;margin:0 auto'><img src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></div>",
- opts:[{t:"美好的品德与愿望",right:true,feed:"答对啦！玉石温润、坚韧、纯洁，古人把美好的品德与愿望寄托在玉里，就像君子一样。"},
-       {t:"单纯的装饰效果",right:false,explain:"不只是装饰——玉在古人心里，更是美好品德的象征。"},
-       {t:"现代工业用途",right:false,explain:"玉器是古代的宝贝，可不是现代工业用品。"}],
- nextLabel:"飞向千年瑞图",onRight:()=>{state.ch3.final.done=true;save();renderJade();jadeFly()}})}
-function jadeFly(){
- openCh1("三枚印记 · 飞向千年瑞图","<p style='line-height:1.9'>三题全对！三枚印记亮了起来，正飞向《千年瑞图》……</p><div style='display:flex;gap:12px;justify-content:center;margin-top:18px'><span class='fly-seal'>温润玉心</span><span class='fly-seal'>祥瑞玉纹</span><span class='fly-seal'>祥瑞玉印</span></div><p style='text-align:center;color:#789C8D;font-size:13px;margin-top:16px'>第三幅画卷「玉润祥瑞」即将点亮……</p>",[]);
- setTimeout(()=>{closeCh1();renderJade();const c=state.ch3;if(c.final.done){c.done=true;refreshCh1Entry()}save();openCh3Results()},1800)}
-/* 玉石通用单选题（知识题）：答错显示解释可重选，答对 +100 一次 */
-function openJadeQuiz(title,q,opts,correct,explain,onRight){
- openCh1(title,"<p style='line-height:1.9'>"+q+"</p><div id='jadeQuizOpts'></div><p id='jadeQuizFeed' style='min-height:22px;color:#789C8D;font-size:13px;margin-top:10px'></p>",
- [{label:"稍后再答",cls:"ghost small",fn:closeCh1}]);
- const box=$("#jadeQuizOpts");
- opts.forEach((o,i)=>{const b=document.createElement("button");b.type="button";b.className="quiz-opt";b.textContent="ABC"[i]+"．"+o;
-  b.addEventListener("click",()=>{if(b.classList.contains("right")||b.disabled)return;
-   if(i===correct){b.classList.add("right");$$("#jadeQuizOpts .quiz-opt").forEach(x=>x.disabled=true);$$("#ch1Foot .btn").forEach(x=>x.disabled=true);
-    $("#jadeQuizFeed").textContent="答对啦！";state.score+=100;$("#score").textContent=state.score;save();
-    const nb=document.createElement("button");nb.type="button";nb.className="btn small";nb.textContent="继续";
-    nb.addEventListener("click",()=>{closeCh1();if(onRight)onRight()});$("#ch1Foot").appendChild(nb)}
-   else{b.classList.add("wrong");b.disabled=true;$("#jadeQuizFeed").textContent=explain;toast("答错了，可以再试一次")}});
-  box.appendChild(b)})}
-/* ---------- 本章成果展示 ---------- */
-function openCh3Results(){const c=state.ch3;const h=c.hidden.length;
- const seals=[["温润玉心",c.workshop.done],["祥瑞玉纹",c.patterns.done],["祥瑞玉印",c.gallery.done]].map(([t,g])=>t+(g?" ✓":" · 未获得")).join(" · ");
- openCh1("第三章 · 完成：玉润祥瑞","<p style='line-height:2'>三枚印记："+seals+"<br>隐藏收集：金色玉纹碎片 "+h+" / 3"+(c.hiddenCard?" · 已解锁隐藏知识卡「玉中的文化寓意」":" · 还有玉纹碎片藏在三个场景里，去找找吧")+"<br>本章得分："+state.score+" 分</p><h3 style='margin-top:12px'>知识回顾</h3><div class='know-card'><b>玉石打磨</b><br>观察原石 → 探玉灯选石 → 按住打磨，力度保持在绿色安全区（艺术化游戏演示，不还原真实文物制作过程）。</div><div class='know-card'><b>三种玉纹</b><br>云纹（回旋盘绕）、回纹（方折回旋）、羊形纹（弯弯羊角，寄托吉祥）。</div><div class='know-card'><b>三件玉器</b><br>玉璧（礼仪与装饰）、云纹玉佩（祈福纳祥）、玉羊佩（随身佩戴）。</div><div class='know-card'><b>玉中的文化寓意</b><br>玉石温润、坚韧、纯洁，古人把美好的品德寄托在玉里。（通用文化知识，游戏示意）</div>",
- [{label:c.endingSeen?"查看纪念页面":"进入最终结局 · 千年瑞图",cls:"small",fn:()=>{closeCh1();if(state.ch3.endingSeen)showMemorial();else startFinale()}},  {label:"返回玉石宫殿",cls:"small",fn:()=>{closeCh1();renderJade();show("jade")}},
-  {label:"进入青铜时代 · 时间轴",cls:"small",fn:()=>{closeCh1();show("timeline");toast("青铜时代 · 请按时间轴继续探索")}},
-  {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-
-/* ---------- 最终结局 · 千年瑞图（第三章为最终章节；原第四章入口已由最终结局替代） ---------- */
-const FINALE_LINES=["原来，千年瑞图记录的从来不只是器物。","它记录着人们如何观察自然、创造文明，也记录着一代又一代人对美好生活的向往。","从远古的足迹，到青铜的纹样，再到温润的美玉……这些故事虽然跨越了千年，却一直没有消失。","谢谢你，寻纹使。是你让这些沉睡千年的故事，再一次被看见。","也许千年以后，还会有人来到这里，继续讲述我们的故事。"];
-const ENDING_TEXT=["《羊承千年》","一玉一器，皆是岁月的回响。","千年文脉，生生不息。","让文物讲述历史，让文化照亮未来。","——《羊承千年》完——"];
-function finalePaintsHTML(){
- const ding="<svg viewBox='0 0 100 100'><g fill='none' stroke='#B68A45' stroke-width='3' stroke-linecap='round'><rect x='25' y='30' width='50' height='30' rx='4'/><path d='M25 30 L20 18 M75 30 L80 18'/><path d='M35 60 L32 82 M65 60 L68 82'/><path d='M35 42h30'/></g></svg>";
- return "<div class='fin-paints'>"+
-  "<div class='fin-paint'><div class='fin-pat'>"+JADE_PATTERNS.goat.svg+"</div><b>第一幅 · 远古初生</b><span>生命之迹 · 自然之源 · 文明之印</span></div>"+
-  "<div class='fin-paint'><div class='fin-pat'>"+ding+"</div><b>第二幅 · 青铜礼韵</b><span>铸造之火 · 纹饰之魂 · 礼器之印</span></div>"+
-  "<div class='fin-paint'><div class='fin-pat'><img class='j-photo' src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></div><b>第三幅 · 玉润祥瑞</b><span>温润玉心 · 祥瑞玉纹 · 祥瑞玉印</span></div></div>"}
-function startFinale(){
- if(!state.ch3.done){toast("先完成第三章的最终挑战");return}
+/* ---------- 最终结局 · 千年瑞图（两章制：第一章远古初生 + 第二章青铜礼韵） ---------- */
+const FINALE_LINES=["太棒啦！我们终于完成了这次探索！","从远古留下的生活痕迹，到青铜器上精美的纹样，每一次发现都让我更加惊叹。","原来，真正珍贵的，不只是这些古老的器物，还有它们背后一直被传承的文化。","谢谢你和我一起，留下这段特别的回忆！"];
+const ENDING_TEXT=["《羊承千年》","从远古足迹到青铜礼韵，","每一件文物，都是岁月留下的印记。","让沉睡的历史重新被看见，","让古老的文化继续传承。","——《羊承千年》完——"];
+/* 画卷二展示「开启最终结局」→ 阿金结尾对白（逐句显示）→ 结尾动画 → 纪念页 */
+function startFinalEnding(){
  closeCh1();
- openCh1("最终剧情 · 千年瑞图",
-  "<p style='line-height:1.9'>三件道具亮了起来，正飞向《千年瑞图》……</p><div style='display:flex;gap:12px;justify-content:center;margin:14px 0'><span class='fly-seal'>温润玉心</span><span class='fly-seal'>祥瑞玉纹</span><span class='fly-seal'>祥瑞玉印</span></div>"+finalePaintsHTML()+"<p style='text-align:center;color:#789C8D;font-size:13px;margin-top:12px'>三幅画卷同时亮起，完整的《千年瑞图》在空中展开……</p>",
-  [{label:"听阿金讲述",cls:"small",fn:()=>{closeCh1();openGuide(FINALE_LINES.slice(),()=>{state.ch3.finaleSeen=true;save();refreshGuide();openFinaleComplete()})}},
-   {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-function openFinaleComplete(){
- openCh1("最终剧情 · 千年瑞图",
-  finalePaintsHTML()+"<p style='line-height:1.9;margin-top:12px'>阿金转身望向你——千年瑞图已经完整，故事的最后一段，就在眼前。</p>",
-  [{label:"观看结尾动画",cls:"small",fn:()=>{closeCh1();startEnding()}},
-   {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
-/* 结尾动画：七步（自动推进 + 继续/跳过），复用现有 SVG/CSS/粒子与阿金形象、玉羊挂饰真照片 */
+ openGuide(FINALE_LINES.slice(),()=>{startEnding()});
+}
+/* ---------- 画卷展示与收藏 ---------- */
+const PAINTINGS={
+ 1:{img:"assets/painting-ch1.png",title:"《远古初生·羊之初》",sub:"已完成探索",lines:["太棒啦！远古的故事已经被我们记录下来了！","快看看，这就是属于第一章的远古画卷！"]},
+ 2:{img:"assets/painting-ch2.png",title:"《青铜礼韵·文明之光》",sub:"已完成探索",lines:["哇！连青铜器上的古老纹样，我们也发现啦！","这幅画卷，记录着古人留下的文明印记！"]}
+};
+function openShowcase(ch){
+ const p=PAINTINGS[ch];if(!p)return;
+ const body=$("#showcaseBody");
+ body.innerHTML="<div class='show-wrap'><div class='show-ajin'><img src='assets/ajin.png' alt='阿金'><p><span>"+p.lines[0]+"</span><br><span id='showLine2' style='opacity:0'>"+p.lines[1]+"</span></p></div>"+
+  "<div class='show-paint'><img src='"+p.img+"' alt='"+p.title+"'></div>"+
+  "<div class='show-title'>"+p.title+"</div><div class='show-sub'>"+p.sub+"</div></div>";
+ const f=$("#showcaseFoot");f.innerHTML="";
+ const mk=(label,cls,fn)=>{const b=document.createElement("button");b.type="button";b.className="btn "+cls;b.textContent=label;b.addEventListener("click",fn);f.appendChild(b)};
+ mk("收藏画卷","small",()=>{openCollection()});
+ if(ch===1)mk("继续探索","small",()=>{closeShowcase();$("#modalPaint").classList.remove("open");enterBronze()});
+ else mk("开启最终结局","small",()=>{closeShowcase();$("#modalPaint2").classList.remove("open");startFinalEnding()});
+ $("#modalShowcase").classList.add("open");refreshGuide();
+ const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/3,20);
+ setTimeout(()=>{const s=$("#showLine2");if(s){s.style.transition="opacity .8s";s.style.opacity="1"}},1200);
+}
+function closeShowcase(){$("#modalShowcase").classList.remove("open");refreshGuide()}
+function collectionUnlocked(){
+ return {ch1:!!state.ch1.painting.lit,ch2:!!state.ch2.painting.lit,full:!!(state.ch1.done&&state.ch2.done&&state.finished)};
+}
+function openCollection(){
+ renderCollection();
+ $("#modalCollection").classList.add("open");refreshGuide();
+}
+function closeCollection(){$("#modalCollection").classList.remove("open");refreshGuide()}
+function renderCollection(){
+ const u=collectionUnlocked();
+ const card=(ch,img,title,sub,ok)=>{
+  return "<div class='coll-card "+(ok?"unlocked":"locked")+"' data-ch='"+ch+"'><img src='"+img+"' alt='"+title+"'>"+
+  "<b>"+title+"</b><span>"+(ok?sub+" ✓":"🔒 尚未完成该章节")+"</span></div>"};
+ const full="<div class='coll-full "+(u.full?"unlocked":"locked")+"' data-ch='full'><img src='assets/painting-full.jpg' alt='完整《千年瑞图》'><b>完整《千年瑞图》</b><span>"+(u.full?"两章全部完成 · 千年瑞图已完整 ✓":"🔒 完成两章探索后解锁")+"</span></div>";
+ $("#collectionBody").innerHTML="<div class='coll-bg'><p style='text-align:center;color:#c9c2b2;font-size:13px'>点已解锁的画卷可以放大查看。</p>"+
+  "<div class='coll-grid'>"+card(1,"assets/painting-ch1.png","《远古初生·羊之初》","第一章 · 已完成探索",u.ch1)+
+  card(2,"assets/painting-ch2.png","《青铜礼韵·文明之光》","第二章 · 已完成探索",u.ch2)+"</div>"+full+"</div>";
+ document.querySelectorAll("#collectionBody .coll-card.unlocked, #collectionBody .coll-full.unlocked").forEach(el=>{
+  el.addEventListener("click",()=>{
+   const img=el.querySelector("img");
+   const z=document.createElement("div");z.className="coll-zoom";
+   const big=document.createElement("img");big.src=img.src;big.alt=img.alt;
+   z.appendChild(big);z.addEventListener("click",()=>z.remove());
+   document.body.appendChild(z);
+  });
+ });
+}
+/* 结尾动画：七步（自动推进 + 继续/跳过），复用现有 CSS/粒子与阿金形象 */
 let endingTimer=null;
 function clearEndingTimer(){if(endingTimer){clearTimeout(endingTimer);endingTimer=null}}
 function endingStep(n){
@@ -2863,13 +2267,16 @@ function endingStep(n){
  const f=$("#ch1Foot");
  const setFoot=list=>{f.innerHTML="";list.forEach(b=>{const btn=document.createElement("button");btn.type="button";btn.className="btn "+(b.cls||"small");btn.textContent=b.label;btn.addEventListener("click",b.fn);f.appendChild(btn)})};
  const cap=t=>"<p style='text-align:center;color:#c9c2b2;font-size:13px;margin-top:10px'>"+t+"</p>";
+ const p1="<div class='end-paint'><img src='assets/painting-ch1.png' alt='第一幅 · 远古初生'></div>";
+ const p2="<div class='end-paint'><img src='assets/painting-ch2.png' alt='第二幅 · 青铜礼韵'></div>";
+ const pf="<div class='end-paint end-full'><img src='assets/painting-full.jpg' alt='完整《千年瑞图》'></div>";
  const steps={
-  1:"<div class='end-wrap'><div class='end-stage'>"+finalePaintsHTML()+"</div></div>"+cap("三幅画卷，在空中依次展开。"),
-  2:"<div class='end-wrap'><div class='end-stage'><div style='width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(245,214,122,.85),rgba(120,156,141,.35) 55%,transparent 75%);animation:finLit 1.6s ease-in-out'></div></div></div>"+cap("金色、青绿色光芒交织汇聚。"),
-  3:"<div class='end-wrap'><div class='end-stage'><div class='j-photo-card end-rise' style='width:170px;height:170px'><img src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></div></div></div>"+cap("你亲手制作的玉羊挂饰，缓缓升起。"),
-  4:"<div class='end-wrap'><div class='end-stage'><div class='end-beam'></div><div class='end-ajin'><img src='assets/ajin.png' alt='阿金'></div></div></div>"+cap("玉羊化为一道光芒，落在阿金身上。"),
-  5:"<div class='end-wrap'><div class='end-stage'><div class='end-ajin'><img src='assets/ajin.png' alt='阿金'></div>"+finalePaintsHTML()+"</div></div>"+cap("阿金飞向云海中央，身后浮现完整的《千年瑞图》。"),
-  6:"<div class='end-wrap'><div class='end-wide'><img src='assets/jade_palace.jpg' alt='玉石宫殿'></div><p class='end-wide-cap'>镜头逐渐拉远——金色灵境与玉石宫殿。</p></div>",
+  1:"<div class='end-wrap'><div class='end-stage'><div style='width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(245,214,122,.9),rgba(245,214,122,.25) 55%,transparent 75%);animation:finLit 1.6s ease-in-out'></div></div></div>"+cap("屏幕渐暗，温暖的金色光芒亮起……"),
+  2:"<div class='end-wrap'><div class='end-stage'><div class='end-single end-from-left'>"+p1+"</div></div></div>"+cap("第一幅画卷「远古初生」从左侧缓缓出现。"),
+  3:"<div class='end-wrap'><div class='end-stage'><div class='end-single end-from-right'>"+p2+"</div></div></div>"+cap("第二幅画卷「青铜礼韵」从右侧缓缓出现。"),
+  4:"<div class='end-wrap'><div class='end-stage end-duo'><div class='end-lit'>"+p1+"</div><div class='end-lit'>"+p2+"</div></div></div>"+cap("两幅画卷分别亮起，金色粒子在画面中央汇聚。"),
+  5:"<div class='end-wrap'><div class='end-stage'><div class='end-single'>"+pf+"</div></div></div>"+cap("两幅画卷融为一体，完整的《千年瑞图》从中央缓缓展开。"),
+  6:"<div class='end-wrap'><div class='end-wide'><img src='assets/painting-full.jpg' alt='完整《千年瑞图》'></div><div class='end-ajin-front'><img src='assets/ajin.png' alt='阿金'></div><p class='end-wide-cap'>阿金站在画卷前，转身向你挥手。</p></div>",
   7:"<div class='end-wrap'><div class='end-dark'><h2>"+ENDING_TEXT[0]+"</h2><p>"+ENDING_TEXT.slice(1).join("<br>")+"</p></div></div>"};
  $("#ch1Title").textContent="结尾动画 · 千年瑞图";
  $("#ch1Body").innerHTML=steps[n]||steps[7];
@@ -2877,7 +2284,7 @@ function endingStep(n){
   setFoot([{label:"继续 ›",cls:"small",fn:()=>endingStep(n+1)},{label:"跳过",cls:"ghost small",fn:()=>endingStep(7)}]);
   endingTimer=setTimeout(()=>endingStep(n+1),2600);
  }else{
-  state.ch3.endingSeen=true;save();refreshGuide();
+  state.endingSeen=true;save();refreshGuide();refreshCh1Entry();
   setFoot([{label:"进入纪念页面",cls:"small",fn:()=>{closeCh1();showMemorial()}},{label:"稍后再看",cls:"ghost small",fn:closeCh1}]);
  }
 }
@@ -2887,31 +2294,48 @@ function startEnding(){
  endingStep(1);
 }
 function memorialHTML(){
- const c=state.ch3;
+ const c1=state.ch1,c2=state.ch2;
  const ch=(ok,t)=>t+(ok?" ✓":" · 未完成");
+ const seal=(ok,t)=>t+(ok?" ✓":" · 未获得");
  return "<h2 class='mem-title'>千年寻纹使</h2>"+
   "<p style='text-align:center;color:#9CC2B2;margin-top:6px'>你让沉睡千年的故事，再一次被看见。</p>"+
-  "<div class='mem-sec'><b>三章 · 千年之旅</b><br>"+ch(state.ch1.done,"远古初生")+"　"+ch(state.ch2.done,"青铜礼韵")+"　"+ch(c.done,"玉润祥瑞")+"</div>"+
-  "<div class='mem-sec'><b>收集的印记与道具</b><br>温润玉心"+(c.workshop.done?" ✓":" · 未获得")+"　祥瑞玉纹"+(c.patterns.done?" ✓":" · 未获得")+"　祥瑞玉印"+(c.gallery.done?" ✓":" · 未获得")+"<br>金色玉纹碎片 "+c.hidden.length+" / 3"+(c.hiddenCard?" · 已解锁隐藏知识卡「玉中的文化寓意」":"")+"</div>"+
-  "<div class='mem-sec'><b>亲手制作的玉羊挂饰</b></div>"+
-  "<div class='j-photo-card' style='width:170px;height:170px;margin:8px auto'><img src='assets/jade_sheep_pendant.jpg' alt='玉羊挂饰'></div>"+
-  "<div class='mem-sec'><b>最终完成的《千年瑞图》</b></div>"+finalePaintsHTML()+
-  "<div class='mem-sec'>总分 <b>"+state.score+"</b> 分<br><span style='color:#c9c2b2;font-size:13px'>一玉一器，皆是岁月的回响。千年文脉，生生不息。</span></div>";
+  "<div class='mem-sec'><b>两章 · 千年之旅</b><br>"+ch(c1.done,"远古初生")+"　"+ch(ch2Full(),"青铜礼韵")+"</div>"+
+  "<div class='mem-sec'><b>第一章 · 收集的印记</b><br>"+seal(c1.hill.done,"生命之迹")+"　"+seal(c1.river.done,"自然之源")+"　"+seal(c1.settle.done,"文明之印")+"</div>"+
+  "<div class='mem-sec'><b>第二章 · 收集的印记</b><br>"+seal(c2.foundry.done,"铸造之火")+"　"+seal(c2.pattern.done,"纹饰之魂")+"　"+seal(c2.vessel.done,"礼器之印")+"<br>金色羊纹碎片 "+c2.hidden.length+" / 3"+(c2.hiddenCard?" · 已解锁隐藏知识卡「青铜中的羊文化」":"")+"</div>"+
+  "<div class='mem-sec'><b>旧流程 · 探索成果</b><br>历史排序"+(state.sortDone?" ✓":" · 未完成")+"　纹样收集 "+state.explored.length+" / 4<br>专属羊纹作品：「"+state.workName+"」 · 编号 "+state.workNo+"</div>"+
+  "<div class='mem-sec'><b>阿金 · 千年灵境守护者</b></div>"+
+  "<div style='width:120px;height:120px;margin:8px auto;border-radius:50%;overflow:hidden;border:2px solid #B68A45'><img src='assets/ajin.png' alt='阿金' style='width:100%;height:100%;object-fit:cover'></div>"+
+  "<div class='mem-sec'><b>最终完成的《千年瑞图》</b></div>"+
+  "<div class='fin-full'><img src='assets/painting-full.jpg' alt='完整《千年瑞图》'></div>"+
+  "<div class='mem-paints'><div class='mem-paint'><img src='assets/painting-ch1.png' alt='第一幅 · 远古初生'><b>第一幅 · 远古初生</b><span>生命之迹 · 自然之源 · 文明之印</span></div>"+
+  "<div class='mem-paint'><img src='assets/painting-ch2.png' alt='第二幅 · 青铜礼韵'><b>第二幅 · 青铜礼韵</b><span>铸造之火 · 纹饰之魂 · 礼器之印</span></div></div>"+
+  "<div class='mem-sec'>总分 <b>"+state.score+"</b> 分<br><span style='color:#c9c2b2;font-size:13px'>从远古足迹到青铜礼韵，每一件文物，都是岁月留下的印记。</span></div>";
 }
 function showMemorial(){
- if(!state.ch3.endingSeen){toast("先看完结尾动画");return}
- state.ch3.memorialSeen=true;save();refreshGuide();
+ if(!state.endingSeen){toast("先看完结尾动画");return}
+ save();refreshGuide();refreshCh1Entry();
  openCh1("最终纪念 · 千年寻纹使",memorialHTML(),
-  [{label:"保存我的作品",cls:"small",fn:saveMemorialCard},
-   {label:"重新探索",cls:"ghost small",fn:()=>{closeCh1();show("intro")}},
-   {label:"返回玉石宫殿",cls:"ghost small",fn:()=>{closeCh1();renderJade();show("jade")}}]);
+  [{label:"我的寻纹纪念册",cls:"small",fn:openMemorialBook},
+   {label:"保存我的作品",cls:"small",fn:saveMemorialCard},
+   {label:"重新探索",cls:"ghost small",fn:()=>{closeCh1();show("intro")}}]);
+}
+/* 纪念册详情：从存档读两章完成情况、收集道具与探索成果 */
+function openMemorialBook(){
+ const c1=state.ch1,c2=state.ch2;
+ const li=(ok,t)=>"<li>"+(ok?"✓ ":"· ")+t+"</li>";
+ openCh1("我的寻纹纪念册",
+  "<h3 style='margin-top:4px'>已完成章节</h3><ul style='line-height:2'>"+li(c1.done,"第一章 · 远古初生")+li(ch2Full(),"第二章 · 青铜礼韵")+"</ul>"+
+  "<h3 style='margin-top:12px'>收集的印记</h3><ul style='line-height:2'>"+li(c1.hill.done,"生命之迹")+li(c1.river.done,"自然之源")+li(c1.settle.done,"文明之印")+li(c2.foundry.done,"铸造之火")+li(c2.pattern.done,"纹饰之魂")+li(c2.vessel.done,"礼器之印")+"</ul>"+
+  "<h3 style='margin-top:12px'>探索成果</h3><ul style='line-height:2'>"+li(state.sortDone,"历史排序完成（+500 分）")+li(state.explored.length>=4,"纹样收集 "+state.explored.length+" / 4")+li(c2.hidden.length>=3,"金色羊纹碎片 "+c2.hidden.length+" / 3")+(c2.hiddenCard?"<li>✓ 已解锁隐藏知识卡「青铜中的羊文化」</li>":"")+"<li>专属羊纹作品：「"+state.workName+"」 · 编号 "+state.workNo+"</li><li>总分 "+state.score+" 分</li></ul>",
+  [{label:"返回纪念页",cls:"small",fn:()=>{closeCh1();showMemorial()}},
+   {label:"关闭",cls:"ghost small",fn:closeCh1}]);
 }
 async function saveMemorialCard(){
  toast("正在生成纪念卡片…");
  const data=await drawMemorialCard();
  if(!data){toast("当前环境不支持保存，请在手机浏览器中再试");return}
  const a=document.createElement("a");a.href=data;a.download="羊承千年_千年寻纹使.png";a.click();
- state.ch3.memorialSaved=true;save();refreshGuide();toast("纪念卡片已开始下载");
+ save();refreshGuide();toast("纪念卡片已开始下载");
 }
 function drawMemorialCard(){
  return new Promise((resolve)=>{
@@ -2923,13 +2347,13 @@ function drawMemorialCard(){
   const timer=setTimeout(()=>finish(null),3000);
   img.onload=()=>{clearTimeout(timer);finish(img)};
   img.onerror=()=>{clearTimeout(timer);finish(null)};
-  img.src="assets/jade_sheep_pendant.jpg";
+  img.src="assets/ajin.png";
  });
 }
 function renderMemorialCanvas(photo){
  const c=document.createElement("canvas");c.width=1080;c.height=1440;const x=c.getContext("2d");
  if(!x)return null;
- const g=x.createLinearGradient(0,0,0,1440);g.addColorStop(0,"#0d2b21");g.addColorStop(1,"#123f2e");x.fillStyle=g;x.fillRect(0,0,1080,1440);
+ const g=x.createLinearGradient(0,0,0,1440);g.addColorStop(0,"#101311");g.addColorStop(1,"#2a2416");x.fillStyle=g;x.fillRect(0,0,1080,1440);
  x.strokeStyle="#B68A45";x.lineWidth=4;x.strokeRect(36,36,1008,1368);
  x.strokeStyle="rgba(182,138,69,.5)";x.lineWidth=1;x.strokeRect(52,52,976,1336);
  x.textAlign="center";
@@ -2937,51 +2361,22 @@ function renderMemorialCanvas(photo){
  x.fillStyle="#9CC2B2";x.font="30px serif";x.fillText("THE MILLENNIUM OF GOAT CULTURE",540,220);
  x.fillStyle="#E8E1D3";x.font="700 56px serif";x.fillText("千年寻纹使",540,310);
  if(photo){x.save();x.beginPath();x.arc(540,520,130,0,Math.PI*2);x.clip();x.drawImage(photo,410,390,260,260);x.restore();x.strokeStyle="#B68A45";x.lineWidth=5;x.beginPath();x.arc(540,520,130,0,Math.PI*2);x.stroke()}
- else{x.fillStyle="#B68A45";x.font="700 44px serif";x.fillText("玉羊挂饰",540,520)}
- const ch3=state.ch3;
+ else{x.fillStyle="#B68A45";x.font="700 44px serif";x.fillText("阿金",540,520)}
  x.fillStyle="#E8E1D3";x.font="34px serif";
- x.fillText("远古初生 "+(state.ch1.done?"✓":"·")+"　青铜礼韵 "+(state.ch2.done?"✓":"·")+"　玉润祥瑞 "+(ch3.done?"✓":"·"),540,760);
- x.fillText("温润玉心 · 祥瑞玉纹 · 祥瑞玉印",540,820);
- x.fillText("金色玉纹碎片 "+ch3.hidden.length+" / 3",540,880);
- x.fillStyle="#F5D67A";x.font="700 40px serif";x.fillText("总分 "+state.score+" 分",540,960);
+ x.fillText("远古初生 "+(state.ch1.done?"✓":"·")+"　青铜礼韵 "+(ch2Full()?"✓":"·"),540,760);
+ x.fillText("生命之迹 · 自然之源 · 文明之印",540,820);
+ x.fillText("铸造之火 · 纹饰之魂 · 礼器之印",540,880);
+ x.fillText("金色羊纹碎片 "+state.ch2.hidden.length+" / 3",540,940);
+ x.fillStyle="#F5D67A";x.font="700 40px serif";x.fillText("总分 "+state.score+" 分",540,1020);
  x.fillStyle="#c9c2b2";x.font="30px serif";
- x.fillText("一玉一器，皆是岁月的回响。",540,1060);
- x.fillText("千年文脉，生生不息。",540,1110);
- x.fillText("让文物讲述历史，让文化照亮未来。",540,1160);
- x.fillStyle="#9CC2B2";x.font="28px serif";x.fillText("——《羊承千年》完——",540,1260);
+ x.fillText("从远古足迹到青铜礼韵，",540,1120);
+ x.fillText("每一件文物，都是岁月留下的印记。",540,1170);
+ x.fillStyle="#9CC2B2";x.font="28px serif";x.fillText("——《羊承千年》完——",540,1270);
  return c.toDataURL("image/png");
 }
 
-/* ---------- 第二章 → 第三章过渡（九步，可跳过） ---------- */
-const TRANS_LINES=["太棒了！我们已经读懂了青铜器上的古老纹样。不过，千年文明还有另一种温润的表达。","你看，那道碧绿色的光芒，是玉的召唤。古人爱玉、赏玉，也将美好的品德寄托在玉石之中。","走吧！下一站，我们去寻找玉石里的千年故事！","走吧！最后一段寻纹之旅，就从这块玉开始！"];
-let transStep=0,transActive=false;
-function renderTransStep(){
- const st=$("#transStage"),tx=$("#transText"),aj=$("#transAjin"),nx=$("#btnTransNext"),sk=$("#btnTransSkip");
- aj.style.display=(transStep>=5&&transStep<=8)?"block":"none";
- if(transStep===0){st.innerHTML="<div class='trans-vessels'>"+VESSEL_SVG.ding.front+VESSEL_SVG.jue.front+VESSEL_SVG.zun.front+"</div>";typeText(tx,"青铜礼器亮了起来，金光在器身上流转……")}
- else if(transStep===1){st.innerHTML="<div style='display:flex;gap:12px;justify-content:center'><span class='fly-seal'>铸造之火</span><span class='fly-seal'>纹饰之魂</span><span class='fly-seal'>礼器之印</span></div>";typeText(tx,"三枚青铜印记飞向中央《千年瑞图》……")}
- else if(transStep===2){st.innerHTML="<div style='width:240px;height:130px;margin:0 auto;border:2px solid #B68A45;border-radius:10px;background:linear-gradient(160deg,#E8E1D3,rgba(245,214,122,.2));display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(245,214,122,.55)'><div style='font-size:22px;font-weight:700;color:#292A27'>青铜礼韵</div><div style='font-size:12px;color:#789C8D'>千年瑞图 · 其二</div></div>";typeText(tx,"第二幅画卷「青铜礼韵」点亮了……")}
- else if(transStep===3){st.innerHTML="<div class='trans-green'></div>";typeText(tx,"云海深处，一道碧绿色的光芒亮了起来……")}
- else if(transStep===4){st.innerHTML="<div class='trans-jade'>"+JADE_PENDANT_SVG+"</div>";typeText(tx,"一块玉石从画卷中缓缓浮现……")}
- else if(transStep>=5&&transStep<=8){st.innerHTML="<div style='font-size:44px;color:#9CC2B2'>◈</div>";typeText(tx,TRANS_LINES[transStep-5])}
- else{st.innerHTML="<div class='trans-title'>玉润祥瑞<small>第三章 · 玉石里的千年故事</small></div>";typeText(tx,"阿金带你走进玉石宫殿——翡翠绿的宫殿、云海与长廊，正在等你。")}
- nx.textContent=transStep===9?"开始探索 ›":"继续 ›";
- sk.style.display=transStep===9?"none":"inline-block";
- refreshGuide()}
-function startTransition(){if(transActive)return;if(!state.ch2.done){toast("先完成第二章的最终挑战，点亮第二幅画卷");return}
- transActive=true;transStep=0;$("#modalPaint2").classList.remove("open");closeCh1();renderTransStep();$("#modalTrans").classList.add("open")}
-function transNext(){const tx=$("#transText");
- if(typeTimer){clearInterval(typeTimer);typeTimer=null;tx.textContent=tx.dataset.full||"";return}
- if(transStep>=9){transFinish();return}
- transStep++;renderTransStep()}
-function transSkip(){if(transStep<9){transStep=9;renderTransStep()}else{transFinish()}}
-function transFinish(){transActive=false;$("#modalTrans").classList.remove("open");state.ch3.transitionSeen=true;save();enterJade()}
-$("#btnTransNext").addEventListener("click",()=>transNext());
-$("#btnTransSkip").addEventListener("click",()=>transSkip());
-$("#btnRevisitJade").addEventListener("click",()=>{if(!state.ch3.transitionSeen){startTransition()}else{enterJade()}});
-
 /* ---------- 开场视频 ---------- */
-let openingPhase="idle",openingCurrent=null,openingSoundOn=true,openingWatchdog=null,openingBridge=false,introReturn=null;
+let openingPhase="idle",openingCurrent=null,openingSoundOn=true,openingWatchdog=null,openingBridge=false,openingFromIntro=false;
 function openingClearWatchdog(){if(openingWatchdog){clearTimeout(openingWatchdog);openingWatchdog=null}}
 function openingMarkSeen(){if(!state.introSeen){state.introSeen=true;save()}}
 function openingPauseAll(){["introVideo1","introVideo2"].forEach(function(id){const v=document.getElementById(id);if(v){try{v.pause()}catch(e){}}})}
@@ -2995,8 +2390,9 @@ function openingPlay(v){
     if(!v.muted){v.muted=true;openingSoundOn=false;openingUpdateSoundBtn();const q=v.play&&v.play();if(q&&q.catch)q.catch(function(){})}
   })}
 }
-function startOpening(){
-  openingPhase="v1";openingSoundOn=true;
+/* 开场视频现由说明页「进入第一章」触发（fromIntro=true），不再由启动自动播放。 */
+function startOpening(fromIntro){
+  openingPhase="v1";openingSoundOn=true;openingFromIntro=!!fromIntro;
   const v1=document.getElementById("introVideo1"),v2=document.getElementById("introVideo2");
   try{v2.pause()}catch(e){}
   v2.style.display="none";v1.style.display="block";
@@ -3006,7 +2402,7 @@ function startOpening(){
   show("opening",{persist:false});
   openingPlay(v1);
   openingClearWatchdog();
-  openingWatchdog=setTimeout(function(){const v=document.getElementById("introVideo1");if(openingPhase==="v1"&&v.readyState<2){openingToHome()}},12000);
+  openingWatchdog=setTimeout(function(){const v=document.getElementById("introVideo1");if(openingPhase==="v1"&&v.readyState<2){openingExit()}},12000);
 }
 function openingShowTitle(){
   if(openingPhase!=="v1")return;
@@ -3034,18 +2430,21 @@ function openingFinish(){
     openingBridge=true;enterValley();
   },1000);
 }
-function openingToHome(){
+/* 开场中断出口（跳过 / 视频失败 / 12 秒未起播）：从说明页进来时直接进远古山谷（阿金接承接台词），其余情况回首页。 */
+function openingExit(){
   if(openingPhase==="done")return;
   openingPhase="done";openingClearWatchdog();openingPauseAll();
-  openingMarkSeen();show("home");
+  openingMarkSeen();
+  const fromIntro=openingFromIntro;openingFromIntro=false;
+  if(fromIntro){openingBridge=true;enterValley()}else{show("home")}
 }
 document.getElementById("introVideo1").addEventListener("ended",openingShowTitle);
 document.getElementById("introVideo1").addEventListener("playing",openingClearWatchdog);
 document.getElementById("introVideo2").addEventListener("ended",openingFinish);
-document.getElementById("introVideo1").addEventListener("error",function(){if(openingPhase==="v1")openingToHome()});
-document.getElementById("introVideo2").addEventListener("error",function(){if(openingPhase==="v2")openingToHome()});
+document.getElementById("introVideo1").addEventListener("error",function(){if(openingPhase==="v1")openingExit()});
+document.getElementById("introVideo2").addEventListener("error",function(){if(openingPhase==="v2")openingExit()});
 document.getElementById("openingTitle").addEventListener("click",openingStartVideo2);
-document.getElementById("btnOpeningSkip").addEventListener("click",function(){if(openingPhase!=="idle"&&openingPhase!=="done")openingToHome()});
+document.getElementById("btnOpeningSkip").addEventListener("click",function(){if(openingPhase!=="idle"&&openingPhase!=="done")openingExit()});
 document.getElementById("btnOpeningSound").addEventListener("click",function(){
   const v=openingCurrent;if(!v)return;
   openingSoundOn=true;v.muted=false;
@@ -3055,31 +2454,38 @@ document.getElementById("btnOpeningSound").addEventListener("click",function(){
 });
 
 /* ---------- 导航 ---------- */
-$("#btnStart").addEventListener("click",()=>{introReturn=null;const g=$("#gate");g.classList.add("open");setTimeout(()=>{g.classList.remove("open");show("intro")},900)});
-$("#btnContinue").addEventListener("click",()=>{const target=resumeTarget||(state.screen&&state.screen!=="home"&&state.screen!=="opening"?state.screen:"intro");buildSort();buildExplore();buildWorkshop();renderValley();renderHill();renderRiver();renderSettle();renderBronze();renderFoundry();renderPattern();renderVessel();renderJade();renderJadeWork();renderJadePat();renderJadeGal();if(target==="finale")renderFinale();show(target);if(target==="bronze"&&state.ch2.done&&!(state.ch3.hubIntro||state.ch3.transitionSeen))guideSceneIntro("bronze")});
-$("#btnToTimeline").addEventListener("click",()=>{if(!state.ch1.done){enterValley()}else if(!state.ch2.done){enterBronze()}else{startTransition()}});
-$("#btnRevisitValley").addEventListener("click",()=>enterValley());
-$("#btnRevisitBronze").addEventListener("click",()=>enterBronze());
+$("#btnStart").addEventListener("click",()=>{const g=$("#gate");g.classList.add("open");setTimeout(()=>{g.classList.remove("open");show("intro")},900)});
+$("#btnContinue").addEventListener("click",()=>{const target=resumeTarget||(state.screen&&state.screen!=="home"&&state.screen!=="opening"?state.screen:"intro");buildSort();buildExplore();buildWorkshop();renderValley();renderHill();renderRiver();renderSettle();renderBronze();renderFoundry();renderPattern();renderVessel();if(target==="finale")renderFinale();show(target);if(target==="bronze")guideSceneIntro("bronze")});
+$("#btnToTimeline").addEventListener("click",()=>{
+ if(!state.ch1.done){startOpening(true)}
+ else if(!ch2Full()){enterBronze()}
+ else if(state.endingSeen){showMemorial()}
+ else{renderFinale();show("finale")}
+});
 $("#btnBackHome1").addEventListener("click",()=>show("home"));
-$("#btnBackIntro").addEventListener("click",()=>{introReturn=null;show("intro")});
+$("#btnBackIntro").addEventListener("click",()=>{show("intro")});
 $("#btnBackTimeline").addEventListener("click",()=>show("timeline"));
 $("#btnBackSort").addEventListener("click",()=>{buildSort();show("sort")});
 $("#btnBackExplore").addEventListener("click",()=>{buildExplore();show("explore")});
-$("#btnToCh3Finale").addEventListener("click",()=>{startTransition()});
+$("#btnShowPaint2").addEventListener("click",()=>{openShowcase(2)});
 $("#btnBackWorkshop").addEventListener("click",()=>{buildWorkshop();show("workshop")});
 $("#btnToSort").addEventListener("click",()=>{buildSort();show("sort")});
 $("#btnToWorkshop").addEventListener("click",()=>{buildWorkshop();show("workshop")});
 $("#btnRestartTop").addEventListener("click",()=>$("#modalConfirm").classList.add("open"));
 $("#btnRestart").addEventListener("click",()=>$("#modalConfirm").classList.add("open"));
+$("#btnCollectionHome").addEventListener("click",()=>{openCollection()});
+$("#btnCollectionIntro").addEventListener("click",()=>{openCollection()});
+$("#btnCollectionClose").addEventListener("click",closeCollection);
 $("#btnCancelRestart").addEventListener("click",()=>$("#modalConfirm").classList.remove("open"));
-$("#btnConfirmRestart").addEventListener("click",()=>{localStorage.removeItem(LS_KEY);state={screen:"home",introSeen:false,score:0,hints:0,placed:{},selected:null,explored:[],design:{horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},workName:"我的千年瑞羊",workNo:newWorkNo(),sortDone:false,finished:false,posterData:"",ch1:defaultCh1(),ch2:defaultCh2(),ch3:defaultCh3(),guide:defaultGuide()};$("#modalConfirm").classList.remove("open");buildSort();buildExplore();buildWorkshop();refreshCh1Entry();show("home");$("#btnContinue").style.display="none";toast("已清空，回到首页")});
+$("#btnConfirmRestart").addEventListener("click",()=>{localStorage.removeItem(LS_KEY);state={screen:"home",introSeen:false,score:0,hints:0,placed:{},selected:null,explored:[],design:{horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},workName:"我的千年瑞羊",workNo:newWorkNo(),sortDone:false,finished:false,posterData:"",endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};$("#modalConfirm").classList.remove("open");buildSort();buildExplore();buildWorkshop();refreshCh1Entry();show("home");$("#btnContinue").style.display="none";toast("已清空，回到首页")});
 /* ---------- 启动 ---------- */
 load();if(!state.workNo)state.workNo=newWorkNo();
 /* 修复：先把存档里的进度页记下来，再显示首页；首页不写盘，存档的 screen 才不会被冲成 home。 */
 resumeTarget=(state.screen&&state.screen!=="home"&&state.screen!=="opening")?state.screen:null;
 if(localStorage.getItem(LS_KEY)){const c=$("#btnContinue");c.style.display="inline-block"}
-buildSort();buildExplore();buildWorkshop();renderGoat();refreshCh1Entry();applyJadeBg();
-if(!state.introSeen&&!localStorage.getItem(LS_KEY)){startOpening()}else{show("home",{persist:false})}
+buildSort();buildExplore();buildWorkshop();renderGoat();refreshCh1Entry();
+/* 启动不再自动播开场视频，直接进首页；开场视频改到说明页点「进入第一章」后播。 */
+show("home",{persist:false})
 </script>
 </body>
 </html>
