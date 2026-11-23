@@ -1208,10 +1208,15 @@ function mergeCh1(s){const d=defaultCh1();if(!s)return d;const o=Object.assign({
 function defaultCh2(){return {foundry:{known:[],sorted:false,formed:false,done:false,mold:false,bellows:0},pattern:{found:[],puzzle:false,done:false,repair:false},vessel:{clues:[],matched:{},cards:false,done:false,viewed:false,detail:false},painting:{placed:{},lit:false,quiz:false},hidden:[],hiddenCard:false,memory:{q1:false,q2:false,q3:false,done:false},done:false,hubIntro:false}}
 function mergeCh2(s){const d=defaultCh2();if(!s)return d;const o=Object.assign({},d,s);o.foundry=Object.assign({},d.foundry,s.foundry||{});o.foundry.known=(s.foundry&&s.foundry.known)||[];o.pattern=Object.assign({},d.pattern,s.pattern||{});o.pattern.found=(s.pattern&&s.pattern.found)||[];o.vessel=Object.assign({},d.vessel,s.vessel||{});o.vessel.clues=(s.vessel&&s.vessel.clues)||[];o.vessel.matched=Object.assign({},(s.vessel&&s.vessel.matched)||{});o.painting=Object.assign({},d.painting,s.painting||{});o.hidden=Array.isArray(s.hidden)?s.hidden.slice():[];o.memory=Object.assign({},d.memory,s.memory||{});return o}
 let state={screen:"home",introSeen:false,score:0,endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};
-function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(state));document.getElementById("saveState").textContent="已保存"}catch(e){document.getElementById("saveState").textContent="保存失败"}
+/* 存储安全：部分环境（隐私模式/存储被拦）下 localStorage 读写删会抛错，
+   所有触点必须包 try/catch，失败时走内存状态、不阻断流程。 */
+function storeGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function storeSet(k,v){try{localStorage.setItem(k,v);return true}catch(e){return false}}
+function storeRemove(k){try{localStorage.removeItem(k);return true}catch(e){return false}}
+function save(){if(storeSet(LS_KEY,JSON.stringify(state))){document.getElementById("saveState").textContent="已保存"}else{document.getElementById("saveState").textContent="保存失败"}
  /* 引导引擎：每次进度变化后统一推导当前步骤，同步面板/高亮/提示计时 */
  if(typeof refreshGuide==="function"){try{refreshGuide()}catch(e){}}}
-function load(){try{const s=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(s&&s.screen){state=Object.assign(state,s);if(state.ch3)delete state.ch3;if(s.ch3&&s.ch3.endingSeen)state.endingSeen=true;["placed","selected","explored","design","workName","workNo","sortDone","finished","posterData","hints"].forEach(function(k){if(k in state)delete state[k]});if(["jade","jadework","jadepatterns","jadegallery","timeline","sort","explore","workshop","finale"].indexOf(state.screen)>=0)state.screen="intro";state.ch1=mergeCh1(s.ch1);state.ch2=mergeCh2(s.ch2);state.guide=mergeGuide(s.guide)}}catch(e){}}
+function load(){try{const s=JSON.parse(storeGet(LS_KEY)||"null");if(s&&s.screen){state=Object.assign(state,s);if(state.ch3)delete state.ch3;if(s.ch3&&s.ch3.endingSeen)state.endingSeen=true;["placed","selected","explored","design","workName","workNo","sortDone","finished","posterData","hints"].forEach(function(k){if(k in state)delete state[k]});if(["jade","jadework","jadepatterns","jadegallery","timeline","sort","explore","workshop","finale"].indexOf(state.screen)>=0)state.screen="intro";state.ch1=mergeCh1(s.ch1);state.ch2=mergeCh2(s.ch2);state.guide=mergeGuide(s.guide)}}catch(e){}}
 function toast(t){const el=document.getElementById("toast");el.textContent=t;el.style.display="block";setTimeout(()=>el.style.display="none",2200)}
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 /* ---------- 画面切换 ---------- */
@@ -2181,6 +2186,7 @@ function startOpening(fromIntro){
   document.getElementById("btnOpeningSkip").style.display="inline-block";
   show("opening",{persist:false});
   openingPlay(v1);
+  try{v2.preload="auto";v2.load()}catch(e){}
   openingClearWatchdog();
   openingWatchdog=setTimeout(function(){const v=document.getElementById("introVideo1");if(openingPhase==="v1"&&v.readyState<2){openingExit()}},12000);
 }
@@ -2195,10 +2201,20 @@ function openingShowTitle(){
 function openingStartVideo2(){
   if(openingPhase!=="title")return;
   openingPhase="v2";
-  document.getElementById("openingTitle").style.display="none";
   const v2=document.getElementById("introVideo2");
   v2.style.display="block";
   openingPlay(v2);
+  const swap=function(){
+    if(openingPhase!=="v2")return;
+    document.getElementById("openingTitle").style.display="none";
+  };
+  if(v2.readyState>=2){swap()}
+  else{v2.addEventListener("canplay",swap,{once:true})}
+  openingClearWatchdog();
+  openingWatchdog=setTimeout(function(){
+    const v=document.getElementById("introVideo2");
+    if(openingPhase==="v2"&&v.readyState<2){openingExit()}
+  },12000);
 }
 function openingFinish(){
   if(openingPhase!=="v2")return;
@@ -2220,6 +2236,7 @@ function openingExit(){
 }
 document.getElementById("introVideo1").addEventListener("ended",openingShowTitle);
 document.getElementById("introVideo1").addEventListener("playing",openingClearWatchdog);
+document.getElementById("introVideo2").addEventListener("playing",openingClearWatchdog);
 document.getElementById("introVideo2").addEventListener("ended",openingFinish);
 document.getElementById("introVideo1").addEventListener("error",function(){if(openingPhase==="v1")openingExit()});
 document.getElementById("introVideo2").addEventListener("error",function(){if(openingPhase==="v2")openingExit()});
@@ -2311,12 +2328,12 @@ $("#btnCollectionHome").addEventListener("click",()=>{openCollection()});
 $("#btnCollectionIntro").addEventListener("click",()=>{openCollection()});
 $("#btnCollectionClose").addEventListener("click",closeCollection);
 $("#btnCancelRestart").addEventListener("click",()=>$("#modalConfirm").classList.remove("open"));
-$("#btnConfirmRestart").addEventListener("click",()=>{localStorage.removeItem(LS_KEY);state={screen:"home",introSeen:false,score:0,endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};$("#modalConfirm").classList.remove("open");refreshCh1Entry();show("home",{persist:false});$("#btnContinue").style.display="none";toast("已清空，回到首页")});
+$("#btnConfirmRestart").addEventListener("click",()=>{state={screen:"home",introSeen:false,score:0,endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};resumeTarget=null;$("#modalConfirm").classList.remove("open");refreshCh1Entry();show("home",{persist:false});$("#btnContinue").style.display="none";toast("已清空，回到首页");storeRemove(LS_KEY)});
 /* ---------- 启动 ---------- */
 load();
 /* 修复：先把存档里的进度页记下来，再显示首页；首页不写盘，存档的 screen 才不会被冲成 home。 */
 resumeTarget=(state.screen&&state.screen!=="home"&&state.screen!=="opening"&&state.screen!=="ending")?state.screen:null;
-if(localStorage.getItem(LS_KEY)){const c=$("#btnContinue");c.style.display="inline-block"}
+if(storeGet(LS_KEY)){const c=$("#btnContinue");c.style.display="inline-block"}
 refreshCh1Entry();
 /* 启动不再自动播开场视频，直接进首页；开场视频改到说明页点「进入第一章」后播。 */
 show("home",{persist:false})
