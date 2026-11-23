@@ -84,6 +84,8 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
 /* 弹窗 / toast */
 .modal{position:absolute;inset:0;z-index:80;display:none;align-items:center;justify-content:center;background:rgba(5,6,5,.78)}
 .modal.open{display:flex}
+/* 问答/阿金对话/通用弹窗会叠在画卷弹窗之上打开（画卷弹窗在 DOM 里排在后面，同 z-index 会被它盖住导致题目看不见）；提到 90 盖过画卷弹窗 */
+#modalQuiz,#modalGuide,#modalCh1{z-index:90}
 .sheet{width:min(680px,88%);max-height:86%;overflow:auto;background:#1a1e1a;border:1px solid #B68A45;border-radius:16px;padding:22px}
 /* 纪念页底部按钮吸底：纪念页内容约 1200px，横屏手机上 sheet 只有约 335px 高，按钮藏在滚动底部，滚动中的点按会被滚动吃掉；仅纪念页弹窗用 */
 .modal.sticky-foot #ch1Foot{position:sticky;bottom:0;background:#1a1e1a;padding:12px 0 2px;box-shadow:0 -10px 18px rgba(26,30,26,.95);z-index:2}
