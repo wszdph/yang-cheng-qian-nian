@@ -57,62 +57,29 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
 .opening-sound{position:absolute;left:18px;top:64px;z-index:5}
 .opening-fade{position:absolute;inset:0;background:#101311;opacity:0;pointer-events:none;transition:opacity 1s ease;z-index:6}
 #stage.opening-mode #topbar,#stage.opening-mode #guidePanel,#stage.opening-mode #guideRing{display:none}
+/* 结尾视频 */
+#scr-ending{padding:0}
+.ending-stage{position:absolute;inset:0;background:#101311}
+.ending-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#101311}
+.ending-end{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);display:none;gap:16px;z-index:5}
+.ending-end.show{display:flex;animation:endFadeIn 1.2s ease both}
+@keyframes endFadeIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+.ending-end .btn{background:rgba(16,19,17,.72);color:#F5D67A;border:1px solid #B68A45;box-shadow:0 0 18px rgba(182,138,69,.35)}
+.ending-end .btn.ghost{background:rgba(16,19,17,.55);color:#E8E1D3}
+.ending-end .btn:hover{box-shadow:0 0 28px rgba(182,138,69,.65)}
+.ending-end .btn:active{transform:scale(.97)}
+.ending-fail{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:rgba(16,19,17,.92);z-index:6;text-align:center;padding:0 24px}
+.ending-fail p{color:#E8E1D3;font-size:15px;line-height:1.9}
+#stage.ending-mode #topbar,#stage.ending-mode #guidePanel,#stage.ending-mode #guideRing,#stage.ending-mode #toast{display:none}
 .gate{width:min(46vh,340px);height:min(46vh,340px);border-radius:50%;border:2px solid #B68A45;position:relative;margin:10px auto;display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(182,138,69,.25),inset 0 0 60px rgba(182,138,69,.15);transition:transform 1.2s ease,opacity 1.2s ease}
 .gate::before{content:"";position:absolute;inset:14px;border:1px dashed #B68A45aa;border-radius:50%;animation:spin 24s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .gate.open{transform:scale(1.6);opacity:0}
 .gate svg{width:62%;height:62%}
 .gate .glow{position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,rgba(182,138,69,.25),transparent 65%);pointer-events:none}
-/* 时间轴页 / 排序页 */
-.timeline{position:relative;height:120px;margin:26px 10px 8px;border-top:2px solid #B68A45}
-.timeline::before{content:"";position:absolute;left:0;right:0;top:-2px;height:2px;background:linear-gradient(90deg,#B68A45,#789C8D,#B68A45)}
-.node{position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:#101311;border:2px solid #B68A45;transform:translateX(-50%)}
-.node i{position:absolute;top:22px;left:50%;transform:translateX(-50%);font-style:normal;white-space:nowrap;font-size:12px;color:#c9c2b2}
-.slots{display:flex;gap:10px;justify-content:center;margin-top:18px}
-.slot{flex:1;max-width:190px;min-height:150px;border:1px dashed #6D756C;border-radius:12px;padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;transition:.2s;background:#ffffff08}
-.slot.hl{border-color:#B68A45;background:rgba(182,138,69,.14);box-shadow:0 0 18px rgba(182,138,69,.35)}
-.slot.ok{border:1px solid #789C8D;background:rgba(120,156,141,.14)}
-.slot.err{border-color:#c0392b;animation:shake .3s}
-@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-.slot .era{font-size:12px;color:#B68A45;letter-spacing:.1em}
-.tray{display:flex;gap:10px;justify-content:center;margin-top:14px;min-height:150px}
-.card{flex:1;max-width:190px;min-height:140px;background:#1c201c;border:1px solid #6D756C;border-radius:12px;padding:10px;cursor:grab;touch-action:none;user-select:none;position:relative;transition:transform .15s,box-shadow .15s;text-align:center}
-.card.sel{border-color:#B68A45;box-shadow:0 0 0 2px #B68A45}
-.card.dragging{position:fixed;z-index:90;pointer-events:none;transform:scale(1.05) rotate(-2deg);box-shadow:0 18px 40px rgba(0,0,0,.6),0 0 0 2px #B68A45;opacity:.96}
-.card.placed{opacity:0;pointer-events:none}
-.card svg{width:100%;height:64px}
-.card .nm{font-size:14px;margin-top:6px}
-.card .hint-t{font-size:11px;color:#9a958a;line-height:1.5;margin-top:4px}
-.card .no{position:absolute;top:6px;left:8px;color:#B68A45;font-size:11px}
-.card .in-slot{opacity:1;pointer-events:auto}
-.slot .card{max-width:100%;min-height:0;padding:6px;cursor:default}
-.slot .card svg{height:52px}
-/* 探索页 */
-.exhibits{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px;flex:1}
-.exhibit{border:1px solid #6D756C;border-radius:14px;padding:14px;text-align:center;cursor:pointer;background:#ffffff06;transition:.2s;position:relative}
-.exhibit:hover{border-color:#B68A45}
-.exhibit.lit{border-color:#B68A45;box-shadow:0 0 24px rgba(182,138,69,.3);background:rgba(182,138,69,.1)}
-.exhibit svg{width:100%;height:38%;min-height:90px}
-.exhibit .st{position:absolute;top:10px;right:10px;font-size:11px;color:#789C8D}
-.progress-side{font-size:13px;color:#c9c2b2}
-/* 工坊 */
-#scr-workshop{padding-top:56px}
-.workshop{display:grid;grid-template-columns:230px 1fr 250px;gap:16px;flex:1;min-height:0}
 .panel{background:#ffffff06;border:1px solid #6D756C;border-radius:12px;padding:12px;overflow:auto}
 .panel h3{font-size:13px;color:#B68A45;letter-spacing:.15em;margin:10px 0 8px}
 .panel h3:first-child{margin-top:0}
-.opts{display:flex;flex-wrap:wrap;gap:6px}
-.opts button{background:#101311;border:1px solid #6D756C;color:#E8E1D3;border-radius:999px;padding:6px 11px;font-size:12px}
-.opts button.on{background:#B68A45;color:#101311;border-color:#B68A45}
-#previewBox{border:1px solid #B68A45;border-radius:14px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:0}
-#previewBox.bg-xuan{background:#E8E1D3}
-#previewBox.bg-bronze{background:radial-gradient(circle at 50% 30%,#3a2f1d,#101311)}
-#previewBox.bg-jade{background:linear-gradient(135deg,#789C8D,#2e4a40)}
-#previewBox.bg-star{background:#05070f}
-#previewBox svg{width:88%;height:88%}
-#previewBox.bg-xuan svg{filter:drop-shadow(0 8px 18px rgba(0,0,0,.25))}
-.name-row{display:flex;gap:8px;margin-top:8px}
-.name-row input{flex:1;background:#101311;border:1px solid #6D756C;color:#E8E1D3;border-radius:8px;padding:9px 10px;font-size:14px;font-family:inherit}
 .meta{font-size:12px;color:#9a958a;line-height:1.9}
 /* 弹窗 / toast */
 .modal{position:absolute;inset:0;z-index:80;display:none;align-items:center;justify-content:center;background:rgba(5,6,5,.78)}
@@ -121,12 +88,9 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
 .sheet h3{color:#B68A45;letter-spacing:.1em;margin-bottom:10px}
 .sheet p{line-height:1.9;color:#d8d2c2;font-size:14px}
 #toast{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:#B68A45;color:#101311;padding:9px 20px;border-radius:999px;font-size:13px;z-index:100;display:none;white-space:nowrap}
-#posterImg{width:100%;border-radius:10px;border:1px solid #6D756C;background:#101311;min-height:120px;display:block}
-.seal{width:74px;height:74px;border:2px solid #B68A45;border-radius:8px;color:#B68A45;display:flex;align-items:center;justify-content:center;font-size:15px;letter-spacing:.1em;transform:rotate(-6deg)}
-.finale-goat{width:300px;height:210px;margin:0 auto}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;flex:1;min-height:0}
-@media (max-height:560px){.screen{padding:52px 20px 12px;overflow-y:auto}.card{min-height:96px}.card svg{height:44px}.slot{min-height:96px}.slot .card svg{height:40px}.tray{min-height:100px}.exhibit svg{min-height:56px}.gate{width:min(30vh,220px);height:min(30vh,220px)}h1{font-size:28px}.workshop{grid-template-columns:180px 1fr 200px}.btn{padding:10px 22px;font-size:14px}}
-@media (max-width:900px){.workshop{grid-template-columns:170px 1fr 190px}#steps span{width:22px;height:22px;font-size:10px}#topbar{padding:0 12px;font-size:12px}.screen{padding-left:20px;padding-right:20px}}
+@media (max-height:560px){.screen{padding:52px 20px 12px;overflow-y:auto}.gate{width:min(30vh,220px);height:min(30vh,220px)}h1{font-size:28px}.btn{padding:10px 22px;font-size:14px}}
+@media (max-width:900px){#steps span{width:22px;height:22px;font-size:10px}#topbar{padding:0 12px;font-size:12px}.screen{padding-left:20px;padding-right:20px}}
 @media (orientation:portrait){.screen{overflow-y:auto}.gate{width:min(30vh,220px);height:min(30vh,220px)}}
 /* ============ 第一章 · 远古初生（增量，2026-11-22） ============ */
 .screen.active{animation:ch1In .45s ease}
@@ -524,7 +488,7 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
 <body>
 <div id="stage">
   <div id="topbar"><span class="brand">羊承千年 · 时光穿梭</span>
-    <div id="steps"><span data-s="0">01</span><span data-s="1">02</span><span data-s="2">03</span><span data-s="3">04</span><span data-s="4">05</span><span data-s="5">06</span><span data-s="6">07</span><span data-s="7">08</span><span data-s="8">09</span><span data-s="9">10</span><span data-s="10">11</span><span data-s="11">12</span><span data-s="12">13</span><span data-s="13">14</span></div>
+    <div id="steps"><span data-s="0">01</span><span data-s="1">02</span><span data-s="2">03</span><span data-s="3">04</span></div>
     <span id="chLabel" style="color:#789C8D">序章</span>
     <span>得分 <b id="score" style="color:#B68A45">0</b> · <span id="saveState"></span></span>
     <button id="btnPauseTop" type="button">⏸ 暂停</button>
@@ -579,13 +543,31 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
     </div>
   </section>
 
+  <!-- 09 结尾视频 -->
+  <section class="screen" id="scr-ending">
+    <div class="ending-stage" id="endingStage">
+      <video id="endingVideo" src="assets/ending.mp4" playsinline preload="metadata"></video>
+      <div class="ending-end" id="endingEnd" style="display:none">
+        <button class="btn" id="btnEndingBook" type="button">我的寻纹纪念册</button>
+        <button class="btn ghost" id="btnEndingRevisit" type="button">重新探索</button>
+      </div>
+      <div class="ending-fail" id="endingFail" style="display:none">
+        <p>结尾视频加载失败了，<br>可以重新播放，或直接跳过进入纪念页面。</p>
+        <div class="row" style="justify-content:center">
+          <button class="btn small" id="btnEndingRetry" type="button">重新播放</button>
+          <button class="btn ghost small" id="btnEndingSkip" type="button">跳过视频，进入纪念页面</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 02 说明 -->
   <section class="screen" id="scr-intro">
     <div class="two-col">
       <div><p class="tag">02 · 游戏说明</p><h2 style="margin-top:10px">欢迎来到<br>羊文化时光档案馆</h2><div class="gold-line"></div>
-      <p class="lead">千年的时光中，羊的形象出现在青铜器、玉器、陶器与传统吉祥纹样之中。如今，历史档案被打乱，文物的时间顺序需要重新排列。请你成为一名时光探索者，找回散落在历史中的羊文化印记。</p></div>
-      <div class="panel"><h3>任务步骤</h3><p class="meta">① 走进第一章「远古初生」，在远古山谷完成山坡、河边、聚落三个探索，点亮第一幅「远古画卷·羊之初」<br>② 走进第二章「青铜礼韵」，在青铜工坊、纹饰秘境、礼器寻珍完成三个探索，点亮第二幅「青铜画卷」<br>③ 穿越历史，识别不同年代的羊文化文物<br>④ 拖动文物卡片，将它们放入正确的历史时间轴<br>⑤ 完成关卡，收集羊文化纹样，进入设计工坊创造专属羊纹作品</p>
-      <h3>操作提示</h3><p class="meta">鼠标拖动 / 触屏拖动文物卡片；点一下卡片可选中，再点时间轴位置也可放置；点击文物查看详情；可使用提示功能；放满 5 张后点击提交答案。</p>
+      <p class="lead">千年的时光中，羊的形象出现在青铜器、玉器、陶器与传统吉祥纹样之中。请你成为一名时光探索者，走过远古与青铜两段时光，找回散落在历史中的羊文化印记，拼出完整的《千年瑞图》。</p></div>
+      <div class="panel"><h3>任务步骤</h3><p class="meta">① 走进第一章「远古初生」，在远古山谷完成山坡、河边、聚落三个探索，点亮第一幅「远古画卷·羊之初」<br>② 走进第二章「青铜礼韵」，在青铜工坊、纹饰秘境、礼器寻珍完成三个探索，通过「青铜记忆」挑战，点亮第二幅「青铜画卷」<br>③ 两幅画卷合而为一，展开完整《千年瑞图》<br>④ 走进最终结局，听阿金讲完这次探索的故事<br>⑤ 在纪念页留下你的「千年寻纹使」纪念，随时打开「千年瑞图」重温三幅画卷</p>
+      <h3>操作提示</h3><p class="meta">鼠标点选 / 触屏拖动都可以玩：按住碎片拖到目标位置，靠近会自动吸附；也可以先点一下选中，再点目标位置放入。跟着左上角的任务面板和金色光圈走就行，遇到不会的就点「💡 提示」。</p>
       <p class="meta" id="introProgress" style="margin-top:14px;color:#B68A45">新的旅程 · 从第一章开始</p>
       <div class="row" style="margin-top:16px"><button class="btn" id="btnToTimeline" type="button">进入第一章 · 远古初生</button><button class="btn ghost small" id="btnCollectionIntro" type="button">千年瑞图</button><button class="btn ghost small" id="btnBackHome1" type="button">返回首页</button></div></div>
     </div>
@@ -734,66 +716,6 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
   </section>
 
 
-  <!-- 03 第一关：时间轴 -->
-  <section class="screen" id="scr-timeline">
-    <p class="tag">第一关 · 开启历史时间轴</p><h2 style="margin-top:8px">寻找羊文化的历史起点</h2>
-    <p class="lead">请将散落的历史印记，按照年代从早到晚排列。时间轴从远古向现代延伸。</p>
-    <div class="timeline" id="timelineIntro"></div>
-    <div class="row" style="margin-top:auto"><span>关卡进度 <b style="color:#B68A45">0 / 5</b></span><button class="btn" id="btnToSort" type="button">开始排序</button><button class="btn ghost small" id="btnBackIntro" type="button">返回说明</button></div>
-  </section>
-
-  <!-- 04 第二关：排序 -->
-  <section class="screen" id="scr-sort">
-    <div class="row" style="justify-content:space-between"><div><p class="tag">第二关 · 文物年代排序</p><h2 style="font-size:24px;margin-top:4px">把五张文物卡片拖到正确年代</h2></div>
-    <div class="row"><span class="progress-side">已放置 <b id="placedCount" style="color:#B68A45">0</b> / 5</span><button class="btn ghost small" id="btnHint" type="button">获取线索</button><button class="btn ghost small" id="btnResetSort" type="button">重置</button></div></div>
-    <div class="slots" id="slots"></div>
-    <div class="tray" id="tray"></div>
-    <p id="hintText" style="min-height:20px;color:#789C8D;font-size:13px;margin-top:6px"></p>
-    <div class="row" style="margin-top:auto"><button class="btn ghost small" id="btnBackTimeline" type="button">‹ 返回时间轴</button><button class="btn" id="btnSubmitSort" type="button" disabled>提交排序</button><span style="font-size:12px;color:#9a958a">放满 5 张后才能提交；放错会弹回原位，放对会吸附并锁定。点卡片左上角编号查看文物详情。</span></div>
-  </section>
-
-  <!-- 05 第三关：探索 -->
-  <section class="screen" id="scr-explore">
-    <div class="row" style="justify-content:space-between"><div><p class="tag">第三关 · 羊文化探索与纹样收集</p><h2 style="font-size:24px;margin-top:4px">寻找散落的羊文化密码</h2></div><span class="progress-side">已收集纹样 <b id="fragCount" style="color:#B68A45">0</b> / 4</span></div>
-    <div class="exhibits" id="exhibits"></div>
-    <p id="exploreMsg" style="min-height:20px;color:#789C8D;font-size:13px"></p>
-    <div class="row" style="margin-top:auto"><button class="btn ghost small" id="btnBackSort" type="button">‹ 返回排序</button><button class="btn" id="btnToWorkshop" type="button" disabled>进入羊纹设计工坊</button><span style="font-size:12px;color:#9a958a">点开全部 4 个展品，集齐 4 枚纹样碎片后解锁。</span></div>
-  </section>
-
-  <!-- 06 第四关：工坊 -->
-  <section class="screen" id="scr-workshop">
-    <div class="workshop">
-      <div class="panel" id="panelLeft"></div>
-      <div id="previewBox" class="bg-bronze">
-        <svg id="goatSvg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="pat-yunlei" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M0 18h36M18 0v36" stroke="#B68A45" stroke-width="1.4" opacity=".7"/><rect x="10" y="10" width="16" height="16" fill="none" stroke="#B68A45" stroke-width="1.4"/></pattern>
-            <pattern id="pat-huiwen" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M4 26V8a6 6 0 0 1 12 0v6a4 4 0 0 0 8 0" fill="none" stroke="#B68A45" stroke-width="1.6"/></pattern>
-            <pattern id="pat-juanyun" width="44" height="22" patternUnits="userSpaceOnUse"><path d="M4 16 Q14 4 24 12 Q34 20 40 10" fill="none" stroke="#B68A45" stroke-width="1.6"/></pattern>
-            <pattern id="pat-tuanhua" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="9" fill="none" stroke="#B68A45" stroke-width="1.5"/><circle cx="20" cy="20" r="3" fill="#B68A45"/></pattern>
-            <linearGradient id="matGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9B36A"/><stop offset="1" stop-color="#8A6A2E"/></linearGradient>
-          </defs>
-          <circle cx="300" cy="210" r="185" fill="none" stroke="#B68A45" stroke-opacity=".45" stroke-width="1.5"/>
-          <g id="hornLayer"></g><g id="bodyLayer"></g><g id="patternLayer"></g>
-        </svg>
-      </div>
-      <div class="panel" id="panelRight"></div>
-    </div>
-    <div class="row" style="margin-top:12px;justify-content:space-between">
-      <div class="name-row" style="flex:1;max-width:420px"><input id="workName" value="我的千年瑞羊" maxlength="12" aria-label="作品名称"><span class="meta" id="workNo"></span></div>
-      <div class="row"><button class="btn ghost small" id="btnBackExplore" type="button">‹ 返回探索</button><button class="btn" id="btnGenerate" type="button">生成我的专属羊纹</button></div>
-    </div>
-  </section>
-
-  <!-- 07 终章 -->
-  <section class="screen" id="scr-finale">
-    <div style="text-align:center"><p class="tag">终章 · 千年羊韵</p><h2 style="margin-top:8px">千年流转，羊韵不息。</h2><p class="lead" style="margin:8px auto 0">从历史文物中寻找文化根脉，在数字艺术中创造新的表达。</p></div>
-    <div class="finale-goat" id="finaleGoat"></div>
-    <div class="row" style="justify-content:center"><span class="seal">青铜印</span><span class="seal">玉石印</span><span class="seal">陶塑印</span><span class="seal">祥瑞印</span></div>
-    <p id="resultLine" style="text-align:center;color:#c9c2b2;line-height:2"></p>
-    <div class="row" style="justify-content:center;margin-top:14px"><button class="btn" id="btnShowPaint2" type="button">查看青铜画卷</button><button class="btn ghost" id="btnBackWorkshop" type="button">‹ 返回工坊</button><button class="btn" id="btnSaveAgain" type="button">保存我的羊纹作品</button><button class="btn ghost" id="btnRestart" type="button">重新开始时光之旅</button></div>
-  </section>
-
   <!-- 第一章通用弹窗 -->
   <div class="modal" id="modalCh1"><div class="sheet" style="width:min(720px,92%)"><h3 id="ch1Title"></h3><div id="ch1Body"></div><div class="row" id="ch1Foot" style="margin-top:16px"></div></div></div>
   <!-- 问答弹窗 -->
@@ -848,23 +770,17 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
       <p id="seal2Msg" style="font-size:13px;color:#c9c2b2">按住 1.2 秒，把「青铜画卷」之印盖上。</p>
       <button class="btn small" id="btnCh2Results" type="button" style="margin-top:10px">查看本章成果</button>
     </div>
-    <div class="row" style="margin-top:16px;justify-content:center"><button class="btn small" id="btnPaint2Quiz" type="button" style="display:none">接受最终挑战</button><button class="btn small" id="btnToTimeline2" type="button" style="display:none">进入青铜时代 · 时间轴</button><button class="btn ghost small" id="btnPaint2Close" type="button">稍后继续</button></div>
+    <div class="row" style="margin-top:16px;justify-content:center"><button class="btn small" id="btnPaint2Quiz" type="button" style="display:none">接受最终挑战</button><button class="btn small" id="btnToTimeline2" type="button" style="display:none">查看青铜画卷</button><button class="btn ghost small" id="btnPaint2Close" type="button">稍后继续</button></div>
   </div></div>
 
   <!-- 阿金手记 -->
   <div class="modal" id="modalJournal"><div class="sheet" style="width:min(640px,92%)"><h3>阿金手记 · 远古观察记录</h3><p style="font-size:13px;color:#9a958a;line-height:1.8">走一路，记一路。集齐 9 条记录，就是一份完整的远古生活手记。</p><div id="journalList"></div><div class="row" style="margin-top:16px"><button class="btn small" id="btnJournalClose" type="button">合上手记</button></div></div></div>
-  <!-- 详情弹窗 -->
-  <div class="modal" id="modalDetail"><div class="sheet"><h3 id="detailTitle"></h3><p id="detailBody"></p><div class="row" style="margin-top:16px"><button class="btn small" id="btnCloseDetail" type="button">关闭</button></div></div></div>
-  <!-- 展品弹窗 -->
-  <div class="modal" id="modalExhibit"><div class="sheet"><h3 id="exTitle"></h3><div id="exSvg"></div><p id="exBody" style="margin-top:10px"></p><div class="row" style="margin-top:16px"><button class="btn small" id="btnCloseExhibit" type="button">收藏纹样碎片</button></div></div></div>
   <!-- 确认弹窗 -->
-  <div class="modal" id="modalConfirm"><div class="sheet" style="width:min(440px,88%)"><h3>重新开始？</h3><p>将清空本次游戏进度（排序、纹样、设计与作品名称），返回首页。</p><div class="row" style="margin-top:16px"><button class="btn small" id="btnConfirmRestart" type="button">确认清空</button><button class="btn ghost small" id="btnCancelRestart" type="button">取消</button></div></div></div>
+  <div class="modal" id="modalConfirm"><div class="sheet" style="width:min(440px,88%)"><h3>重新开始？</h3><p>将清空本次游戏进度（第一章与第二章的探索、画卷与得分），返回首页。</p><div class="row" style="margin-top:16px"><button class="btn small" id="btnConfirmRestart" type="button">确认清空</button><button class="btn ghost small" id="btnCancelRestart" type="button">取消</button></div></div></div>
   <!-- 暂停弹窗 -->
   <div class="modal" id="modalPause"><div class="sheet" style="width:min(440px,88%)"><h3>已暂停</h3><p>阿金在等你回来。提示计时已暂停，不会再催你。</p><div class="row" style="margin-top:16px"><button class="btn small" id="btnPauseResume" type="button">继续游戏</button><button class="btn ghost small" id="btnPauseHelp" type="button">玩法帮助</button><button class="btn ghost small" id="btnPauseRestart" type="button">重新开始</button></div></div></div>
   <!-- 玩法帮助弹窗 -->
   <div class="modal" id="modalHelp"><div class="sheet" style="width:min(640px,92%)"><h3>玩法帮助 · 阿金小课堂</h3><p style="line-height:2">· <b style="color:#B68A45">点击</b>：点金色标记、按钮、卡片，就可以进入场景、打开知识、收集物品。<br>· <b style="color:#B68A45">拖拽</b>：按住碎片、卡片拖到目标位置，靠近会自动吸附；也可以先点一下选中，再点目标位置放入。拖拽时阿金不会催你。<br>· <b style="color:#B68A45">旋转</b>：拼图碎片带 ↻ 按钮，点一下转 90°；双击碎片也可以旋转。位置和角度都对了才会吸附。<br>· <b style="color:#B68A45">滑动</b>：在器物观察界面里，左右滑动（或点「正面 / 侧面 / 俯视」）可以换角度看器物。<br>· <b style="color:#B68A45">按住盖章</b>：把印章按住 1.2 秒别松手，松手太早要重按。<br>· <b style="color:#B68A45">任务面板</b>：左上角就是当前任务，跟着金色光圈走就行；点「💡 提示」随时看这一步该怎么做，点「–」可以收起面板。<br>· <b style="color:#B68A45">暂停</b>：顶栏「⏸ 暂停」可以停下来歇一歇，提示计时也会停住。</p><label style="display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;color:#d8d2c2"><input type="checkbox" id="helpMute"> 静音提示音（完成任务时的“叮”声）</label><div class="row" style="margin-top:16px"><button class="btn small" id="btnHelpClose" type="button">知道了</button></div></div></div>
-  <!-- 海报弹窗 -->
-  <div class="modal" id="modalPoster"><div class="sheet" style="width:min(760px,92%)"><h3>专属羊纹艺术海报 · 1920 × 1080</h3><img id="posterImg" alt="专属羊纹海报预览"><div class="row" style="margin-top:16px"><button class="btn small" id="btnDownloadPoster" type="button">保存作品 PNG</button><button class="btn ghost small" id="btnRedesign" type="button">重新设计</button><button class="btn ghost small" id="btnToFinale" type="button">进入终章</button></div></div></div>
   <div id="toast"></div>
 </div>
 <div id="rotateTip"><div class="ph">📱</div><h2>请旋转设备</h2><p style="color:#c9c2b2;line-height:1.8">开启羊文化时光之旅<br>本作品为横版 16:9 设计，请横屏游玩</p></div>
@@ -872,49 +788,15 @@ h2{font-size:clamp(20px,3vw,32px);letter-spacing:.1em}
 "use strict";
 /* ============================================================
    《羊承千年》时光穿梭·寻羊千年 —— 单文件横版游戏
-   修改指南（按 brief 第十四节）：
-   1. 文物数据：改下方 ARTIFACTS 数组（名称/年代/提示/详情/说明）。
-      四羊方尊是真实文物，数据已核实；其余 4 项标注“文化示意展项”，
-      不得编造博物馆名、收藏编号与出处，换上真实资料时请同步改 note。
-   2. 替换文物图片：卡片图为内联 SVG（artSvg 函数），把对应 svg 字符串
-      换成 <img src="..."> 或新的 SVG 即可；不要引用不存在的图片路径。
-   3. 羊角/羊身/纹样/材质：改 HORNS / BODIES / PATTERNS / MATERIALS 对象。
-   4. PNG 导出：exportPoster() 用 Canvas 1920×1080 绘制，见函数内注释。
+   两章制：第一章「远古初生」+ 第二章「青铜礼韵」，无第三章；
+   时间轴/排序/探索/工坊旧流程已于 2026-11-23 拿掉，画卷二点亮后
+   直接出画卷二展示、进最终结局。画卷图片在 assets/painting-*；
+   四羊方尊是真实文物（商代晚期，58.3cm，约34.5kg，1938 湖南宁乡
+   出土，中国国家博物馆藏），其余内容标注“文化示意展项”，不得
+   编造博物馆名、收藏编号与出处。存档键 yang-shiguang-v1。
    ============================================================ */
-/* ---------- 可编辑数据：文物（正确顺序即数组顺序） ---------- */
-const ARTIFACTS=[
- {id:"neolithic",era:"新石器时代",name:"早期家畜驯养 · 羊文化形成",hint:"羊文化形成与家畜驯养相关的早期阶段。",kind:"文化示意展项",detail:"所属时期：新石器时代。文化意义：羊由野羊驯化而来，逐渐走进先民的生活与祭祀，成为中华农耕文明的重要家畜。材质/特征：原创数字艺术示意图，以陶土色与石器轮廓表现早期驯养场景。解说：羊，最早是人类的伙伴，后来成为文化的符号。"},
- {id:"shang",era:"商代",name:"四羊方尊",hint:"这件青铜器拥有四个突出的羊首。",kind:"真实文物",detail:"所属时期：商代晚期。文化意义：商代青铜礼器巅峰之作，四羊首与云雷纹展现了高度发达的青铜铸造艺术。材质/特征：青铜，高 58.3 厘米，重约 34.5 公斤，1938 年湖南宁乡出土，现藏中国国家博物馆。解说：四羊昂首，千年不语，却说尽了商代的礼与艺。"},
- {id:"han",era:"汉代",name:"羊形陶器文化",hint:"这一时期的陶器艺术中出现了多样的动物造型。",kind:"文化示意展项",detail:"所属时期：汉代。文化意义：汉代陶塑艺术繁荣，动物造型生动写实，反映了汉人对生活的观察与热爱。材质/特征：原创数字艺术示意图，陶土质感与简练造型。解说：陶土成形，羊形跃然，汉代的生活气息扑面而来。"},
- {id:"tangsong",era:"唐宋时期",name:"羊题材器物与吉祥文化",hint:"羊的形象逐渐与吉祥寓意和生活文化相联系。",kind:"文化示意展项",detail:"所属时期：唐宋时期。文化意义：“羊”通“祥”，羊的形象与吉祥寓意、日常生活深度结合，成为祝福的载体。材质/特征：原创数字艺术示意图，以金色线条表现吉祥纹样。解说：羊即是祥，祥即是羊，美好愿望有了形状。"},
- {id:"mingqing",era:"明清时期",name:"羊形玉雕与传统装饰艺术",hint:"玉石雕刻与传统装饰艺术更加丰富。",kind:"文化示意展项",detail:"所属时期：明清时期。文化意义：玉雕工艺精湛，羊形玉器与装饰艺术融合，温润中见匠心。材质/特征：原创数字艺术示意图，玉石青色与细腻雕刻线条。解说：玉有五德，羊有三美，温润是它们共同的语言。"}
-];
-const EXHIBITS=[
- {id:"bronze",no:"01",name:"青铜羊纹",frag:"青铜云雷纹",pat:"pat-yunlei",body:"以四羊方尊为代表的青铜羊纹：四羊首昂扬，云雷纹回环，象征礼制与力量。纹样特点：方正回环、层层相套。文化寓意：尊贵、威严、礼敬天地。"},
- {id:"jade",no:"02",name:"玉石羊纹",frag:"玉石回纹",pat:"pat-huiwen",body:"玉石羊纹温润内敛，回纹绵延不断，如君子之德连绵不绝。纹样特点：线条圆转、首尾相连。文化寓意：温润、仁德、绵长。"},
- {id:"pottery",no:"03",name:"陶塑羊形",frag:"羊角卷云纹",pat:"pat-juanyun",body:"陶塑羊形质朴生动，羊角卷曲如云，带着泥土的温度与生活的气息。纹样特点：卷云舒展、自由灵动。文化寓意：丰收、朴实、生生不息。"},
- {id:"auspicious",no:"04",name:"吉祥羊纹",frag:"吉祥团花纹",pat:"pat-tuanhua",body:"吉祥羊纹以团花为形，三羊开泰、喜气盈门，是百姓心中最直白的祝福。纹样特点：团花对称、圆满丰盈。文化寓意：吉祥、团圆、泰和。"}
-];
-/* 羊角 / 羊身：SVG 路径（分层绘制，可单独替换） */
-const HORNS={
- classic:{label:"古典弯角",d:"M262 148 Q225 88 268 78 Q300 72 292 118 Q288 138 272 146"},
- cloud:{label:"云纹卷角",d:"M262 148 Q215 105 248 82 Q285 58 292 96 Q296 122 272 128 Q258 130 262 148"},
- geo:{label:"几何抽象角",d:"M262 148 L228 84 L282 92 L296 128 Z"},
- lucky:{label:"祥云灵角",d:"M262 148 Q230 130 232 96 Q234 62 268 66 Q296 70 288 104 Q282 128 262 148"}
-};
-const BODIES={
- classic:{label:"古典瑞羊",d:"M212 250 Q205 185 265 168 Q330 152 372 178 Q420 200 412 252 Q405 292 350 300 L258 300 Q218 292 212 250 Z"},
- geo:{label:"几何艺术羊",d:"M220 300 L232 190 L300 168 L380 186 L404 300 Z"},
- abstract:{label:"抽象数字羊",d:"M230 300 Q210 220 268 190 Q300 175 340 190 Q405 215 388 300 Z"}
-};
-const PATTERNS={yunlei:"青铜云雷纹",huiwen:"玉石回纹",juanyun:"卷云纹",tuanhua:"吉祥团花纹"};
-const MATERIALS={
- bronze:{label:"青铜材质",c1:"#D9B36A",c2:"#8A6A2E"},
- jadeWhite:{label:"温润白玉",c1:"#F2EBDC",c2:"#C9BFA6"},
- jadeGreen:{label:"青绿色玉石",c1:"#9CC2B2",c2:"#4E7A68"},
- gilt:{label:"金色鎏金",c1:"#F5D67A",c2:"#B68A45"}
-};
-const BACKGROUNDS={xuan:{label:"宣纸古典背景",cls:"bg-xuan"},bronze:{label:"深色青铜背景",cls:"bg-bronze"},jade:{label:"玉石渐变背景",cls:"bg-jade"},star:{label:"星空粒子背景",cls:"bg-star"}};
+
+/* 旧流程数据（ARTIFACTS/EXHIBITS/HORNS/BODIES/PATTERNS/MATERIALS/BACKGROUNDS）已于 2026-11-23 随时间轴/排序/探索/工坊一起删除。 */
 const LS_KEY="yang-shiguang-v1";
 /* ---------- 状态 ---------- */
 /* ---------- 第一章 · 远古初生：状态（增量，旧存档自动补默认值） ---------- */
@@ -1070,33 +952,6 @@ const GUIDE_STEPS=[
  {id:"s6",scene:"settlement",chapter:"第一章 · 原始聚落",task:"知识挑战 · 得「文明之印」",label:"回答知识挑战",how:"描完螺旋纹点「我看完了」，回答知识挑战：考古学家可以通过陶器了解什么？答对获得「文明之印」。",
   target:function(){return null},done:function(){return state.ch1.settle.done},
   intro:["螺旋纹描完啦！答一道小题，就能拿到「文明之印」。"]},
- /* —— 基础流程：时间轴 / 排序 / 探索 / 工坊 / 终章 —— */
- {id:"t1",scene:"timeline",chapter:"第一关 · 历史时间轴",task:"认识历史时间轴",label:"点击「开始排序」",how:"时间轴上标着五个年代：先看清顺序，再点「开始排序」，把五张文物卡片拖到正确年代。",
-  target:function(){return "#btnToSort"},done:function(){return state.sortDone||Object.keys(state.placed).length>0||state.explored.length>0||state.finished},
-  intro:["时间轴来了！五个年代从远古排到现代，羊文化的故事就藏在这条时间轴上。","先看清年代顺序，再点「开始排序」。"]},
- {id:"so1",scene:"sort",chapter:"第二关 · 文物年代排序",task:"把文物卡片放到正确年代",label:"拖动卡片到时间轴",how:"把托盘里的文物卡片拖到时间轴上对应的年代位置，也可以先点卡片选中，再点时间轴上的位置；放错会弹回，卡片左上角编号点开看详情。",
-  target:function(){return "#tray .card:not(.placed)"},done:function(){return Object.keys(state.placed).length>=5},
-  intro:["五张文物卡片打乱了顺序，拖到时间轴上正确的位置。","也可以先点卡片选中，再点时间轴上的位置放入。"],
-  prog:function(){const n=Object.keys(state.placed).length;return {done:n,total:5,text:"已放 "+n+" / 5"}}},
- {id:"so2",scene:"sort",chapter:"第二关 · 文物年代排序",task:"提交排序答案",label:"点击「提交排序」",how:"5 张卡都放好了，点「提交排序」。顺序全对 +500 分，解锁探索关；不对也没关系，已放的卡片会保留。",
-  target:function(){return "#btnSubmitSort"},done:function(){return state.sortDone},
-  intro:["5 张卡都放好啦！点「提交排序」看看对不对。"]},
- {id:"e1",scene:"explore",chapter:"第三关 · 羊文化探索",task:"收集 4 枚纹样碎片",label:"点击未探索的展品",how:"点开 4 个展品，看看里面的纹样，点「收藏纹样碎片」收下；集齐 4 枚才能进设计工坊。",
-  target:function(){return "#exhibits .exhibit:not(.lit)"},done:function(){return state.explored.length>=4},
-  intro:["四个展品里各藏着一枚纹样碎片，挨个点开收集。"],
-  prog:function(){const n=state.explored.length;return {done:n,total:4,text:"纹样 "+n+" / 4"}}},
- {id:"e2",scene:"explore",chapter:"第三关 · 羊文化探索",task:"进入羊纹设计工坊",label:"点击「进入羊纹设计工坊」",how:"4 枚纹样都集齐啦，点「进入羊纹设计工坊」，用收集到的纹样设计自己的羊纹作品。",
-  target:function(){return "#btnToWorkshop"},done:function(){return state.finished||state.posterData!==""||ORDER.indexOf(state.screen)>ORDER.indexOf("explore")},
-  intro:["四枚纹样都集齐啦！点「进入羊纹设计工坊」，做一件自己的羊纹作品。"]},
- {id:"w1",scene:"workshop",chapter:"第四关 · 羊纹设计工坊",task:"设计羊纹作品",label:"点击选项切换设计",how:"左边三类（羊角、羊身、纹样）和右边两类（材质、背景）各点一点，中间的羊会实时变化；下面还能改作品名字，改好点「生成我的专属羊纹」。",
-  target:function(){return "#panelLeft .opts button:not(.on)"},done:function(){return state.workName!=="我的千年瑞羊"||state.posterData!==""||state.finished},
-  intro:["欢迎来到羊纹设计工坊！左边换羊角、羊身、纹样，右边换材质、背景，中间的羊会跟着变。","下面还能给作品起个名字。"]},
- {id:"w2",scene:"workshop",chapter:"第四关 · 羊纹设计工坊",task:"生成专属羊纹海报",label:"点击「生成我的专属羊纹」",how:"设计好了，点「生成我的专属羊纹」：海报会画出来（1920×1080），点「保存作品 PNG」下载，再点「进入终章」。",
-  target:function(){return "#btnGenerate"},done:function(){return state.posterData!==""||state.finished},
-  intro:["设计完成啦！点「生成我的专属羊纹」，看看你的作品变成海报的样子。"]},
- {id:"fi1",scene:"finale",chapter:"终章 · 千年羊韵",task:"保存羊纹作品",label:"点击「保存我的羊纹作品」",how:"点「保存我的羊纹作品」，把 1920×1080 的海报 PNG 下载到手机；点「重新开始时光之旅」可以再玩一次。",
-  target:function(){return "#btnSaveAgain"},done:function(){return state.finished},
-  intro:["千年流转，羊韵不息。你的专属羊纹作品完成啦！","点「保存我的羊纹作品」把海报存下来。"]},
 ];
 
 function guideCurrentStep(){
@@ -1153,7 +1008,7 @@ function guideArm(){
   updateGuideRing(guideCurrentStep());
   guideDisarm();
   if(guidePaused)return;
-  if(["bronze","foundry","pattern","vessel","valley","hillside","riverside","settlement","timeline","sort","explore","workshop","finale"].indexOf(state.screen)<0)return;
+  if(["bronze","foundry","pattern","vessel","valley","hillside","riverside","settlement"].indexOf(state.screen)<0)return;
   if(document.querySelector(".modal.open"))return;
   if(!guideCurrentStep())return;
   guideIdleTimer=setTimeout(guideL2,GUIDE_IDLE.l2);
@@ -1185,7 +1040,7 @@ function updateGuidePanel(cur){
     const steps=GUIDE_STEPS.filter(function(s){return s.scene===sc});
     if(steps.length){
       ch.textContent=steps[0].chapter;tk.textContent="本场景已完成 ✓";
-      const doneNext={bronze:"去时间轴继续，或重玩场景",valley:"点「前往第二章」进入青铜时代，或重玩场景",hillside:"返回远古山谷继续探索",riverside:"返回远古山谷继续探索",settlement:"返回远古山谷继续探索",timeline:"去排序关继续",sort:"去探索关继续",explore:"去设计工坊继续",workshop:"去终章看看成果",finale:"点「保存我的羊纹作品」下载海报，或重新开始再玩一次"};
+      const doneNext={bronze:"去画卷二展示看看，或重玩场景",valley:"点「前往第二章」进入青铜时代，或重玩场景",hillside:"返回远古山谷继续探索",riverside:"返回远古山谷继续探索",settlement:"返回远古山谷继续探索"};
       tg.textContent=doneNext[sc]||"返回主场景继续探索";
       hw.textContent="任务都完成啦！可以返回主场景，或点右上角重玩。";
       const p=guideProgress(sc);pr.textContent="任务 "+p.text;bf.style.width="100%";
@@ -1311,28 +1166,26 @@ function defaultCh1(){return {hill:{t1:false,t2:false,t3:false,matched:{},done:f
 function mergeCh1(s){const d=defaultCh1();if(!s)return d;const o=Object.assign({},d,s);o.hill=Object.assign({},d.hill,s.hill||{});o.river=Object.assign({},d.river,s.river||{});o.river.found=(s.river&&s.river.found)||[];o.settle=Object.assign({},d.settle,s.settle||{});o.settle.explored=(s.settle&&s.settle.explored)||[];o.painting=Object.assign({},d.painting,s.painting||{});return o}
 /* 第二章存档：工坊/纹饰/礼器各一子对象 + 第二幅画卷；v2 新增陶范拼合（mold）、
    纹样修复（repair）、隐藏羊纹（hidden/hiddenCard）、最终挑战（memory）；旧存档自动补默认 */
-function defaultCh2(){return {foundry:{known:[],sorted:false,formed:false,done:false,mold:false,bellows:0},pattern:{found:[],puzzle:false,done:false,repair:false},vessel:{clues:[],matched:{},cards:false,done:false,viewed:false,detail:false},painting:{placed:{},lit:false,quiz:false},hidden:[],hiddenCard:false,memory:{q1:false,q2:false,q3:false,done:false},done:false,hubIntro:false,finaleShowSeen:false}}
+function defaultCh2(){return {foundry:{known:[],sorted:false,formed:false,done:false,mold:false,bellows:0},pattern:{found:[],puzzle:false,done:false,repair:false},vessel:{clues:[],matched:{},cards:false,done:false,viewed:false,detail:false},painting:{placed:{},lit:false,quiz:false},hidden:[],hiddenCard:false,memory:{q1:false,q2:false,q3:false,done:false},done:false,hubIntro:false}}
 function mergeCh2(s){const d=defaultCh2();if(!s)return d;const o=Object.assign({},d,s);o.foundry=Object.assign({},d.foundry,s.foundry||{});o.foundry.known=(s.foundry&&s.foundry.known)||[];o.pattern=Object.assign({},d.pattern,s.pattern||{});o.pattern.found=(s.pattern&&s.pattern.found)||[];o.vessel=Object.assign({},d.vessel,s.vessel||{});o.vessel.clues=(s.vessel&&s.vessel.clues)||[];o.vessel.matched=Object.assign({},(s.vessel&&s.vessel.matched)||{});o.painting=Object.assign({},d.painting,s.painting||{});o.hidden=Array.isArray(s.hidden)?s.hidden.slice():[];o.memory=Object.assign({},d.memory,s.memory||{});return o}
-let state={screen:"home",introSeen:false,score:0,hints:0,placed:{},selected:null,explored:[],design:{horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},workName:"我的千年瑞羊",workNo:"",sortDone:false,finished:false,posterData:"",endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};
-function newWorkNo(){return "YC-"+new Date().getFullYear()+"-"+String(Math.floor(1000+Math.random()*9000))}
-/* 修复：posterData 是 1920×1080 的 data URL（几百 KB），不能进 localStorage，
-   否则每次保存都可能超 5MB 配额而静默失败，导致进度丢了。只存进度，图只留内存。 */
-function save(){try{const copy=Object.assign({},state);delete copy.posterData;localStorage.setItem(LS_KEY,JSON.stringify(copy));document.getElementById("saveState").textContent="已保存"}catch(e){document.getElementById("saveState").textContent="保存失败"}
+let state={screen:"home",introSeen:false,score:0,endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};
+function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(state));document.getElementById("saveState").textContent="已保存"}catch(e){document.getElementById("saveState").textContent="保存失败"}
  /* 引导引擎：每次进度变化后统一推导当前步骤，同步面板/高亮/提示计时 */
  if(typeof refreshGuide==="function"){try{refreshGuide()}catch(e){}}}
-function load(){try{const s=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(s&&s.screen){state=Object.assign(state,s);if(state.ch3)delete state.ch3;if(s.ch3&&s.ch3.endingSeen)state.endingSeen=true;if(["jade","jadework","jadepatterns","jadegallery"].indexOf(state.screen)>=0)state.screen="intro";state.design=Object.assign({horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},s.design||{});state.placed=s.placed||{};state.explored=s.explored||[];state.ch1=mergeCh1(s.ch1);state.ch2=mergeCh2(s.ch2);state.guide=mergeGuide(s.guide)}}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(s&&s.screen){state=Object.assign(state,s);if(state.ch3)delete state.ch3;if(s.ch3&&s.ch3.endingSeen)state.endingSeen=true;["placed","selected","explored","design","workName","workNo","sortDone","finished","posterData","hints"].forEach(function(k){if(k in state)delete state[k]});if(["jade","jadework","jadepatterns","jadegallery","timeline","sort","explore","workshop","finale"].indexOf(state.screen)>=0)state.screen="intro";state.ch1=mergeCh1(s.ch1);state.ch2=mergeCh2(s.ch2);state.guide=mergeGuide(s.guide)}}catch(e){}}
 function toast(t){const el=document.getElementById("toast");el.textContent=t;el.style.display="block";setTimeout(()=>el.style.display="none",2200)}
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 /* ---------- 画面切换 ---------- */
-const ORDER=["home","intro","valley","bronze","foundry","pattern","vessel","timeline","sort","explore","workshop","finale"];
+const ORDER=["home","intro","valley","bronze","foundry","pattern","vessel"];
 /* 第一章子场景共用“远古山谷”那一步；第二章子场景共用“青铜时代”那一步；章节名随画面变 */
 const CH_STEP={hillside:2,riverside:2,settlement:2,foundry:3,pattern:3,vessel:3};
-const CH_LABEL={opening:"序章",home:"序章",intro:"序章",valley:"第一章 · 远古初生",hillside:"第一章 · 远古初生",riverside:"第一章 · 远古初生",settlement:"第一章 · 远古初生",bronze:"第二章 · 青铜礼韵",foundry:"第二章 · 青铜礼韵",pattern:"第二章 · 青铜礼韵",vessel:"第二章 · 青铜礼韵",timeline:"第二章 · 青铜礼韵",sort:"第二章 · 青铜礼韵",explore:"第二章 · 青铜礼韵",workshop:"第二章 · 青铜礼韵",finale:"终章 · 千年羊韵"};
+const CH_LABEL={opening:"序章",home:"序章",intro:"序章",valley:"第一章 · 远古初生",hillside:"第一章 · 远古初生",riverside:"第一章 · 远古初生",settlement:"第一章 · 远古初生",bronze:"第二章 · 青铜礼韵",foundry:"第二章 · 青铜礼韵",pattern:"第二章 · 青铜礼韵",vessel:"第二章 · 青铜礼韵"};
 /* 修复：启动时显示首页不能覆盖已存的 screen，否则刷新后“继续游戏”永远只能回说明页。
    resumeTarget 在启动时从存档里记下，首页用 persist:false 显示，不写盘。 */
 let resumeTarget=null;
 function show(name,opts){state.screen=name;$$(".screen").forEach(el=>el.classList.toggle("active",el.id==="scr-"+name));
  document.getElementById("stage").classList.toggle("opening-mode",name==="opening");
+ document.getElementById("stage").classList.toggle("ending-mode",name==="ending");
  const i=name==="opening"?0:(CH_STEP[name]!==undefined)?CH_STEP[name]:ORDER.indexOf(name);$$("#steps span").forEach((el,idx)=>{el.classList.toggle("on",idx===i);el.classList.toggle("done",idx<i)});
  const cl=document.getElementById("chLabel");if(cl)cl.textContent=CH_LABEL[name]||"";
  document.getElementById("score").textContent=state.score;if(!opts||opts.persist!==false)save();window.scrollTo(0,0);addAmbience();
@@ -1340,120 +1193,6 @@ function show(name,opts){state.screen=name;$$(".screen").forEach(el=>el.classLis
  refreshGuide()}
 /* ---------- 粒子 ---------- */
 (function(){const st=document.getElementById("stage");for(let i=0;i<22;i++){const p=document.createElement("span");p.className="particle";p.style.left=(Math.random()*100)+"%";p.style.bottom=(Math.random()*30)+"%";p.style.animationDuration=(4+Math.random()*6)+"s";p.style.animationDelay=(Math.random()*5)+"s";st.appendChild(p)}})();
-/* ---------- 时间轴（第一关） ---------- */
-(function(){const tl=document.getElementById("timelineIntro");ARTIFACTS.forEach((a,i)=>{const n=document.createElement("div");n.className="node";n.style.left=(10+i*20)+"%";n.innerHTML="<i>"+a.era+"</i>";tl.appendChild(n)})})();
-/* ---------- 文物卡片 SVG（原创示意） ---------- */
-function artSvg(a){if(a.id==="shang")return '<svg viewBox="0 0 120 60"><g fill="none" stroke="#B68A45" stroke-width="2"><rect x="34" y="18" width="52" height="34" rx="4"/><path d="M34 18 L28 8 M52 18 L48 6 M68 18 L72 6 M86 18 L92 8"/><path d="M40 30h40M40 40h40"/></g></svg>';
- const c=a.id==="mingqing"?"#789C8D":a.id==="han"?"#C9A06A":"#B68A45";
- return '<svg viewBox="0 0 120 60"><g fill="none" stroke="'+c+'" stroke-width="2"><ellipse cx="60" cy="36" rx="34" ry="18"/><path d="M40 26 Q30 12 46 16 Q56 20 52 30"/><circle cx="72" cy="32" r="2" fill="'+c+'"/></g></svg>'}
-/* ---------- 第二关：拖拽排序 ---------- */
-let dragCard=null;
-function buildSort(){
- const slots=$("#slots"),tray=$("#tray");slots.innerHTML="";tray.innerHTML="";
- ARTIFACTS.forEach((a,i)=>{const s=document.createElement("div");s.className="slot";s.dataset.era=i;s.innerHTML='<span class="era">'+(i+1)+' · '+(a.era)+'</span><span style="font-size:11px;color:#6D756C">拖到此处</span>';s.addEventListener("click",()=>placeSelected(i));slots.appendChild(s)});
- const shuffled=ARTIFACTS.slice().sort(()=>Math.random()-.5);
- shuffled.forEach(a=>{const c=document.createElement("div");c.className="card";c.dataset.id=a.id;c.innerHTML='<span class="no" title="点击查看文物详情">NO.'+(ARTIFACTS.indexOf(a)+1)+'</span>'+artSvg(a)+'<div class="nm">'+a.name+'</div><div class="hint-t">'+a.hint+'</div>';
-  c.addEventListener("click",()=>{if(c._justDragged){c._justDragged=false;return} if(c.classList.contains("placed"))return; if(state.selected===a.id){state.selected=null;c.classList.remove("sel")}else{$$(".card.sel").forEach(x=>x.classList.remove("sel"));state.selected=a.id;c.classList.add("sel");toast("已选中「"+a.name+"」，再点时间轴上的位置放入")}}); 
-  c.addEventListener("pointerdown",e=>startDrag(e,c,a)); tray.appendChild(c)});
- /* 修复：刷新恢复——把已存的 placed 卡片放回对应槽位（只恢复，不重新判定）。
-    旧版只恢复了计数，卡片还留在下方托盘里，计数与画面不一致，提交也会误判。 */
- Object.keys(state.placed).forEach(id=>{const idx=state.placed[id];const card=tray.querySelector('.card[data-id="'+id+'"]');const slot=slotEl(idx);
-  if(card&&slot&&!slot.querySelector(".card")){slot.appendChild(card);card.classList.add("placed","in-slot");card.style.cssText="";slot.classList.add("ok");slot.querySelectorAll("span").forEach(x=>x.remove())}});
- updateSortUI()}
-function slotEl(i){return $$("#slots .slot")[i]}
-function placeCard(cardEl,a,slotIdx,fromDrag){
- const slot=slotEl(slotIdx); if(!slot)return false;
- if(slot.querySelector(".card")){toast("该位置已有卡片，请先点重置再放");return false}
- const correct=ARTIFACTS[slotIdx].id===a.id;
- if(!correct){slot.classList.add("err");setTimeout(()=>slot.classList.remove("err"),400);toast("位置不对，已弹回原位");return false}
- slot.appendChild(cardEl);cardEl.classList.add("placed","in-slot");cardEl.classList.remove("sel");cardEl.style.cssText="";
- state.placed[a.id]=slotIdx;state.selected=null;slot.classList.add("ok");slot.querySelectorAll("span").forEach(s=>s.remove());
- updateSortUI();save();return true}
-function placeSelected(slotIdx){if(!state.selected)return;const card=$$("#tray .card, #slots .card").find(c=>c.dataset.id===state.selected);const a=ARTIFACTS.find(x=>x.id===state.selected);if(card&&a)placeCard(card,a,slotIdx)}
-function updateSortUI(){const n=Object.keys(state.placed).length;$("#placedCount").textContent=n;$("#btnSubmitSort").disabled=n!==5}
-function startDrag(e,cardEl,a){
- if(cardEl.classList.contains("placed"))return; e.preventDefault();
- const r=cardEl.getBoundingClientRect(); dragCard={el:cardEl,a}; 
- cardEl.classList.add("dragging");cardEl.style.width=r.width+"px";cardEl.style.left=(e.clientX-r.width/2)+"px";cardEl.style.top=(e.clientY-r.height/2)+"px";
- const move=ev=>{cardEl.style.left=(ev.clientX-r.width/2)+"px";cardEl.style.top=(ev.clientY-r.height/2)+"px";
-   $$("#slots .slot").forEach(s=>{const b=s.getBoundingClientRect();s.classList.toggle("hl",ev.clientX>b.left&&ev.clientX<b.right&&ev.clientY>b.top&&ev.clientY<b.bottom)})};
- /* 修复：放错时 placeCard 已提示“位置不对”，不要再叠加一句“未放到有效位置”；
-    只有根本没落在任何槽位上时才提示弹回。另补 pointercancel，手指滑出屏幕/来电打断也不卡住。 */
- const finish=ev=>{document.removeEventListener("pointermove",move);document.removeEventListener("pointerup",finish);document.removeEventListener("pointercancel",finish);
-   $$("#slots .slot").forEach(s=>s.classList.remove("hl"));
-   let hovered=-1,done=false;$$("#slots .slot").forEach((s,i)=>{const b=s.getBoundingClientRect();if(ev.clientX>b.left&&ev.clientX<b.right&&ev.clientY>b.top&&ev.clientY<b.bottom){hovered=i;done=placeCard(cardEl,a,i,true)}});
-   cardEl._justDragged=true;setTimeout(()=>cardEl._justDragged=false,150);
-   if(!done){cardEl.classList.remove("dragging");cardEl.style.cssText="";if(hovered<0)toast("未放到有效位置，已回到原位")} dragCard=null};
- const up=finish;
- document.addEventListener("pointermove",move);document.addEventListener("pointerup",up);document.addEventListener("pointercancel",finish)}
-/* 详情弹窗：点卡片名称区查看（双击/长按易误触，改用详情按钮逻辑：点击卡片已选中，再点一次标题区？为保真，卡片右上角编号点击看详情） */
-document.addEventListener("click",e=>{const no=e.target.closest(".card .no");if(no){const card=no.closest(".card");const a=ARTIFACTS.find(x=>x.id===card.dataset.id);if(a){$("#detailTitle").textContent=a.name+" · "+a.era+" · "+a.kind;$("#detailBody").textContent=a.detail;$("#modalDetail").classList.add("open")}}});
-$("#btnCloseDetail").addEventListener("click",()=>$("#modalDetail").classList.remove("open"));
-$("#btnHint").addEventListener("click",()=>{const idx=state.hints%ARTIFACTS.length;const a=ARTIFACTS[idx];state.hints++;state.score=Math.max(0,state.score-20);$("#hintText").textContent="线索 "+state.hints+" · "+a.era+"："+a.hint+"（每次提示扣 20 分，不影响通关）";$("#score").textContent=state.score;save()});
-$("#btnResetSort").addEventListener("click",()=>{state.placed={};state.selected=null;buildSort();save();toast("已重置排序")});
-$("#btnSubmitSort").addEventListener("click",()=>{
- const ok=ARTIFACTS.every((a,i)=>state.placed[a.id]===i);
- if(ok){if(!state.sortDone){state.sortDone=true;state.score+=500} // 修复：刷新后重进再提交不得重复加 500 分
-  $("#score").textContent=state.score;toast("历史档案修复成功！+500 分，获得第一枚文化印记");save();setTimeout(()=>show("explore"),900)}
- else{toast("时间顺序还未完全正确，再试一次。已放置的卡片保留");}});
-/* ---------- 第三关：探索 ---------- */
-function buildExplore(){const box=$("#exhibits");box.innerHTML="";EXHIBITS.forEach(ex=>{const d=document.createElement("div");d.className="exhibit"+(state.explored.includes(ex.id)?" lit":"");d.innerHTML='<span class="st">'+(state.explored.includes(ex.id)?"✓ 已收集":"未探索")+'</span><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="url(#'+ex.pat+')" opacity=".55"/><circle cx="60" cy="40" r="26" fill="none" stroke="#B68A45" stroke-width="2"/><text x="60" y="46" text-anchor="middle" fill="#E8E1D3" font-size="16">羊</text></svg><div style="margin-top:8px">'+ex.no+' · '+ex.name+'</div><div style="font-size:11px;color:#9a958a;margin-top:4px">纹样：'+ex.frag+'</div>';
- d.addEventListener("click",()=>{$("#exTitle").textContent=ex.no+" · "+ex.name+" —— "+ex.frag;$("#exSvg").innerHTML=d.querySelector("svg").outerHTML;$("#exBody").textContent=ex.body;$("#modalExhibit").classList.add("open");$("#modalExhibit").dataset.ex=ex.id});box.appendChild(d)});
- $("#fragCount").textContent=state.explored.length;$("#btnToWorkshop").disabled=state.explored.length!==4}
-$("#btnCloseExhibit").addEventListener("click",()=>{const id=$("#modalExhibit").dataset.ex;if(id&&!state.explored.includes(id)){state.explored.push(id);state.score+=50;$("#score").textContent=state.score;toast("纹样碎片已收集："+EXHIBITS.find(x=>x.id===id).frag+"（+50 分）")} $("#modalExhibit").classList.remove("open");buildExplore();save();
- if(state.explored.length===4){$("#exploreMsg").textContent="散落千年的文化印记，已经重新汇聚。";toast("四枚纹样已汇聚，可以进入设计工坊")}});
-/* ---------- 第四关：工坊 ---------- */
-function renderGoat(){
- const m=MATERIALS[state.design.material],h=HORNS[state.design.horn],b=BODIES[state.design.body];
- $("#hornLayer").innerHTML='<path d="'+h.d+'" fill="url(#matGrad)" stroke="#101311" stroke-opacity=".3"/>';
- $("#bodyLayer").innerHTML='<path d="'+b.d+'" fill="url(#matGrad)"/>';
- const patMap={yunlei:"pat-yunlei",huiwen:"pat-huiwen",juanyun:"pat-juanyun",tuanhua:"pat-tuanhua"};
- $("#patternLayer").innerHTML='<path d="'+b.d+'" fill="url(#'+patMap[state.design.pattern]+')" opacity=".85"/>';
- const g=document.getElementById("matGrad");g.children[0].setAttribute("stop-color",m.c1);g.children[1].setAttribute("stop-color",m.c2);
- $("#previewBox").className=BACKGROUNDS[state.design.bg].cls;
- /* 修复：终章直接复制 goatSvg 的 innerHTML 会在页面里造出第二套 matGrad / pat-* id，
-    两个 SVG 共用同一 id 是无效 HTML，且终章图案可能被主图的渐变劫持。复制时改后缀。 */
- const fin=document.getElementById("goatSvg").innerHTML.replace(/matGrad/g,"matGradF").replace(/pat-yunlei/g,"pat-yunleiF").replace(/pat-huiwen/g,"pat-huiwenF").replace(/pat-juanyun/g,"pat-juanyunF").replace(/pat-tuanhua/g,"pat-tuanhuaF");
- $("#finaleGoat").innerHTML='<svg viewBox="0 0 600 420" style="width:100%;height:100%">'+fin+"</svg>"}
-function optGroup(title,items,cur,cat){let h="<h3>"+title+"</h3><div class='opts' data-cat='"+cat+"'>";Object.keys(items).forEach(k=>{h+='<button type="button" data-k="'+k+'" class="'+(cur===k?"on":"")+'">'+items[k].label+"</button>"});return h+"</div>"}
-function buildWorkshop(){
- $("#panelLeft").innerHTML=optGroup("羊角造型",HORNS,state.design.horn,"horn")+optGroup("羊身造型",BODIES,state.design.body,"body")+optGroup("身体纹样",Object.fromEntries(Object.entries(PATTERNS).map(([k,v])=>[k,{label:v}])),state.design.pattern,"pattern");
- $("#panelRight").innerHTML=optGroup("材质选择",MATERIALS,state.design.material,"material")+optGroup("背景选择",BACKGROUNDS,state.design.bg,"bg")+'<h3>作品信息</h3><p class="meta" id="designMeta"></p>';
- /* 修复：旧版每次点选项都把整个面板 innerHTML 重建一遍——焦点丢失、面板滚动归零，
-    且旧按钮的监听器挂在已脱离文档的节点上（点选后换组会抛 previousElementSibling 为 null）。
-    改为只改 state + 原地切换 .on，面板 DOM 不动。 */
- $$("#panelLeft .opts button, #panelRight .opts button").forEach(b=>b.addEventListener("click",()=>{
-  const cat=b.closest(".opts").dataset.cat; state.design[cat]=b.dataset.k;
-  b.closest(".opts").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
-  renderGoat();updateMeta();save()}));
- updateMeta();renderGoat();$("#workName").value=state.workName;$("#workNo").textContent="编号 "+state.workNo}
-function updateMeta(){const d=state.design;const el=document.getElementById("designMeta");if(el)el.innerHTML="羊角："+HORNS[d.horn].label+"<br>羊身："+BODIES[d.body].label+"<br>纹样："+PATTERNS[d.pattern]+"<br>材质："+MATERIALS[d.material].label+"<br>背景："+BACKGROUNDS[d.bg].label}
-$("#workName").addEventListener("input",e=>{state.workName=e.target.value.trim()||"我的千年瑞羊";save()});
-/* ---------- 海报导出：Canvas 1920×1080 ---------- */
-function exportPoster(){
- return new Promise((resolve)=>{
-  const svg=document.getElementById("goatSvg").cloneNode(true);svg.setAttribute("width","900");svg.setAttribute("height","630");
-  const xml=new XMLSerializer().serializeToString(svg);const url=URL.createObjectURL(new Blob([xml],{type:"image/svg+xml;charset=utf-8"}));
-  const img=new Image();img.onload=()=>{
-   const c=document.createElement("canvas");c.width=1920;c.height=1080;const x=c.getContext("2d");
-   const bg={xuan:"#E8E1D3",bronze:"#101311",jade:"#789C8D",star:"#05070f"}[state.design.bg];x.fillStyle=bg;x.fillRect(0,0,1920,1080);
-   x.strokeStyle="#B68A45";x.lineWidth=3;x.strokeRect(48,48,1824,984);
-   x.fillStyle=state.design.bg==="xuan"?"#292A27":"#E8E1D3";x.textAlign="center";x.font="700 88px serif";x.fillText("羊承千年",960,165);
-   x.font="32px serif";x.fillStyle="#B68A45";x.fillText("THE MILLENNIUM OF GOAT CULTURE",960,220);
-   x.drawImage(img,510,260,900,600);
-   x.fillStyle=state.design.bg==="xuan"?"#292A27":"#E8E1D3";x.font="700 62px serif";x.fillText(state.workName,960,935);
-   x.font="28px serif";x.fillStyle="#B68A45";x.fillText("千年羊韵，焕新而生",960,985);
-   x.font="24px serif";x.fillStyle=state.design.bg==="xuan"?"#555":"#c9c2b2";
-   x.fillText("羊角 "+HORNS[state.design.horn].label+" · 羊身 "+BODIES[state.design.body].label+" · 纹样 "+PATTERNS[state.design.pattern]+" · 材质 "+MATERIALS[state.design.material].label+" · 作品编号 "+state.workNo,960,1020);
-   URL.revokeObjectURL(url);state.posterData=c.toDataURL("image/png");resolve(state.posterData)};
-  img.onerror=()=>resolve("");img.src=url})}
-$("#btnGenerate").addEventListener("click",async()=>{toast("正在生成海报…");const data=await exportPoster();if(!data){toast("海报生成失败，请重试");return}
- $("#posterImg").src=data;$("#modalPoster").classList.add("open");state.finished=true;save()});
-$("#btnDownloadPoster").addEventListener("click",()=>{if(!state.posterData)return;const a=document.createElement("a");a.href=state.posterData;a.download="羊承千年_"+(state.workName||"我的专属羊纹")+".png";a.click();toast("PNG 已开始下载")});
-$("#btnRedesign").addEventListener("click",()=>$("#modalPoster").classList.remove("open"));
-$("#btnToFinale").addEventListener("click",()=>{$("#modalPoster").classList.remove("open");show("finale");renderFinale()});
-$("#btnSaveAgain").addEventListener("click",async()=>{if(!state.posterData)state.posterData=await exportPoster();const a=document.createElement("a");a.href=state.posterData;a.download="羊承千年_"+(state.workName||"我的专属羊纹")+".png";a.click();toast("PNG 已开始下载")});
-function renderFinale(){$("#resultLine").innerHTML="历史排序完成 · 文化展品探索完成 · 收集纹样 "+state.explored.length+" / 4<br>专属羊纹作品：「"+state.workName+"」 · 编号 "+state.workNo+" · 得分 "+state.score+" · "+(state.finished?"已完成":"未完成");renderGoat();if(state.ch2.done&&state.finished&&!state.ch2.finaleShowSeen){state.ch2.finaleShowSeen=true;save();openShowcase(2)}}
 /* ============ 第一章 · 远古初生逻辑（增量） ============ */
 let typeTimer=null;
 function typeText(el,text,done){if(typeTimer)clearInterval(typeTimer);el.dataset.full=text;el.textContent="";let i=0;typeTimer=setInterval(()=>{i++;el.textContent=text.slice(0,i);if(i>=text.length){clearInterval(typeTimer);typeTimer=null;if(done)done()}},28)}
@@ -1522,8 +1261,8 @@ function openQuiz(title,q,opts,correct,onRight){$("#quizTitle").textContent=titl
   box.appendChild(b)});
  $("#modalQuiz").classList.add("open");refreshGuide()}
 /* 说明页主按钮与进度行：每次显示说明页时按存档重算（中途退出重进也能看到进度）。 */
-/* 第二章真正完成 = 画卷二点亮 + 走完旧流程终章（海报已生成）；两章制 */
-function ch2Full(){return state.ch2.done&&state.finished}
+/* 第二章真正完成 = 画卷二点亮；两章制（旧流程终章已于 2026-11-23 拿掉） */
+function ch2Full(){return state.ch2.done}
 function refreshCh1Entry(){
  const b=$("#btnToTimeline");
  if(b){
@@ -1535,7 +1274,7 @@ function refreshCh1Entry(){
  if(p){
   const names=["第一章 · 远古初生","第二章 · 青铜礼韵"];
   const dones=[state.ch1.done,ch2Full()];
-  const started=state.ch1.valleyIntro||state.ch1.hill.done||state.ch1.river.done||state.ch1.river.found.length>0||state.ch1.settle.done||state.ch1.settle.explored.length>0||state.ch1.done||state.ch2.foundry.done||state.ch2.pattern.done||state.ch2.vessel.done||state.ch2.memory.done||state.ch2.done||state.finished||state.sortDone||state.explored.length>0;
+  const started=state.ch1.valleyIntro||state.ch1.hill.done||state.ch1.river.done||state.ch1.river.found.length>0||state.ch1.settle.done||state.ch1.settle.explored.length>0||state.ch1.done||state.ch2.foundry.done||state.ch2.pattern.done||state.ch2.vessel.done||state.ch2.memory.done||state.ch2.done;
   if(!started)p.textContent="新的旅程 · 从第一章开始";
   else if(dones.every(Boolean))p.textContent="已完成："+names.join("、");
   else{const dl=names.filter(function(n,i){return dones[i]});const cur=names[dones.findIndex(function(d){return !d})];p.textContent=(dl.length?"已完成："+dl.join("、")+" / ":"")+"进行中："+cur}
@@ -2155,7 +1894,7 @@ function memoryFly(){
 function openCh2Results(){const c=state.ch2;const h=c.hidden.length;
  const seals=[["铸造之火",c.foundry.done],["纹饰之魂",c.pattern.done],["礼器之印",c.vessel.done]].map(([t,g])=>t+(g?" ✓":" · 未获得")).join(" · ");
  openCh1("第二章 · 探索成果","<p style='line-height:2'>三枚印记："+seals+"<br>隐藏收集：金色羊纹碎片 "+h+" / 3"+(c.hiddenCard?" · 已解锁隐藏知识卡「青铜中的羊文化」":" · 还有羊纹碎片藏在三个场景里，去找找吧")+"<br>本章得分："+state.score+" 分</p><h3 style='margin-top:12px'>知识回顾</h3><div class='know-card'><b>铸造五步</b><br>准备陶土与铜料 → 制作陶范 → 熔炼铜液 → 浇铸成型 → 打磨修整（陶范法，古代铸造的一般工艺）。</div><div class='know-card'><b>三种纹样</b><br>云雷纹（回旋线条）、兽面纹（威严辟邪，传统说法）、羊形纹（弯弯羊角，寄托吉祥）。</div><div class='know-card'><b>三件礼器</b><br>鼎（炊煮与礼仪）、爵（温酒饮酒）、尊（盛酒贮酒）。</div><div class='know-card'><b>青铜中的羊文化</b><br>羊纹是青铜器纹饰中的一种动物纹样，「羊」与「祥」相通，寄托吉祥美好的愿望。（通用文化知识，游戏示意）</div>",
- [{label:"进入青铜时代 · 时间轴",cls:"small",fn:()=>{closeCh1();$("#modalPaint2").classList.remove("open");show("timeline");toast("青铜时代 · 请按时间轴继续探索")}},
+ [{label:"查看青铜画卷",cls:"small",fn:()=>{closeCh1();$("#modalPaint2").classList.remove("open");openShowcase(2)}},
   {label:"稍后再看",cls:"ghost small",fn:closeCh1}])}
 $("#btnCh2Results").addEventListener("click",()=>openCh2Results());
 /* ---------- 阿金闲置提醒（已并入引导系统）：L2 10 秒目标闪烁加强，L3 20 秒阿金提示 ----------
@@ -2191,24 +1930,25 @@ seal2.addEventListener("pointerdown",ev=>{if(seal2Done)return;seal2.classList.ad
   if(p>=1){clearInterval(tick);seal2Done=true;seal2.classList.remove("holding");seal2.classList.add("stamped");
    seal2.querySelector(".core").innerHTML="<span style='font-size:26px'>◈</span>已盖章";
    $("#seal2Msg").textContent="「青铜画卷 · 青铜礼韵」已盖上金印！";
-   const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,20);floatScore(st.width/2,st.height/2-40,"已盖章");toast("阿金：金印盖好啦！点「进入青铜时代 · 时间轴」，继续青铜时代的探索。")}},50);
+   const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,20);floatScore(st.width/2,st.height/2-40,"已盖章");toast("阿金：金印盖好啦！第二幅画卷已经点亮。");setTimeout(()=>{$("#modalPaint2").classList.remove("open");openShowcase(2)},900)}},50);
  const end=()=>{clearInterval(tick);if(!seal2Done){seal2.classList.remove("holding");seal2.style.setProperty("--p",0);$("#seal2Msg").textContent="按住 1.2 秒，把「青铜画卷」之印盖上。"}document.removeEventListener("pointerup",end);document.removeEventListener("pointercancel",end)};
  document.addEventListener("pointerup",end);document.addEventListener("pointercancel",end)});
 function openPaint2(){renderPaint2();bindPaint2();$("#modalPaint2").classList.add("open");refreshGuide()}
 $("#btnPaint2Quiz").addEventListener("click",()=>{openQuiz("最终知识挑战","青铜器上的纹饰，寄托了古人怎样的心愿？",["把信仰、礼仪与美好愿望铸进器物里。","记录现代城市的交通路线。","展示手机电脑的用法。"],0,()=>{state.ch2.painting.quiz=true;state.ch2.painting.lit=true;if(state.ch2.memory.done){state.ch2.done=true;refreshCh1Entry()}save();renderPaint2();bindPaint2();renderBronze();
  const st=document.getElementById("stage").getBoundingClientRect();burst(st.width/2,st.height/2,24);
- openGuide(["第二幅画卷已经点亮啦！","点「进入青铜时代 · 时间轴」，去时间轴上继续青铜时代的探索吧。"])} )});
-$("#btnToTimeline2").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");show("timeline");toast("青铜时代 · 请按时间轴继续探索")});
+ openGuide(["第二幅画卷已经点亮啦！","按住金印 1.2 秒盖章，就能看到属于第二章的青铜画卷。"])} )});
+$("#btnToTimeline2").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");openShowcase(2)});
 $("#btnPaint2Close").addEventListener("click",()=>{$("#modalPaint2").classList.remove("open");refreshGuide();if(state.ch2.done)guideSceneIntro("bronze")});
 
 
 /* ---------- 最终结局 · 千年瑞图（两章制：第一章远古初生 + 第二章青铜礼韵） ---------- */
 const FINALE_LINES=["太棒啦！我们终于完成了这次探索！","从远古留下的生活痕迹，到青铜器上精美的纹样，每一次发现都让我更加惊叹。","原来，真正珍贵的，不只是这些古老的器物，还有它们背后一直被传承的文化。","谢谢你和我一起，留下这段特别的回忆！"];
 const ENDING_TEXT=["《羊承千年》","从远古足迹到青铜礼韵，","每一件文物，都是岁月留下的印记。","让沉睡的历史重新被看见，","让古老的文化继续传承。","——《羊承千年》完——"];
-/* 画卷二展示「开启最终结局」→ 阿金结尾对白（逐句显示）→ 结尾动画 → 纪念页 */
+/* 画卷二展示「开启最终结局」→ 结尾视频（assets/ending.mp4）→ 定格 + 两按钮 → 纪念页。
+   旧的阿金结尾对白 + 七步结尾动画（FINALE_LINES / startEnding / endingStep）已被结尾视频取代，代码保留未删。 */
 function startFinalEnding(){
  closeCh1();
- openGuide(FINALE_LINES.slice(),()=>{startEnding()});
+ openEndingVideo();
 }
 /* ---------- 画卷展示与收藏 ---------- */
 const PAINTINGS={
@@ -2232,7 +1972,7 @@ function openShowcase(ch){
 }
 function closeShowcase(){$("#modalShowcase").classList.remove("open");refreshGuide()}
 function collectionUnlocked(){
- return {ch1:!!state.ch1.painting.lit,ch2:!!state.ch2.painting.lit,full:!!(state.ch1.done&&state.ch2.done&&state.finished)};
+ return {ch1:!!state.ch1.painting.lit,ch2:!!state.ch2.painting.lit,full:!!(state.ch1.done&&state.ch2.done)};
 }
 function openCollection(){
  renderCollection();
@@ -2302,7 +2042,6 @@ function memorialHTML(){
   "<div class='mem-sec'><b>两章 · 千年之旅</b><br>"+ch(c1.done,"远古初生")+"　"+ch(ch2Full(),"青铜礼韵")+"</div>"+
   "<div class='mem-sec'><b>第一章 · 收集的印记</b><br>"+seal(c1.hill.done,"生命之迹")+"　"+seal(c1.river.done,"自然之源")+"　"+seal(c1.settle.done,"文明之印")+"</div>"+
   "<div class='mem-sec'><b>第二章 · 收集的印记</b><br>"+seal(c2.foundry.done,"铸造之火")+"　"+seal(c2.pattern.done,"纹饰之魂")+"　"+seal(c2.vessel.done,"礼器之印")+"<br>金色羊纹碎片 "+c2.hidden.length+" / 3"+(c2.hiddenCard?" · 已解锁隐藏知识卡「青铜中的羊文化」":"")+"</div>"+
-  "<div class='mem-sec'><b>旧流程 · 探索成果</b><br>历史排序"+(state.sortDone?" ✓":" · 未完成")+"　纹样收集 "+state.explored.length+" / 4<br>专属羊纹作品：「"+state.workName+"」 · 编号 "+state.workNo+"</div>"+
   "<div class='mem-sec'><b>阿金 · 千年灵境守护者</b></div>"+
   "<div style='width:120px;height:120px;margin:8px auto;border-radius:50%;overflow:hidden;border:2px solid #B68A45'><img src='assets/ajin.png' alt='阿金' style='width:100%;height:100%;object-fit:cover'></div>"+
   "<div class='mem-sec'><b>最终完成的《千年瑞图》</b></div>"+
@@ -2311,13 +2050,15 @@ function memorialHTML(){
   "<div class='mem-paint'><img src='assets/painting-ch2.png' alt='第二幅 · 青铜礼韵'><b>第二幅 · 青铜礼韵</b><span>铸造之火 · 纹饰之魂 · 礼器之印</span></div></div>"+
   "<div class='mem-sec'>总分 <b>"+state.score+"</b> 分<br><span style='color:#c9c2b2;font-size:13px'>从远古足迹到青铜礼韵，每一件文物，都是岁月留下的印记。</span></div>";
 }
-function showMemorial(){
+function showMemorial(fromEnding){
  if(!state.endingSeen){toast("先看完结尾动画");return}
+ memorialFromEnding=!!fromEnding;
  save();refreshGuide();refreshCh1Entry();
- openCh1("最终纪念 · 千年寻纹使",memorialHTML(),
-  [{label:"我的寻纹纪念册",cls:"small",fn:openMemorialBook},
+ const foot=[{label:"我的寻纹纪念册",cls:"small",fn:openMemorialBook},
    {label:"保存我的作品",cls:"small",fn:saveMemorialCard},
-   {label:"重新探索",cls:"ghost small",fn:()=>{closeCh1();show("intro")}}]);
+   {label:"重新探索",cls:"ghost small",fn:()=>{closeCh1();show("intro")}}];
+ if(memorialFromEnding)foot.unshift({label:"返回结尾",cls:"ghost small",fn:()=>{closeCh1();show("ending",{persist:false})}});
+ openCh1("最终纪念 · 千年寻纹使",memorialHTML(),foot);
 }
 /* 纪念册详情：从存档读两章完成情况、收集道具与探索成果 */
 function openMemorialBook(){
@@ -2326,8 +2067,8 @@ function openMemorialBook(){
  openCh1("我的寻纹纪念册",
   "<h3 style='margin-top:4px'>已完成章节</h3><ul style='line-height:2'>"+li(c1.done,"第一章 · 远古初生")+li(ch2Full(),"第二章 · 青铜礼韵")+"</ul>"+
   "<h3 style='margin-top:12px'>收集的印记</h3><ul style='line-height:2'>"+li(c1.hill.done,"生命之迹")+li(c1.river.done,"自然之源")+li(c1.settle.done,"文明之印")+li(c2.foundry.done,"铸造之火")+li(c2.pattern.done,"纹饰之魂")+li(c2.vessel.done,"礼器之印")+"</ul>"+
-  "<h3 style='margin-top:12px'>探索成果</h3><ul style='line-height:2'>"+li(state.sortDone,"历史排序完成（+500 分）")+li(state.explored.length>=4,"纹样收集 "+state.explored.length+" / 4")+li(c2.hidden.length>=3,"金色羊纹碎片 "+c2.hidden.length+" / 3")+(c2.hiddenCard?"<li>✓ 已解锁隐藏知识卡「青铜中的羊文化」</li>":"")+"<li>专属羊纹作品：「"+state.workName+"」 · 编号 "+state.workNo+"</li><li>总分 "+state.score+" 分</li></ul>",
-  [{label:"返回纪念页",cls:"small",fn:()=>{closeCh1();showMemorial()}},
+  "<h3 style='margin-top:12px'>探索成果</h3><ul style='line-height:2'>"+li(c2.hidden.length>=3,"金色羊纹碎片 "+c2.hidden.length+" / 3")+(c2.hiddenCard?"<li>✓ 已解锁隐藏知识卡「青铜中的羊文化」</li>":"")+"<li>总分 "+state.score+" 分</li></ul>",
+  [{label:"返回纪念页",cls:"small",fn:()=>{closeCh1();showMemorial(memorialFromEnding)}},
    {label:"关闭",cls:"ghost small",fn:closeCh1}]);
 }
 async function saveMemorialCard(){
@@ -2453,37 +2194,91 @@ document.getElementById("btnOpeningSound").addEventListener("click",function(){
   openingUpdateSoundBtn();
 });
 
+/* ---------- 结尾视频 ---------- */
+/* 「开启最终结局」播用户上传的结尾视频（assets/ending.mp4，原样使用，不重编码不裁剪）；
+   播完保留最后一帧定格，底部淡入「我的寻纹纪念册 / 重新探索」，不自动跳页。
+   播放期间顶栏/任务面板/引导光圈由 #stage.ending-mode 隐藏；项目无循环背景音乐
+   （只有完成任务时的 WebAudio 两音 chime，引导计时在结尾画面不启动），故无 BGM 可暂停。 */
+let endingPhase="idle",endingWatchdog=null,endingDone=false,memorialFromEnding=false;
+function endingClearWatchdog(){if(endingWatchdog){clearTimeout(endingWatchdog);endingWatchdog=null}}
+function endingShowEndButtons(){
+  const e=document.getElementById("endingEnd");if(!e)return;
+  e.style.display="flex";e.classList.remove("show");void e.offsetWidth;e.classList.add("show");
+}
+function endingHideOverlays(){
+  const e=document.getElementById("endingEnd");if(e){e.style.display="none";e.classList.remove("show")}
+  const f=document.getElementById("endingFail");if(f)f.style.display="none";
+}
+function endingShowFail(){
+  if(endingPhase!=="playing")return;
+  endingPhase="failed";endingClearWatchdog();
+  const v=document.getElementById("endingVideo");try{v.pause()}catch(e){}
+  const f=document.getElementById("endingFail");if(f)f.style.display="flex";
+}
+function endingPlay(){
+  const v=document.getElementById("endingVideo");if(!v)return;
+  v.muted=false; /* 点「开启最终结局」属于用户手势，直接带原声播放 */
+  const p=v.play&&v.play();
+  if(p&&p.catch){p.catch(function(){
+    /* 带声音被拦截时静音重试一次；仍失败则等 12 秒兜底，不卡死 */
+    v.muted=true;const q=v.play&&v.play();if(q&&q.catch)q.catch(function(){})
+  })}
+}
+function openEndingVideo(){
+  if(endingPhase==="playing")return; /* 重复点「开启最终结局」不叠加播放 */
+  endingPhase="playing";endingDone=false;
+  guideDisarm();
+  endingHideOverlays();
+  const v=document.getElementById("endingVideo");if(!v)return;
+  try{v.pause()}catch(e){}
+  try{v.currentTime=0}catch(e){}
+  show("ending",{persist:false});
+  endingPlay();
+  endingClearWatchdog();
+  endingWatchdog=setTimeout(function(){const vv=document.getElementById("endingVideo");if(endingPhase==="playing"&&vv.readyState<2){endingShowFail()}},12000);
+}
+function endingOnEnded(){
+  if(endingPhase!=="playing"||endingDone)return;
+  endingDone=true;endingPhase="ended";endingClearWatchdog();
+  /* 视频停在最后一帧定格，不隐藏、不黑屏；置 endingSeen，说明页「查看千年纪念」门禁继续用它 */
+  state.endingSeen=true;save();refreshGuide();refreshCh1Entry();
+  endingShowEndButtons();
+}
+document.getElementById("endingVideo").addEventListener("ended",endingOnEnded);
+document.getElementById("endingVideo").addEventListener("playing",endingClearWatchdog);
+document.getElementById("endingVideo").addEventListener("error",function(){if(endingPhase==="playing")endingShowFail()});
+document.getElementById("btnEndingBook").addEventListener("click",function(){showMemorial(true)});
+document.getElementById("btnEndingRevisit").addEventListener("click",function(){show("intro")});
+document.getElementById("btnEndingRetry").addEventListener("click",function(){openEndingVideo()});
+document.getElementById("btnEndingSkip").addEventListener("click",function(){
+  const v=document.getElementById("endingVideo");try{v.pause()}catch(e){}
+  endingPhase="done";endingClearWatchdog();endingHideOverlays();
+  state.endingSeen=true;save();refreshGuide();refreshCh1Entry();
+  showMemorial(true);
+});
+
 /* ---------- 导航 ---------- */
 $("#btnStart").addEventListener("click",()=>{const g=$("#gate");g.classList.add("open");setTimeout(()=>{g.classList.remove("open");show("intro")},900)});
-$("#btnContinue").addEventListener("click",()=>{const target=resumeTarget||(state.screen&&state.screen!=="home"&&state.screen!=="opening"?state.screen:"intro");buildSort();buildExplore();buildWorkshop();renderValley();renderHill();renderRiver();renderSettle();renderBronze();renderFoundry();renderPattern();renderVessel();if(target==="finale")renderFinale();show(target);if(target==="bronze")guideSceneIntro("bronze")});
+$("#btnContinue").addEventListener("click",()=>{const target=resumeTarget||(state.screen&&state.screen!=="home"&&state.screen!=="opening"&&state.screen!=="ending"?state.screen:"intro");renderValley();renderHill();renderRiver();renderSettle();renderBronze();renderFoundry();renderPattern();renderVessel();show(target);if(target==="bronze")guideSceneIntro("bronze")});
 $("#btnToTimeline").addEventListener("click",()=>{
  if(!state.ch1.done){startOpening(true)}
  else if(!ch2Full()){enterBronze()}
  else if(state.endingSeen){showMemorial()}
- else{renderFinale();show("finale")}
+ else{openShowcase(2)}
 });
 $("#btnBackHome1").addEventListener("click",()=>show("home"));
-$("#btnBackIntro").addEventListener("click",()=>{show("intro")});
-$("#btnBackTimeline").addEventListener("click",()=>show("timeline"));
-$("#btnBackSort").addEventListener("click",()=>{buildSort();show("sort")});
-$("#btnBackExplore").addEventListener("click",()=>{buildExplore();show("explore")});
-$("#btnShowPaint2").addEventListener("click",()=>{openShowcase(2)});
-$("#btnBackWorkshop").addEventListener("click",()=>{buildWorkshop();show("workshop")});
-$("#btnToSort").addEventListener("click",()=>{buildSort();show("sort")});
-$("#btnToWorkshop").addEventListener("click",()=>{buildWorkshop();show("workshop")});
 $("#btnRestartTop").addEventListener("click",()=>$("#modalConfirm").classList.add("open"));
-$("#btnRestart").addEventListener("click",()=>$("#modalConfirm").classList.add("open"));
 $("#btnCollectionHome").addEventListener("click",()=>{openCollection()});
 $("#btnCollectionIntro").addEventListener("click",()=>{openCollection()});
 $("#btnCollectionClose").addEventListener("click",closeCollection);
 $("#btnCancelRestart").addEventListener("click",()=>$("#modalConfirm").classList.remove("open"));
-$("#btnConfirmRestart").addEventListener("click",()=>{localStorage.removeItem(LS_KEY);state={screen:"home",introSeen:false,score:0,hints:0,placed:{},selected:null,explored:[],design:{horn:"classic",body:"classic",pattern:"yunlei",material:"bronze",bg:"bronze"},workName:"我的千年瑞羊",workNo:newWorkNo(),sortDone:false,finished:false,posterData:"",endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};$("#modalConfirm").classList.remove("open");buildSort();buildExplore();buildWorkshop();refreshCh1Entry();show("home");$("#btnContinue").style.display="none";toast("已清空，回到首页")});
+$("#btnConfirmRestart").addEventListener("click",()=>{localStorage.removeItem(LS_KEY);state={screen:"home",introSeen:false,score:0,endingSeen:false,ch1:defaultCh1(),ch2:defaultCh2(),guide:defaultGuide()};$("#modalConfirm").classList.remove("open");refreshCh1Entry();show("home");$("#btnContinue").style.display("none");toast("已清空，回到首页")});
 /* ---------- 启动 ---------- */
-load();if(!state.workNo)state.workNo=newWorkNo();
+load();
 /* 修复：先把存档里的进度页记下来，再显示首页；首页不写盘，存档的 screen 才不会被冲成 home。 */
-resumeTarget=(state.screen&&state.screen!=="home"&&state.screen!=="opening")?state.screen:null;
+resumeTarget=(state.screen&&state.screen!=="home"&&state.screen!=="opening"&&state.screen!=="ending")?state.screen:null;
 if(localStorage.getItem(LS_KEY)){const c=$("#btnContinue");c.style.display="inline-block"}
-buildSort();buildExplore();buildWorkshop();renderGoat();refreshCh1Entry();
+refreshCh1Entry();
 /* 启动不再自动播开场视频，直接进首页；开场视频改到说明页点「进入第一章」后播。 */
 show("home",{persist:false})
 </script>
